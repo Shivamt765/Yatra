@@ -20,16 +20,27 @@ export default {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         
-        // Adventure Color System
+        // Yatra Holiday Brand Colors
+        "brand-orange": {
+          DEFAULT: "hsl(var(--brand-orange))",
+          light: "hsl(var(--brand-orange-light))",
+          dark: "hsl(var(--brand-orange-dark))",
+        },
+        "brand-blue": {
+          DEFAULT: "hsl(var(--brand-blue))",
+          light: "hsl(var(--brand-blue-light))",
+          dark: "hsl(var(--brand-blue-dark))",
+        },
+        // Legacy aliases
         "sky-blue": {
-          DEFAULT: "hsl(var(--sky-blue))",
-          light: "hsl(var(--sky-blue-light))",
-          dark: "hsl(var(--sky-blue-dark))",
+          DEFAULT: "hsl(var(--brand-blue))",
+          light: "hsl(var(--brand-blue-light))",
+          dark: "hsl(var(--brand-blue-dark))",
         },
         "mountain-green": {
-          DEFAULT: "hsl(var(--mountain-green))",
-          light: "hsl(var(--mountain-green-light))",
-          dark: "hsl(var(--mountain-green-dark))",
+          DEFAULT: "hsl(var(--brand-orange))",
+          light: "hsl(var(--brand-orange-light))",
+          dark: "hsl(var(--brand-orange-dark))",
         },
         "earth-brown": {
           DEFAULT: "hsl(var(--earth-brown))",

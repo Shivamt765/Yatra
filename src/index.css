@@ -10,32 +10,41 @@
     --background: 0 0% 100%;
     --foreground: 210 15% 15%;
     
-    /* Adventure Color Palette */
-    --sky-blue: 210 80% 55%;
-    --sky-blue-light: 210 85% 70%;
-    --sky-blue-dark: 210 75% 40%;
+    /* Yatra Holiday Brand Colors */
+    --brand-orange: 22 96% 54%; /* #F58220 */
+    --brand-orange-light: 22 96% 64%;
+    --brand-orange-dark: 22 96% 44%;
     
-    --mountain-green: 140 60% 45%;
-    --mountain-green-light: 140 65% 60%;
-    --mountain-green-dark: 140 55% 30%;
+    --brand-blue: 201 100% 37%; /* #0076BE */
+    --brand-blue-light: 201 100% 47%;
+    --brand-blue-dark: 201 100% 27%;
+    
+    --snow-white: 0 0% 98%;
+    --snow-gray: 210 15% 90%;
+    
+    /* Legacy aliases for compatibility */
+    --sky-blue: var(--brand-blue);
+    --sky-blue-light: var(--brand-blue-light);
+    --sky-blue-dark: var(--brand-blue-dark);
+    
+    --mountain-green: var(--brand-orange);
+    --mountain-green-light: var(--brand-orange-light);
+    --mountain-green-dark: var(--brand-orange-dark);
     
     --earth-brown: 25 40% 50%;
     --earth-brown-light: 25 45% 65%;
     --earth-brown-dark: 25 35% 35%;
     
-    --snow-white: 0 0% 98%;
-    --snow-gray: 210 15% 90%;
-    
-    /* Adventure Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(var(--sky-blue)) 0%, hsl(var(--mountain-green)) 100%);
-    --gradient-mountain: linear-gradient(180deg, hsl(var(--sky-blue-light)) 0%, hsl(var(--earth-brown)) 100%);
-    --gradient-adventure: linear-gradient(45deg, hsl(var(--mountain-green)) 0%, hsl(var(--earth-brown)) 50%, hsl(var(--sky-blue)) 100%);
+    /* Yatra Holiday Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--brand-orange)) 0%, hsl(var(--brand-blue)) 100%);
+    --gradient-mountain: linear-gradient(180deg, hsl(var(--brand-blue-light)) 0%, hsl(var(--brand-orange)) 100%);
+    --gradient-adventure: linear-gradient(45deg, hsl(var(--brand-orange)) 0%, hsl(var(--brand-blue)) 50%, hsl(var(--brand-orange-light)) 100%);
     --gradient-overlay: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.1) 100%);
     
     /* Shadows & Effects */
-    --shadow-adventure: 0 20px 40px hsl(var(--mountain-green) / 0.2);
-    --shadow-elevation: 0 10px 30px hsl(var(--earth-brown) / 0.15);
-    --shadow-soft: 0 4px 20px hsl(var(--sky-blue) / 0.1);
+    --shadow-adventure: 0 20px 40px hsl(var(--brand-orange) / 0.2);
+    --shadow-elevation: 0 10px 30px hsl(var(--brand-blue) / 0.15);
+    --shadow-soft: 0 4px 20px hsl(var(--brand-blue) / 0.1);
     
     /* Animations */
     --transition-smooth: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -51,10 +60,10 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: var(--sky-blue);
+    --primary: var(--brand-orange);
     --primary-foreground: var(--snow-white);
 
-    --secondary: var(--mountain-green);
+    --secondary: var(--brand-blue);
     --secondary-foreground: var(--snow-white);
 
     --muted: var(--snow-gray);
@@ -189,14 +198,21 @@
 }
 
 @layer utilities {
-  /* Custom Adventure Colors */
-  .bg-sky-blue { background-color: hsl(var(--sky-blue)); }
-  .bg-mountain-green { background-color: hsl(var(--mountain-green)); }
-  .bg-earth-brown { background-color: hsl(var(--earth-brown)); }
+  /* Yatra Holiday Brand Colors */
+  .bg-brand-orange { background-color: hsl(var(--brand-orange)); }
+  .bg-brand-blue { background-color: hsl(var(--brand-blue)); }
   .bg-snow-white { background-color: hsl(var(--snow-white)); }
   
-  .text-sky-blue { color: hsl(var(--sky-blue)); }
-  .text-mountain-green { color: hsl(var(--mountain-green)); }
+  .text-brand-orange { color: hsl(var(--brand-orange)); }
+  .text-brand-blue { color: hsl(var(--brand-blue)); }
+  
+  /* Legacy color aliases */
+  .bg-sky-blue { background-color: hsl(var(--brand-blue)); }
+  .bg-mountain-green { background-color: hsl(var(--brand-orange)); }
+  .bg-earth-brown { background-color: hsl(var(--earth-brown)); }
+  
+  .text-sky-blue { color: hsl(var(--brand-blue)); }
+  .text-mountain-green { color: hsl(var(--brand-orange)); }
   .text-earth-brown { color: hsl(var(--earth-brown)); }
   
   .bg-gradient-hero { background: var(--gradient-hero); }
@@ -217,6 +233,14 @@
 @keyframes floating {
   0%, 100% { transform: translateY(0px); }
   50% { transform: translateY(-10px); }
+}
+
+@keyframes rotateIcons {
+  0% { transform: rotate(0deg) scale(1); }
+  25% { transform: rotate(90deg) scale(1.1); }
+  50% { transform: rotate(180deg) scale(1); }
+  75% { transform: rotate(270deg) scale(1.1); }
+  100% { transform: rotate(360deg) scale(1); }
 }
 
 @keyframes fadeInUp {
