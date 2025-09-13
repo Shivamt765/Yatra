@@ -2,14 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Yatra Holiday Travel Design System - Natural Adventure Tones */
 
 @layer base {
   :root {
+    /* Base colors */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 210 15% 15%;
+    
+    /* Adventure Color Palette */
+    --sky-blue: 210 80% 55%;
+    --sky-blue-light: 210 85% 70%;
+    --sky-blue-dark: 210 75% 40%;
+    
+    --mountain-green: 140 60% 45%;
+    --mountain-green-light: 140 65% 60%;
+    --mountain-green-dark: 140 55% 30%;
+    
+    --earth-brown: 25 40% 50%;
+    --earth-brown-light: 25 45% 65%;
+    --earth-brown-dark: 25 35% 35%;
+    
+    --snow-white: 0 0% 98%;
+    --snow-gray: 210 15% 90%;
+    
+    /* Adventure Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--sky-blue)) 0%, hsl(var(--mountain-green)) 100%);
+    --gradient-mountain: linear-gradient(180deg, hsl(var(--sky-blue-light)) 0%, hsl(var(--earth-brown)) 100%);
+    --gradient-adventure: linear-gradient(45deg, hsl(var(--mountain-green)) 0%, hsl(var(--earth-brown)) 50%, hsl(var(--sky-blue)) 100%);
+    --gradient-overlay: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.1) 100%);
+    
+    /* Shadows & Effects */
+    --shadow-adventure: 0 20px 40px hsl(var(--mountain-green) / 0.2);
+    --shadow-elevation: 0 10px 30px hsl(var(--earth-brown) / 0.15);
+    --shadow-soft: 0 4px 20px hsl(var(--sky-blue) / 0.1);
+    
+    /* Animations */
+    --transition-smooth: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    
+    /* Updated semantic tokens */
+    --background: 0 0% 100%;
+    --foreground: 210 15% 15%;
 
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
@@ -17,17 +51,17 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: var(--sky-blue);
+    --primary-foreground: var(--snow-white);
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: var(--mountain-green);
+    --secondary-foreground: var(--snow-white);
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: var(--snow-gray);
+    --muted-foreground: var(--earth-brown);
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: var(--earth-brown);
+    --accent-foreground: var(--snow-white);
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
@@ -100,6 +134,116 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground overflow-x-hidden;
+    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  }
+
+  /* Adventure Typography */
+  .heading-adventure {
+    font-weight: 700;
+    background: var(--gradient-adventure);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 200%;
+    animation: gradientShift 3s ease-in-out infinite;
+  }
+
+  .text-shadow-adventure {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+}
+
+@layer components {
+  /* Adventure Button Variants */
+  .btn-adventure {
+    @apply bg-gradient-to-r from-sky-blue to-mountain-green text-white font-semibold px-8 py-4 rounded-lg;
+    @apply shadow-lg hover:shadow-xl transform hover:scale-105;
+    @apply transition-all duration-300 ease-out;
+    box-shadow: var(--shadow-adventure);
+  }
+
+  .btn-hero {
+    @apply bg-gradient-to-r from-mountain-green to-earth-brown text-white font-bold px-12 py-6 rounded-xl;
+    @apply shadow-2xl hover:shadow-3xl transform hover:scale-110;
+    @apply transition-all duration-500 ease-out;
+    box-shadow: var(--shadow-elevation);
+  }
+
+  /* Parallax Effects */
+  .parallax-slow {
+    transform: translateY(var(--parallax-offset, 0px));
+  }
+
+  /* Glass Effect */
+  .glass-effect {
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  /* Floating Animation */
+  .floating {
+    animation: floating 3s ease-in-out infinite;
+  }
+}
+
+@layer utilities {
+  /* Custom Adventure Colors */
+  .bg-sky-blue { background-color: hsl(var(--sky-blue)); }
+  .bg-mountain-green { background-color: hsl(var(--mountain-green)); }
+  .bg-earth-brown { background-color: hsl(var(--earth-brown)); }
+  .bg-snow-white { background-color: hsl(var(--snow-white)); }
+  
+  .text-sky-blue { color: hsl(var(--sky-blue)); }
+  .text-mountain-green { color: hsl(var(--mountain-green)); }
+  .text-earth-brown { color: hsl(var(--earth-brown)); }
+  
+  .bg-gradient-hero { background: var(--gradient-hero); }
+  .bg-gradient-mountain { background: var(--gradient-mountain); }
+  .bg-gradient-adventure { background: var(--gradient-adventure); }
+}
+
+/* Keyframe Animations */
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes floating {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes mountainReveal {
+  from {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }

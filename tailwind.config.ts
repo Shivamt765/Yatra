@@ -19,6 +19,25 @@ export default {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        
+        // Adventure Color System
+        "sky-blue": {
+          DEFAULT: "hsl(var(--sky-blue))",
+          light: "hsl(var(--sky-blue-light))",
+          dark: "hsl(var(--sky-blue-dark))",
+        },
+        "mountain-green": {
+          DEFAULT: "hsl(var(--mountain-green))",
+          light: "hsl(var(--mountain-green-light))",
+          dark: "hsl(var(--mountain-green-dark))",
+        },
+        "earth-brown": {
+          DEFAULT: "hsl(var(--earth-brown))",
+          light: "hsl(var(--earth-brown-light))",
+          dark: "hsl(var(--earth-brown-dark))",
+        },
+        "snow-white": "hsl(var(--snow-white))",
+        "snow-gray": "hsl(var(--snow-gray))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
