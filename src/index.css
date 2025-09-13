@@ -165,7 +165,7 @@
 
   .btn-hero {
     @apply bg-gradient-to-r from-mountain-green to-earth-brown text-white font-bold px-12 py-6 rounded-xl;
-    @apply shadow-2xl hover:shadow-3xl transform hover:scale-110;
+    @apply shadow-2xl hover:shadow-2xl transform hover:scale-110;
     @apply transition-all duration-500 ease-out;
     box-shadow: var(--shadow-elevation);
   }
@@ -202,6 +202,10 @@
   .bg-gradient-hero { background: var(--gradient-hero); }
   .bg-gradient-mountain { background: var(--gradient-mountain); }
   .bg-gradient-adventure { background: var(--gradient-adventure); }
+
+  /* Custom Shadows */
+  .shadow-elevation { box-shadow: var(--shadow-elevation); }
+  .shadow-soft { box-shadow: var(--shadow-soft); }
 }
 
 /* Keyframe Animations */
