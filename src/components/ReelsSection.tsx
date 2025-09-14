@@ -62,14 +62,6 @@ const ReelsSection = () => {
     setCurrentIndex((prev) => (prev - 1 + reels.length) % reels.length);
   };
 
-  const getVisibleReels = () => {
-    const visible = [];
-    for (let i = 0; i < 4; i++) {
-      visible.push(reels[(currentIndex + i) % reels.length]);
-    }
-    return visible;
-  };
-
   const handleReelClick = (reel: any) => {
     window.open(reel.link, '_blank');
   };
@@ -77,6 +69,7 @@ const ReelsSection = () => {
   return (
     <section id="reels" className="py-20 bg-gradient-to-b from-background to-snow-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Heading */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-6xl font-bold heading-adventure mb-6">
             Adventure Stories
@@ -87,28 +80,29 @@ const ReelsSection = () => {
           </p>
         </div>
 
+        {/* Carousel */}
         <div className="relative">
-          {/* Navigation Buttons */}
+          {/* Desktop navigation */}
           <Button
             onClick={prevReel}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 btn-adventure p-3 rounded-full shadow-elevation"
+            className="hidden md:absolute left-0 top-1/2 -translate-y-1/2 z-10 btn-adventure p-3 rounded-full shadow-elevation"
           >
             <ChevronLeft className="h-6 w-6" />
           </Button>
 
           <Button
             onClick={nextReel}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 btn-adventure p-3 rounded-full shadow-elevation"
+            className="hidden md:absolute right-0 top-1/2 -translate-y-1/2 z-10 btn-adventure p-3 rounded-full shadow-elevation"
           >
             <ChevronRight className="h-6 w-6" />
           </Button>
 
-          {/* Reels Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mx-12">
-            {getVisibleReels().map((reel, index) => (
-              <Card 
-                key={`${reel.id}-${index}`} 
-                className="group relative overflow-hidden cursor-pointer shadow-soft hover:shadow-adventure transition-all duration-500 transform hover:scale-105"
+          {/* Carousel container */}
+          <div className="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory px-4 sm:px-6 md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-6 scrollbar-hide">
+            {reels.map((reel) => (
+              <Card
+                key={reel.id}
+                className="flex-shrink-0 w-64 sm:w-72 md:w-auto group relative cursor-pointer shadow-soft hover:shadow-adventure transition-all duration-500 transform hover:scale-105 snap-start"
                 onClick={() => handleReelClick(reel)}
               >
                 <div className="relative aspect-[9/16] overflow-hidden">
@@ -117,48 +111,36 @@ const ReelsSection = () => {
                     alt={reel.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
-                  
-                  {/* Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30" />
-                  
-                  {/* Play Button */}
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm group-hover:bg-white/30 transition-all duration-300">
-                      <Play className="h-8 w-8 text-white ml-1" fill="white" />
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm group-hover:bg-white/30 transition-all duration-300">
+                      <Play className="h-6 w-6 sm:h-8 sm:w-8 text-white ml-1" fill="white" />
                     </div>
                   </div>
-                  
-                  {/* Duration Badge */}
-                  <div className="absolute top-3 right-3 bg-black/60 text-white px-2 py-1 rounded text-xs font-medium">
+                  <div className="absolute top-2 sm:top-3 right-2 sm:right-3 bg-black/60 text-white px-2 py-1 rounded text-xs sm:text-sm font-medium">
                     {reel.duration}
                   </div>
-                  
-                  {/* Platform Icon */}
-                  <div className="absolute top-3 left-3">
+                  <div className="absolute top-2 sm:top-3 left-2 sm:left-3">
                     {reel.platform === 'instagram' ? (
-                      <Instagram className="h-5 w-5 text-white" />
+                      <Instagram className="h-4 sm:h-5 w-4 sm:w-5 text-white" />
                     ) : (
-                      <Youtube className="h-5 w-5 text-white" />
+                      <Youtube className="h-4 sm:h-5 w-4 sm:w-5 text-white" />
                     )}
                   </div>
-                  
-                  {/* Views Badge */}
-                  <div className="absolute bottom-14 left-3 bg-brand-orange/90 text-white px-2 py-1 rounded text-xs font-medium">
+                  <div className="absolute bottom-14 left-2 sm:left-3 bg-brand-orange/90 text-white px-2 py-1 rounded text-xs sm:text-sm font-medium">
                     {reel.views} views
                   </div>
-                  
-                  {/* Content */}
-                  <div className="absolute bottom-0 left-0 right-0 p-4">
-                    <h3 className="text-white font-semibold text-sm mb-2 line-clamp-2">
+                  <div className="absolute bottom-0 left-0 right-0 p-2 sm:p-4">
+                    <h3 className="text-white font-semibold text-xs sm:text-sm mb-1 sm:mb-2 line-clamp-2">
                       {reel.title}
                     </h3>
                     <div className="flex items-center justify-between">
-                      <Button 
-                        size="sm" 
-                        variant="ghost" 
+                      <Button
+                        size="sm"
+                        variant="ghost"
                         className="text-white hover:bg-white/20 p-1 h-auto"
                       >
-                        <ExternalLink className="h-4 w-4" />
+                        <ExternalLink className="h-3 sm:h-4 w-3 sm:w-4" />
                       </Button>
                     </div>
                   </div>
@@ -167,7 +149,7 @@ const ReelsSection = () => {
             ))}
           </div>
 
-          {/* Dots Indicator */}
+          {/* Dots indicator */}
           <div className="flex justify-center mt-8 space-x-2">
             {reels.map((_, index) => (
               <button
@@ -186,7 +168,7 @@ const ReelsSection = () => {
           <p className="text-muted-foreground mb-6">
             Follow us for more amazing travel stories and live updates from the mountains!
           </p>
-          <div className="flex justify-center gap-4">
+          <div className="flex justify-center gap-4 flex-wrap">
             <Button 
               onClick={() => window.open('https://instagram.com/yatraholiday', '_blank')}
               className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white"

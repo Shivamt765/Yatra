@@ -113,6 +113,7 @@ const PackagesCarousel = ({ onQueryClick }: { onQueryClick: (packageData: any) =
   };
 
   return (
+    
     <section id="packages" className="py-20 bg-gradient-to-b from-snow-white to-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
@@ -142,96 +143,102 @@ const PackagesCarousel = ({ onQueryClick }: { onQueryClick: (packageData: any) =
           </Button>
 
           {/* Carousel */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mx-12">
-            {getVisiblePackages().map((pkg, index) => (
-              <Card key={`${pkg.id}-${index}`} className="group overflow-hidden shadow-soft hover:shadow-adventure transition-all duration-500 transform hover:scale-105">
-                <div className="relative h-64 overflow-hidden">
-                  <img
-                    src={pkg.image}
-                    alt={pkg.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                  />
-                  <div className="absolute top-4 right-4 bg-brand-orange text-white px-3 py-1 rounded-full text-sm font-semibold">
-                    {pkg.location}
-                  </div>
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-                    <h3 className="text-xl font-bold text-white mb-1">{pkg.title}</h3>
-                  </div>
-                </div>
+          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4 sm:px-6 lg:px-0">
+  {getVisiblePackages().map((pkg, index) => (
+    <Card
+      key={`${pkg.id}-${index}`}
+      className="group overflow-hidden shadow-soft hover:shadow-adventure transition-all duration-500 transform hover:scale-105"
+    >
+      <div className="relative w-full h-64 sm:h-72 md:h-64 lg:h-72 overflow-hidden">
+        <img
+          src={pkg.image}
+          alt={pkg.title}
+          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+        />
+        <div className="absolute top-3 right-3 bg-brand-orange text-white px-2 py-1 rounded-full text-xs sm:text-sm font-semibold">
+          {pkg.location}
+        </div>
+        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-3 sm:p-4">
+          <h3 className="text-lg sm:text-xl font-bold text-white truncate">{pkg.title}</h3>
+        </div>
+      </div>
 
-                <CardContent className="p-6">
-                  <p className="text-muted-foreground mb-4">{pkg.description}</p>
-                  
-                  <div className="space-y-3 mb-6">
-                    <div className="flex items-center text-sm text-muted-foreground">
-                      <Calendar className="h-4 w-4 mr-2 text-brand-blue" />
-                      {pkg.duration}
-                    </div>
-                    <div className="flex items-center text-sm text-muted-foreground">
-                      <Users className="h-4 w-4 mr-2 text-brand-orange" />
-                      {pkg.groupSize}
-                    </div>
-                    <div className="flex items-center text-sm text-muted-foreground">
-                      <MapPin className="h-4 w-4 mr-2 text-earth-brown" />
-                      {pkg.highlights.join(" • ")}
-                    </div>
-                  </div>
+      <CardContent className="p-4 sm:p-6">
+        <p className="text-sm sm:text-base text-muted-foreground mb-3 sm:mb-4">
+          {pkg.description}
+        </p>
 
-                  <div className="flex items-center justify-between mb-4">
-                    <div>
-                      <span className="text-2xl font-bold text-brand-orange">{pkg.price}</span>
-                      <span className="text-sm text-muted-foreground line-through ml-2">{pkg.originalPrice}</span>
-                    </div>
-                  </div>
-
-                  <div className="flex gap-2 mb-4">
-                    <Button 
-                      onClick={() => setSelectedPackage(selectedPackage === pkg.id ? null : pkg.id)}
-                      variant="outline"
-                      className="flex-1 border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white"
-                    >
-                      {selectedPackage === pkg.id ? 'Hide' : 'View'} Itinerary
-                    </Button>
-                    <Button 
-                      onClick={() => onQueryClick(pkg)}
-                      className="flex-1 bg-brand-orange hover:bg-brand-orange/90 text-white"
-                    >
-                      <Send className="mr-2 h-4 w-4" />
-                      Send Query
-                    </Button>
-                  </div>
-
-                  {/* Detailed Itinerary */}
-                  {selectedPackage === pkg.id && (
-                    <div className="mt-4 p-4 bg-snow-gray rounded-lg">
-                      <h4 className="font-bold text-brand-orange mb-3">Day-by-Day Itinerary</h4>
-                      <div className="space-y-3 max-h-60 overflow-y-auto">
-                        {pkg.itinerary.map((day, dayIndex) => {
-                          const IconComponent = day.icon;
-                          return (
-                            <div key={dayIndex} className="flex items-start space-x-3 p-2 bg-white rounded border-l-4 border-brand-orange">
-                              <div className="flex-shrink-0">
-                                <IconComponent className="h-5 w-5 text-brand-blue mt-1" />
-                              </div>
-                              <div className="flex-1">
-                                <div className="flex items-center gap-2 mb-1">
-                                  <span className="text-xs font-semibold text-brand-orange bg-brand-orange/10 px-2 py-1 rounded">
-                                    Day {day.day}
-                                  </span>
-                                  <h5 className="font-semibold text-sm">{day.title}</h5>
-                                </div>
-                                <p className="text-xs text-muted-foreground">{day.description}</p>
-                              </div>
-                            </div>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  )}
-                </CardContent>
-              </Card>
-            ))}
+        <div className="space-y-2 sm:space-y-3 mb-4 sm:mb-6 text-xs sm:text-sm">
+          <div className="flex items-center gap-2 text-muted-foreground">
+            <Calendar className="h-4 w-4 text-brand-blue" />
+            {pkg.duration}
           </div>
+          <div className="flex items-center gap-2 text-muted-foreground">
+            <Users className="h-4 w-4 text-brand-orange" />
+            {pkg.groupSize}
+          </div>
+          <div className="flex items-center gap-2 text-muted-foreground">
+            <MapPin className="h-4 w-4 text-earth-brown" />
+            {pkg.highlights.join(" • ")}
+          </div>
+        </div>
+
+        <div className="flex items-center justify-between mb-3 sm:mb-4">
+          <div>
+            <span className="text-lg sm:text-2xl font-bold text-brand-orange">{pkg.price}</span>
+            <span className="text-xs sm:text-sm text-muted-foreground line-through ml-2">{pkg.originalPrice}</span>
+          </div>
+        </div>
+
+        <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 mb-3 sm:mb-4">
+          <Button
+            onClick={() => setSelectedPackage(selectedPackage === pkg.id ? null : pkg.id)}
+            variant="outline"
+            className="flex-1 border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white text-xs sm:text-sm"
+          >
+            {selectedPackage === pkg.id ? 'Hide' : 'View'} Itinerary
+          </Button>
+          <Button
+            onClick={() => onQueryClick(pkg)}
+            className="flex-1 bg-brand-orange hover:bg-brand-orange/90 text-white text-xs sm:text-sm"
+          >
+            <Send className="mr-2 h-3 w-3 sm:h-4 sm:w-4" />
+            Send Query
+          </Button>
+        </div>
+
+        {/* Detailed Itinerary */}
+        {selectedPackage === pkg.id && (
+          <div className="mt-2 sm:mt-4 p-3 sm:p-4 bg-snow-gray rounded-lg max-h-72 overflow-y-auto text-xs sm:text-sm">
+            <h4 className="font-bold text-brand-orange mb-2 sm:mb-3">Day-by-Day Itinerary</h4>
+            <div className="space-y-2 sm:space-y-3">
+              {pkg.itinerary.map((day, dayIndex) => {
+                const IconComponent = day.icon;
+                return (
+                  <div key={dayIndex} className="flex items-start space-x-2 sm:space-x-3 p-2 bg-white rounded border-l-4 border-brand-orange">
+                    <div className="flex-shrink-0">
+                      <IconComponent className="h-4 w-4 sm:h-5 sm:w-5 text-brand-blue mt-1" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center gap-1 sm:gap-2 mb-1">
+                        <span className="text-[10px] sm:text-xs font-semibold text-brand-orange bg-brand-orange/10 px-1 sm:px-2 py-0.5 rounded">
+                          Day {day.day}
+                        </span>
+                        <h5 className="font-semibold text-[11px] sm:text-sm">{day.title}</h5>
+                      </div>
+                      <p className="text-[9px] sm:text-xs text-muted-foreground">{day.description}</p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+      </CardContent>
+    </Card>
+  ))}
+</div>
+
 
           {/* Dots Indicator */}
           <div className="flex justify-center mt-8 space-x-2">

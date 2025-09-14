@@ -35,7 +35,7 @@ const Index = () => {
       <Navigation />
       <HeroSection />
       <PromotionalBanner />
-      <OccasionBanner />
+      {/* <OccasionBanner /> */}
       <PackagesCarousel onQueryClick={handleQueryClick} />
       <ReelsSection />
       <TestimonialsSection />

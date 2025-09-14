@@ -5,75 +5,87 @@ import heroImage from '@/assets/hero-himalayas.jpg';
 
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const messages = [
+    "Explore the Unseen",
+    "Journey Through Nepal & Uttarakhand",
+    "Adventure Awaits You"
+  ];
+  const [currentMessage, setCurrentMessage] = useState(messages[0]);
+  const [charIndex, setCharIndex] = useState(0);
 
   useEffect(() => {
     setIsVisible(true);
-  }, []);
+    const typingSpeed = 70; // faster typing for smoothness
 
-  const scrollToPackages = () => {
-    document.getElementById('packages')?.scrollIntoView({ behavior: 'smooth' });
-  };
+    const interval = setInterval(() => {
+      setCharIndex((prev) => {
+        if (prev < currentMessage.length) return prev + 1;
+        return prev;
+      });
+    }, typingSpeed);
 
-  const scrollToReels = () => {
-    document.getElementById('reels')?.scrollIntoView({ behavior: 'smooth' });
-  };
+    return () => clearInterval(interval);
+  }, [currentMessage]);
+
+  useEffect(() => {
+    if (charIndex === currentMessage.length) {
+      const timeout = setTimeout(() => {
+        const nextIndex = (messages.indexOf(currentMessage) + 1) % messages.length;
+        setCurrentMessage(messages[nextIndex]);
+        setCharIndex(0);
+      }, 1000); // short pause at end of message
+      return () => clearTimeout(timeout);
+    }
+  }, [charIndex, currentMessage]);
+
+  const scrollToPackages = () => document.getElementById('packages')?.scrollIntoView({ behavior: 'smooth' });
+  const scrollToReels = () => document.getElementById('reels')?.scrollIntoView({ behavior: 'smooth' });
 
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image with Parallax */}
+      
+      {/* Background */}
       <div 
-        className="absolute inset-0 bg-cover bg-center parallax-slow"
-        style={{ 
-          backgroundImage: `url(${heroImage})`,
-          transform: 'scale(1.1)'
-        }}
+        className="absolute inset-0 bg-cover bg-center parallax-slow animate-fadeIn"
+        style={{ backgroundImage: `url(${heroImage})`, transform: 'scale(1.05)' }}
       />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-black/30" />
       
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/40" />
-      
-      {/* Content */}
+      {/* Subtle Travel Sparks */}
+      <div className="absolute inset-0 pointer-events-none">
+        {Array.from({ length: 6 }).map((_, i) => (
+          <div
+            key={i}
+            className={`absolute w-1 h-1 bg-white/60 rounded-full animate-spark`}
+            style={{ left: `${10 + i * 15}%`, animationDelay: `${i * 0.2}s` }}
+          />
+        ))}
+      </div>
+
+      {/* Hero Content */}
       <div className="relative z-10 text-center text-white px-8 max-w-5xl mx-auto">
-        <div className={`transition-all duration-1000 ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-        }`}>
-          <h1 className="text-6xl md:text-8xl font-bold mb-6 text-shadow-adventure leading-tight">
-            Discover Nepal &{' '}
-            <span className="heading-adventure">Uttarakhand</span>
-            <br />
-            Like Never Before
+        <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+          <h1 className="text-5xl md:text-7xl font-bold mb-4 leading-tight text-shadow-adventure">
+            {currentMessage.slice(0, charIndex)}
           </h1>
-          
-          <p className={`text-xl md:text-2xl mb-8 opacity-90 max-w-3xl mx-auto transition-all duration-1000 delay-300 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}>
-            Embark on extraordinary adventures through the majestic Himalayas. 
-            From Everest Base Camp to sacred Gangotri, create memories that last a lifetime.
+          <p className="text-lg md:text-xl mb-8 opacity-90 max-w-3xl mx-auto transition-all duration-1000 delay-300">
+            Curated experiences and adventures across mountains and valleys
           </p>
-          
-          <div className={`flex flex-col sm:flex-row gap-6 justify-center items-center transition-all duration-1000 delay-500 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}>
-            <Button 
-              onClick={scrollToPackages}
-              className="btn-hero text-lg group"
-            >
+
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center transition-all duration-1000 delay-500">
+            <Button onClick={scrollToPackages} className="btn-hero text-lg hover:shadow-white/50">
               Explore Packages
               <ChevronDown className="ml-2 h-5 w-5 group-hover:translate-y-1 transition-transform" />
             </Button>
             
-            <Button 
-              onClick={scrollToReels}
-              variant="outline" 
-              className="glass-effect border-white/40 text-white hover:bg-white/20 px-8 py-4 text-lg"
-            >
+            <Button onClick={scrollToReels} variant="outline" className="glass-effect border-white/30 text-black hover:bg-white/10 px-8 py-4 text-lg">
               <Play className="mr-2 h-5 w-5" />
               Watch Stories
             </Button>
           </div>
         </div>
       </div>
-      
+
       {/* Floating Arrow */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
         <ChevronDown className="h-8 w-8" />
