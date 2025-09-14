@@ -14,6 +14,10 @@ const HeroSection = () => {
     document.getElementById('packages')?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const scrollToReels = () => {
+    document.getElementById('reels')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with Parallax */}
@@ -58,7 +62,11 @@ const HeroSection = () => {
               <ChevronDown className="ml-2 h-5 w-5 group-hover:translate-y-1 transition-transform" />
             </Button>
             
-            <Button variant="outline" className="glass-effect border-white/40 text-white hover:bg-white/20 px-8 py-4 text-lg">
+            <Button 
+              onClick={scrollToReels}
+              variant="outline" 
+              className="glass-effect border-white/40 text-white hover:bg-white/20 px-8 py-4 text-lg"
+            >
               <Play className="mr-2 h-5 w-5" />
               Watch Stories
             </Button>

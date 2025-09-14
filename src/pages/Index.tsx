@@ -8,6 +8,9 @@ import TestimonialsSection from '@/components/TestimonialsSection';
 import Footer from '@/components/Footer';
 import QueryModal from '@/components/QueryModal';
 import BookingNotifications from '@/components/BookingNotifications';
+import ReelsSection from '@/components/ReelsSection';
+import OccasionBanner from '@/components/OccasionBanner';
+import FloatingContact from '@/components/FloatingContact';
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -32,7 +35,9 @@ const Index = () => {
       <Navigation />
       <HeroSection />
       <PromotionalBanner />
+      <OccasionBanner />
       <PackagesCarousel onQueryClick={handleQueryClick} />
+      <ReelsSection />
       <TestimonialsSection />
       <Footer />
       
@@ -43,6 +48,7 @@ const Index = () => {
       />
       
       <BookingNotifications />
+      <FloatingContact />
     </div>
   );
 };

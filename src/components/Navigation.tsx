@@ -1,9 +1,19 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, X, Mountain } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const navItems = [
     { name: 'Home', href: '/' },
@@ -13,13 +23,19 @@ const Navigation = () => {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-40 bg-white/10 backdrop-blur-md border-b border-white/20">
+    <nav className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+      isScrolled 
+        ? 'bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-lg' 
+        : 'bg-white/10 backdrop-blur-md border-b border-white/20'
+    }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <div className="flex items-center space-x-2">
             <Mountain className="h-8 w-8 text-sky-blue" />
-            <span className="text-2xl font-bold text-white text-shadow-adventure">
+            <span className={`text-2xl font-bold transition-colors duration-300 ${
+              isScrolled ? 'text-brand-orange' : 'text-white text-shadow-adventure'
+            }`}>
               Yatra Holiday
             </span>
           </div>
@@ -30,7 +46,11 @@ const Navigation = () => {
               <a
                 key={item.name}
                 href={item.href}
-                className="text-white hover:text-sky-blue transition-colors duration-300 font-medium"
+                className={`transition-colors duration-300 font-medium ${
+                  isScrolled 
+                    ? 'text-foreground hover:text-brand-orange' 
+                    : 'text-white hover:text-sky-blue'
+                }`}
               >
                 {item.name}
               </a>
@@ -44,7 +64,11 @@ const Navigation = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-white hover:text-sky-blue transition-colors"
+              className={`transition-colors ${
+                isScrolled 
+                  ? 'text-foreground hover:text-brand-orange' 
+                  : 'text-white hover:text-sky-blue'
+              }`}
             >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
@@ -59,7 +83,11 @@ const Navigation = () => {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="block text-white hover:text-sky-blue transition-colors duration-300 font-medium"
+                  className={`block transition-colors duration-300 font-medium ${
+                    isScrolled 
+                      ? 'text-foreground hover:text-brand-orange' 
+                      : 'text-white hover:text-sky-blue'
+                  }`}
                   onClick={() => setIsOpen(false)}
                 >
                   {item.name}

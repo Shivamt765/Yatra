@@ -168,14 +168,14 @@
   .btn-adventure {
     @apply bg-gradient-to-r from-sky-blue to-mountain-green text-white font-semibold px-8 py-4 rounded-lg;
     @apply shadow-lg hover:shadow-xl transform hover:scale-105;
-    @apply transition-all duration-300 ease-out;
+    @apply transition-all duration-500 ease-out;
     box-shadow: var(--shadow-adventure);
   }
 
   .btn-hero {
     @apply bg-gradient-to-r from-mountain-green to-earth-brown text-white font-bold px-12 py-6 rounded-xl;
     @apply shadow-2xl hover:shadow-2xl transform hover:scale-110;
-    @apply transition-all duration-500 ease-out;
+    @apply transition-all duration-700 ease-out;
     box-shadow: var(--shadow-elevation);
   }
 
