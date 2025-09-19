@@ -1,258 +1,134 @@
-import { useState } from 'react';
-import { MapPin, Calendar, Users, ChevronLeft, ChevronRight, Send, Sunrise, Mountain, Camera, TreePine, Waves, Heart, Home } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Send } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import nepalImage from '@/assets/nepal-everest.jpg';
-import uttarakhandImage from '@/assets/uttarakhand-rafting.jpg';
 
-const packages = [
-  {
-    id: 1,
-    title: "Everest Base Camp Trek",
-    location: "Nepal",
-    duration: "14 Days",
-    price: "₹85,000",
-    originalPrice: "₹1,20,000",
-    image: nepalImage,
-    description: "Journey to the base of the world's highest peak through stunning landscapes.",
-    highlights: ["Sherpa Culture", "Mountain Views", "Adventure Trek"],
-    groupSize: "8-12 People",
-    itinerary: [
-      { day: 1, title: "Arrival in Kathmandu", description: "Airport pickup, hotel check-in, briefing", icon: Home },
-      { day: 2, title: "Fly to Lukla & Trek to Phakding", description: "Scenic mountain flight, first day of trekking", icon: Mountain },
-      { day: 3, title: "Trek to Namche Bazaar", description: "Gateway to Everest, Sherpa culture", icon: TreePine },
-      { day: 4, title: "Acclimatization Day", description: "Rest day, explore local markets", icon: Heart },
-      { day: 5, title: "Trek to Tengboche", description: "Famous monastery visit", icon: Sunrise },
-      { day: 6, title: "Trek to Dingboche", description: "Higher altitude adaptation", icon: Mountain },
-      { day: 7, title: "Acclimatization Day", description: "Side hikes for better acclimatization", icon: Camera },
-      { day: 8, title: "Trek to Lobuche", description: "Final approach to base camp", icon: TreePine }
-    ]
-  },
-  {
-    id: 2,
-    title: "Uttarakhand Adventure Package",
-    location: "Uttarakhand",
-    duration: "7 Days",
-    price: "₹25,000",
-    originalPrice: "₹35,000",
-    image: uttarakhandImage,
-    description: "Rishikesh rafting, yoga retreats, and spiritual journey through Dev Bhoomi.",
-    highlights: ["River Rafting", "Yoga & Meditation", "Temple Visits"],
-    groupSize: "6-10 People",
-    itinerary: [
-      { day: 1, title: "Arrival in Rishikesh", description: "Hotel check-in, Ganga Aarti ceremony", icon: Home },
-      { day: 2, title: "White Water Rafting", description: "Thrilling rapids on river Ganges", icon: Waves },
-      { day: 3, title: "Yoga & Meditation", description: "Morning yoga session, spiritual activities", icon: Heart },
-      { day: 4, title: "Haridwar Temple Tour", description: "Visit sacred temples and ghats", icon: Sunrise },
-      { day: 5, title: "Adventure Activities", description: "Bungee jumping, flying fox", icon: Mountain },
-      { day: 6, title: "Nature Walk & Photography", description: "Explore local flora and fauna", icon: Camera },
-      { day: 7, title: "Departure", description: "Shopping, departure transfers", icon: Home }
-    ]
-  },
-  {
-    id: 3,
-    title: "Annapurna Circuit Trek",
-    location: "Nepal",
-    duration: "16 Days",
-    price: "₹75,000",
-    originalPrice: "₹1,00,000",
-    image: nepalImage,
-    description: "Classic trek through diverse landscapes and traditional mountain villages.",
-    highlights: ["Thorong La Pass", "Hot Springs", "Cultural Villages"],
-    groupSize: "8-15 People",
-    itinerary: [
-      { day: 1, title: "Arrival in Kathmandu", description: "Hotel check-in, trek preparation", icon: Home },
-      { day: 2, title: "Drive to Besisahar", description: "Start of Annapurna circuit", icon: Mountain },
-      { day: 3, title: "Trek to Chame", description: "Enter Annapurna conservation area", icon: TreePine },
-      { day: 4, title: "Trek to Pisang", description: "Beautiful mountain vistas", icon: Camera },
-      { day: 5, title: "Trek to Manang", description: "Acclimatization village", icon: Heart },
-      { day: 6, title: "Rest Day in Manang", description: "Explore local culture", icon: Sunrise },
-      { day: 7, title: "Trek to Yak Kharka", description: "Higher altitude trekking", icon: Mountain },
-      { day: 8, title: "Cross Thorong La Pass", description: "Highest point of the trek", icon: Mountain }
-    ]
-  },
-  {
-    id: 4,
-    title: "Kedarnath Yatra",
-    location: "Uttarakhand",
-    duration: "5 Days",
-    price: "₹18,000",
-    originalPrice: "₹25,000",
-    image: uttarakhandImage,
-    description: "Sacred pilgrimage to one of the twelve Jyotirlingas in the Himalayas.",
-    highlights: ["Helicopter Option", "Sacred Temple", "Mountain Trek"],
-    groupSize: "10-20 People",
-    itinerary: [
-      { day: 1, title: "Arrival in Haridwar", description: "Railway station pickup, hotel check-in", icon: Home },
-      { day: 2, title: "Haridwar to Guptkashi", description: "Drive through scenic mountains", icon: Mountain },
-      { day: 3, title: "Kedarnath Temple Visit", description: "Helicopter/trek to sacred temple", icon: Sunrise },
-      { day: 4, title: "Return to Guptkashi", description: "Spiritual reflection, rest day", icon: Heart },
-      { day: 5, title: "Return to Haridwar", description: "Departure transfers", icon: Home }
-    ]
-  }
-];
+const PackagesCarousel = ({ onQueryClick }) => {
+  const [packages, setPackages] = useState([]);
+  const [query, setQuery] = useState("");
+  const [filtered, setFiltered] = useState([]);
+  const [placeholder, setPlaceholder] = useState("");
 
-const PackagesCarousel = ({ onQueryClick }: { onQueryClick: (packageData: any) => void }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [selectedPackage, setSelectedPackage] = useState<number | null>(null);
+  const placeholderTexts = ["Rishikesh trip", "Nepal", "Adventure Trips"];
 
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % packages.length);
-  };
+  // Load packages.json
+  useEffect(() => {
+    fetch('/packages.json')
+      .then(res => res.json())
+      .then(data => {
+        setPackages(data);
+        setFiltered(data);
+      });
+  }, []);
 
-  const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + packages.length) % packages.length);
-  };
-
-  const getVisiblePackages = () => {
-    const visible = [];
-    for (let i = 0; i < 3; i++) {
-      visible.push(packages[(currentIndex + i) % packages.length]);
+  // Filter when search changes
+  useEffect(() => {
+    if (!query.trim()) {
+      setFiltered(packages);
+    } else {
+      const q = query.toLowerCase();
+      setFiltered(
+        packages.filter(
+          (pkg) =>
+            pkg.title.toLowerCase().includes(q) ||
+            pkg.description.toLowerCase().includes(q) ||
+            pkg.location.toLowerCase().includes(q)
+        )
+      );
     }
-    return visible;
-  };
+  }, [query, packages]);
+
+  // Smooth typewriter placeholder
+  useEffect(() => {
+    let currentText = 0;
+    let currentChar = 0;
+    let typing = true;
+    const speed = 180;
+
+    const interval = setInterval(() => {
+      const text = placeholderTexts[currentText];
+
+      if (typing) {
+        setPlaceholder(text.slice(0, currentChar + 1));
+        currentChar++;
+        if (currentChar === text.length) typing = false;
+      } else {
+        setPlaceholder(text.slice(0, currentChar - 1));
+        currentChar--;
+        if (currentChar === 0) {
+          typing = true;
+          currentText = (currentText + 1) % placeholderTexts.length;
+        }
+      }
+    }, speed);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-    
     <section id="packages" className="py-20 bg-gradient-to-b from-snow-white to-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-6xl font-bold heading-adventure mb-6">
-            Adventure Packages
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Carefully crafted journeys that blend adventure, culture, and spirituality 
-            in the heart of the Himalayas
-          </p>
+
+        {/* Search Bar */}
+        <div className="relative max-w-2xl mx-auto mb-12">
+          <input
+            type="text"
+            placeholder={placeholder || ""}
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            className="w-full pl-12 pr-4 py-3 rounded-full border border-gray-300 shadow-sm text-center
+                       focus:ring-2 focus:ring-brand-orange focus:border-brand-orange transition-all duration-300"
+          />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="absolute left-4 top-3.5 h-5 w-5 text-gray-400"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z" />
+          </svg>
         </div>
 
-        <div className="relative">
-          {/* Navigation Buttons */}
-          <Button
-            onClick={prevSlide}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 btn-adventure p-3 rounded-full"
-          >
-            <ChevronLeft className="h-6 w-6" />
-          </Button>
-
-          <Button
-            onClick={nextSlide}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 btn-adventure p-3 rounded-full"
-          >
-            <ChevronRight className="h-6 w-6" />
-          </Button>
-
-          {/* Carousel */}
-          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4 sm:px-6 lg:px-0">
-  {getVisiblePackages().map((pkg, index) => (
-    <Card
-      key={`${pkg.id}-${index}`}
-      className="group overflow-hidden shadow-soft hover:shadow-adventure transition-all duration-500 transform hover:scale-105"
-    >
-      <div className="relative w-full h-64 sm:h-72 md:h-64 lg:h-72 overflow-hidden">
-        <img
-          src={pkg.image}
-          alt={pkg.title}
-          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-        />
-        <div className="absolute top-3 right-3 bg-brand-orange text-white px-2 py-1 rounded-full text-xs sm:text-sm font-semibold">
-          {pkg.location}
-        </div>
-        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-3 sm:p-4">
-          <h3 className="text-lg sm:text-xl font-bold text-white truncate">{pkg.title}</h3>
-        </div>
-      </div>
-
-      <CardContent className="p-4 sm:p-6">
-        <p className="text-sm sm:text-base text-muted-foreground mb-3 sm:mb-4">
-          {pkg.description}
-        </p>
-
-        <div className="space-y-2 sm:space-y-3 mb-4 sm:mb-6 text-xs sm:text-sm">
-          <div className="flex items-center gap-2 text-muted-foreground">
-            <Calendar className="h-4 w-4 text-brand-blue" />
-            {pkg.duration}
-          </div>
-          <div className="flex items-center gap-2 text-muted-foreground">
-            <Users className="h-4 w-4 text-brand-orange" />
-            {pkg.groupSize}
-          </div>
-          <div className="flex items-center gap-2 text-muted-foreground">
-            <MapPin className="h-4 w-4 text-earth-brown" />
-            {pkg.highlights.join(" • ")}
-          </div>
-        </div>
-
-        <div className="flex items-center justify-between mb-3 sm:mb-4">
-          <div>
-            <span className="text-lg sm:text-2xl font-bold text-brand-orange">{pkg.price}</span>
-            <span className="text-xs sm:text-sm text-muted-foreground line-through ml-2">{pkg.originalPrice}</span>
-          </div>
-        </div>
-
-        <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 mb-3 sm:mb-4">
-          <Button
-            onClick={() => setSelectedPackage(selectedPackage === pkg.id ? null : pkg.id)}
-            variant="outline"
-            className="flex-1 border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white text-xs sm:text-sm"
-          >
-            {selectedPackage === pkg.id ? 'Hide' : 'View'} Itinerary
-          </Button>
-          <Button
-            onClick={() => onQueryClick(pkg)}
-            className="flex-1 bg-brand-orange hover:bg-brand-orange/90 text-white text-xs sm:text-sm"
-          >
-            <Send className="mr-2 h-3 w-3 sm:h-4 sm:w-4" />
-            Send Query
-          </Button>
-        </div>
-
-        {/* Detailed Itinerary */}
-        {selectedPackage === pkg.id && (
-          <div className="mt-2 sm:mt-4 p-3 sm:p-4 bg-snow-gray rounded-lg max-h-72 overflow-y-auto text-xs sm:text-sm">
-            <h4 className="font-bold text-brand-orange mb-2 sm:mb-3">Day-by-Day Itinerary</h4>
-            <div className="space-y-2 sm:space-y-3">
-              {pkg.itinerary.map((day, dayIndex) => {
-                const IconComponent = day.icon;
-                return (
-                  <div key={dayIndex} className="flex items-start space-x-2 sm:space-x-3 p-2 bg-white rounded border-l-4 border-brand-orange">
-                    <div className="flex-shrink-0">
-                      <IconComponent className="h-4 w-4 sm:h-5 sm:w-5 text-brand-blue mt-1" />
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex items-center gap-1 sm:gap-2 mb-1">
-                        <span className="text-[10px] sm:text-xs font-semibold text-brand-orange bg-brand-orange/10 px-1 sm:px-2 py-0.5 rounded">
-                          Day {day.day}
-                        </span>
-                        <h5 className="font-semibold text-[11px] sm:text-sm">{day.title}</h5>
-                      </div>
-                      <p className="text-[9px] sm:text-xs text-muted-foreground">{day.description}</p>
-                    </div>
+        {/* Packages Carousel */}
+        {filtered.length === 0 ? (
+          <p className="text-center text-gray-500">No packages found.</p>
+        ) : (
+          <div className="overflow-x-auto flex space-x-4 snap-x snap-mandatory scrollbar-hide">
+            {filtered.map((pkg) => (
+              <Card
+                key={pkg.id}
+                className="group flex-shrink-0 w-64 sm:w-72 md:w-80 shadow-soft hover:shadow-adventure 
+                           transition-all duration-500 transform hover:scale-102 snap-start overflow-hidden"
+              >
+                <div className="relative w-full h-48 sm:h-56 md:h-64 overflow-hidden">
+                  <img
+                    src={pkg.image}
+                    alt={pkg.title}
+                    className="absolute top-0 left-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <div className="absolute top-3 right-3 bg-brand-orange text-white px-2 py-1 rounded-full text-xs font-semibold">
+                    {pkg.location}
                   </div>
-                );
-              })}
-            </div>
-          </div>
-        )}
-      </CardContent>
-    </Card>
-  ))}
-</div>
+                </div>
 
-
-          {/* Dots Indicator */}
-          <div className="flex justify-center mt-8 space-x-2">
-            {packages.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentIndex(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  index === currentIndex ? 'bg-brand-orange scale-125' : 'bg-gray-300'
-                }`}
-              />
+                <CardContent className="p-4">
+                  <h3 className="text-lg font-bold">{pkg.title}</h3>
+                  <p className="text-sm text-muted-foreground mt-2 line-clamp-2">{pkg.description}</p>
+                  <div className="flex justify-between items-center mt-4">
+                    <span className="text-brand-orange font-bold">{pkg.price}</span>
+                    <span className="text-xs text-muted-foreground">{pkg.duration}</span>
+                  </div>
+                  <Button
+                    onClick={() => onQueryClick(pkg)}
+                    className="mt-4 w-full bg-brand-orange hover:bg-brand-orange/90 text-white"
+                  >
+                    <Send className="mr-2 h-4 w-4" /> Send Query
+                  </Button>
+                </CardContent>
+              </Card>
             ))}
           </div>
-        </div>
+        )}
       </div>
     </section>
   );

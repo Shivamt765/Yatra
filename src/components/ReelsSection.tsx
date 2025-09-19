@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Play, ExternalLink, ChevronLeft, ChevronRight, Instagram, Youtube } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
@@ -53,13 +53,25 @@ const reels = [
 
 const ReelsSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const carouselRef = useRef<HTMLDivElement>(null);
+
+  const scrollToIndex = (index: number) => {
+    if (carouselRef.current) {
+      const card = carouselRef.current.children[index] as HTMLElement;
+      if (card) card.scrollIntoView({ behavior: 'smooth', inline: 'center' });
+    }
+  };
 
   const nextReel = () => {
-    setCurrentIndex((prev) => (prev + 1) % reels.length);
+    const next = (currentIndex + 1) % reels.length;
+    setCurrentIndex(next);
+    scrollToIndex(next);
   };
 
   const prevReel = () => {
-    setCurrentIndex((prev) => (prev - 1 + reels.length) % reels.length);
+    const prev = (currentIndex - 1 + reels.length) % reels.length;
+    setCurrentIndex(prev);
+    scrollToIndex(prev);
   };
 
   const handleReelClick = (reel: any) => {
@@ -71,39 +83,39 @@ const ReelsSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Heading */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-6xl font-bold heading-adventure mb-6">
-            Adventure Stories
-          </h2>
+          <h2 className="text-4xl md:text-6xl font-bold heading-adventure mb-6">Adventure Stories</h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Experience our journeys through the eyes of fellow travelers. 
-            Watch real adventures, authentic moments, and inspiring stories.
+            Experience our journeys through the eyes of fellow travelers. Watch real adventures, authentic moments, and inspiring stories.
           </p>
         </div>
 
         {/* Carousel */}
         <div className="relative">
-          {/* Desktop navigation */}
+          {/* Navigation Buttons (desktop only) */}
           <Button
             onClick={prevReel}
-            className="hidden md:absolute left-0 top-1/2 -translate-y-1/2 z-10 btn-adventure p-3 rounded-full shadow-elevation"
+            className="hidden md:absolute left-0 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full shadow-elevation btn-adventure"
           >
             <ChevronLeft className="h-6 w-6" />
           </Button>
 
           <Button
             onClick={nextReel}
-            className="hidden md:absolute right-0 top-1/2 -translate-y-1/2 z-10 btn-adventure p-3 rounded-full shadow-elevation"
+            className="hidden md:absolute right-0 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full shadow-elevation btn-adventure"
           >
             <ChevronRight className="h-6 w-6" />
           </Button>
 
           {/* Carousel container */}
-          <div className="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory px-4 sm:px-6 md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-6 scrollbar-hide">
-            {reels.map((reel) => (
+          <div
+            ref={carouselRef}
+            className="flex md:grid md:grid-cols-4 lg:grid-cols-5 gap-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory scroll-smooth scrollbar-hide"
+          >
+            {reels.map((reel, idx) => (
               <Card
                 key={reel.id}
-                className="flex-shrink-0 w-64 sm:w-72 md:w-auto group relative cursor-pointer shadow-soft hover:shadow-adventure transition-all duration-500 transform hover:scale-105 snap-start"
                 onClick={() => handleReelClick(reel)}
+                className="flex-shrink-0 w-64 sm:w-72 md:w-auto group relative cursor-pointer shadow-soft hover:shadow-adventure transition-all duration-500 transform hover:scale-105 snap-center"
               >
                 <div className="relative aspect-[9/16] overflow-hidden">
                   <img
@@ -154,7 +166,10 @@ const ReelsSection = () => {
             {reels.map((_, index) => (
               <button
                 key={index}
-                onClick={() => setCurrentIndex(index)}
+                onClick={() => {
+                  setCurrentIndex(index);
+                  scrollToIndex(index);
+                }}
                 className={`w-3 h-3 rounded-full transition-all duration-300 ${
                   index === currentIndex ? 'bg-brand-orange scale-125' : 'bg-gray-300'
                 }`}
@@ -169,14 +184,14 @@ const ReelsSection = () => {
             Follow us for more amazing travel stories and live updates from the mountains!
           </p>
           <div className="flex justify-center gap-4 flex-wrap">
-            <Button 
-              onClick={() => window.open('https://instagram.com/yatraholiday', '_blank')}
+            <Button
+              onClick={() => window.open('https://www.instagram.com/yatraholiday14/', '_blank')}
               className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white"
             >
               <Instagram className="mr-2 h-5 w-5" />
               Follow on Instagram
             </Button>
-            <Button 
+            <Button
               onClick={() => window.open('https://youtube.com/@yatraholiday', '_blank')}
               className="bg-red-600 hover:bg-red-700 text-white"
             >
@@ -186,6 +201,17 @@ const ReelsSection = () => {
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        /* Hide scrollbar */
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}</style>
     </section>
   );
 };
