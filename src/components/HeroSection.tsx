@@ -15,7 +15,7 @@ const HeroSection = () => {
 
   useEffect(() => {
     setIsVisible(true);
-    const typingSpeed = 70; // faster typing for smoothness
+    const typingSpeed = 70;
 
     const interval = setInterval(() => {
       setCharIndex((prev) => {
@@ -33,7 +33,7 @@ const HeroSection = () => {
         const nextIndex = (messages.indexOf(currentMessage) + 1) % messages.length;
         setCurrentMessage(messages[nextIndex]);
         setCharIndex(0);
-      }, 1000); // short pause at end of message
+      }, 1000);
       return () => clearTimeout(timeout);
     }
   }, [charIndex, currentMessage]);
@@ -43,7 +43,6 @@ const HeroSection = () => {
 
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      
       {/* Background */}
       <div 
         className="absolute inset-0 bg-cover bg-center parallax-slow animate-fadeIn"
@@ -65,20 +64,24 @@ const HeroSection = () => {
       {/* Hero Content */}
       <div className="relative z-10 text-center text-white px-8 max-w-5xl mx-auto">
         <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
-          <h1 className="text-5xl md:text-7xl font-bold mb-4 leading-tight text-shadow-adventure">
+          {/* Main Hero Heading with Poppins */}
+          <h1 className="font-poppins text-5xl md:text-7xl font-extrabold mb-4 leading-tight text-shadow-adventure">
             {currentMessage.slice(0, charIndex)}
           </h1>
-          <p className="text-lg md:text-xl mb-8 opacity-90 max-w-3xl mx-auto transition-all duration-1000 delay-300">
+
+          {/* Subheading / tagline */}
+          <p className="font-playfair text-lg md:text-xl mb-8 opacity-90 max-w-3xl mx-auto transition-all duration-1000 delay-300">
             Curated experiences and adventures across mountains and valleys
           </p>
 
+          {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center transition-all duration-1000 delay-500">
-            <Button onClick={scrollToPackages} className="btn-hero text-lg hover:shadow-white/50">
+            <Button onClick={scrollToPackages} className="btn-hero text-lg hover:shadow-white/50 font-montserrat">
               Explore Packages
               <ChevronDown className="ml-2 h-5 w-5 group-hover:translate-y-1 transition-transform" />
             </Button>
             
-            <Button onClick={scrollToReels} variant="outline" className="glass-effect border-white/30 text-black hover:bg-white/10 px-8 py-4 text-lg">
+            <Button onClick={scrollToReels} variant="outline" className="glass-effect border-white/30 text-black hover:bg-white/10 px-8 py-4 text-lg font-montserrat">
               <Play className="mr-2 h-5 w-5" />
               Watch Stories
             </Button>

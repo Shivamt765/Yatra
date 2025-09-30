@@ -8,27 +8,32 @@ const PromotionalBanner = () => {
         <div className="flex flex-col sm:flex-row items-center justify-between text-white space-y-3 sm:space-y-0">
           
           {/* Left Section */}
+         {/* Left Section */}
           <div className="flex flex-col sm:flex-row items-center sm:space-x-3 text-center sm:text-left space-y-1 sm:space-y-0">
             <Flame className="h-6 w-6 text-orange-400 animate-pulse" />
-            <span className="text-lg sm:text-xl font-bold">Early Bird Discounts</span>
-            <span className="text-base sm:text-2xl font-bold">- Book Your Adventure Today!</span>
+            <span className="text-lg sm:text-xl font-playfair italic font-bold">
+              Early Bird Discounts
+            </span>
+            <span className="text-base sm:text-2xl font-montserrat font-semibold">
+              - Book Your Adventure Today!
+            </span>
           </div>
 
           {/* Right Section */}
           <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4 mt-2 sm:mt-0 text-center sm:text-left">
-            <div className="flex items-center space-x-2 text-sm sm:text-base">
+            <div className="flex items-center space-x-2 text-sm sm:text-base font-poppins">
               <Clock className="h-4 w-4 sm:h-5 sm:w-5" />
               <span>Limited Time Offer</span>
             </div>
             
-            <div className="flex items-center space-x-2 bg-white/20 px-3 py-1 rounded-full text-sm sm:text-base">
+            <div className="flex items-center space-x-2 bg-white/20 px-3 py-1 rounded-full text-sm sm:text-base font-poppins">
               <Percent className="h-4 w-4 sm:h-5 sm:w-5" />
               <span className="font-bold">UP TO 30% OFF</span>
             </div>
             
             <Button 
               variant="outline" 
-              className="bg-white/10 border-white/40 text-white hover:bg-white/20 font-semibold text-sm sm:text-base px-3 sm:px-4 py-1 sm:py-2"
+              className="bg-white/10 border-white/40 text-white hover:bg-white/20 font-poppins font-semibold text-sm sm:text-base px-3 sm:px-4 py-1 sm:py-2"
             >
               Claim Offer
             </Button>

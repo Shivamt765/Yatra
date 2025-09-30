@@ -11,7 +11,7 @@ import BookingNotifications from '@/components/BookingNotifications';
 import ReelsSection from '@/components/ReelsSection';
 import OccasionBanner from '@/components/OccasionBanner';
 import FloatingContact from '@/components/FloatingContact';
-
+import MomentsSection from '@/components/MomentsSection';
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isQueryModalOpen, setIsQueryModalOpen] = useState(false);
@@ -35,6 +35,7 @@ const Index = () => {
       <Navigation />
       <HeroSection />
       <PromotionalBanner />
+      <MomentsSection />
       {/* <OccasionBanner /> */}
       <PackagesCarousel onQueryClick={handleQueryClick} />
       <ReelsSection />

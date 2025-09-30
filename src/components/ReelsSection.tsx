@@ -82,12 +82,15 @@ const ReelsSection = () => {
     <section id="reels" className="py-20 bg-gradient-to-b from-background to-snow-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Heading */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-6xl font-bold heading-adventure mb-6">Adventure Stories</h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Experience our journeys through the eyes of fellow travelers. Watch real adventures, authentic moments, and inspiring stories.
-          </p>
-        </div>
+       <div className="text-center mb-16 font-playfair italic">
+  <h2 className="text-4xl md:text-5xl text-gray-900 mb-4">
+    Explore Our Packages
+  </h2>
+  <p className="text-lg md:text-xl text-gray-600">
+    Search and discover adventures tailored just for you
+  </p>
+</div>
+
 
         {/* Carousel */}
         <div className="relative">
