@@ -12,9 +12,9 @@
     --foreground: 210 15% 15%; /* A dark, readable text color */
     
     /* Yatra Holiday Brand Colors - Sunset & Sea Palette */
-    --brand-orange: 27 94% 67%; /* #FF6B35 */
-    --brand-orange-light: 27 94% 77%;
-    --brand-orange-dark: 27 94% 57%;
+   --brand-orange: 24 100% 50%;         /* bright orange */
+  --brand-orange-light: 24 100% 60%;   /* lighter orange */
+  --brand-orange-dark: 24 90% 40%;     /* darker orange */
     
     --brand-blue: 196 100% 47%; /* #00AEEF */
     --brand-blue-light: 196 100% 57%;

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Send, Search, MapPin, Clock, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -14,22 +15,19 @@ interface Package {
   rating?: number;
 }
 
-interface PackagesCarouselProps {
-  onQueryClick: (pkg: Package) => void;
-}
-
-const PackagesCarousel = ({ onQueryClick }: PackagesCarouselProps) => {
+const PackagesCarousel = () => {
   const [packages, setPackages] = useState<Package[]>([]);
   const [query, setQuery] = useState("");
   const [filtered, setFiltered] = useState<Package[]>([]);
   const [placeholder, setPlaceholder] = useState("");
+  const navigate = useNavigate();
 
   const placeholderTexts = ["Bali paradise", "Swiss Alps adventure", "Tokyo discovery", "Maldives escape"];
 
   useEffect(() => {
     fetch('/packages.json')
       .then(res => res.json())
-      .then(data => {
+      .then((data: Package[]) => {
         setPackages(data);
         setFiltered(data);
       })
@@ -85,7 +83,6 @@ const PackagesCarousel = ({ onQueryClick }: PackagesCarouselProps) => {
   return (
     <section id="packages" className="relative py-24 bg-gray-100">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
         {/* Heading */}
         <div className="text-center mb-16">
           <h2 className="text-5xl md:text-6xl font-playfair italic text-gray-900 mb-6 tracking-tight">
@@ -99,7 +96,7 @@ const PackagesCarousel = ({ onQueryClick }: PackagesCarouselProps) => {
           </p>
         </div>
 
-        {/* Glassmorphic Search Bar */}
+        {/* Search Bar */}
         <div className="relative max-w-2xl mx-auto mb-16">
           <div className="relative group">
             <div className="relative flex items-center">
@@ -127,7 +124,7 @@ const PackagesCarousel = ({ onQueryClick }: PackagesCarouselProps) => {
           </div>
         </div>
 
-        {/* Packages Carousel */}
+        {/* Carousel */}
         {filtered.length === 0 ? (
           <div className="text-center py-12">
             <p className="text-gray-500 text-lg">No packages found matching your search.</p>
@@ -183,13 +180,16 @@ const PackagesCarousel = ({ onQueryClick }: PackagesCarouselProps) => {
                             {pkg.duration}
                           </p>
                         </div>
-                        <Button
-                          onClick={() => onQueryClick(pkg)}
-                          className="bg-gray-900 hover:bg-gray-800 text-white rounded-xl px-6 shadow-lg hover:shadow-xl transition-all duration-300"
-                        >
-                          <Send className="mr-2 h-4 w-4" />
-                          Inquire
-                        </Button>
+                        <div className="space-y-2">
+                          <Button
+  onClick={() => navigate(`/packages/${pkg.id}`)}
+  className="bg-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/90 text-white rounded-xl px-6 shadow-lg hover:shadow-xl transition-all duration-300"
+>
+  <Send className="mr-2 h-4 w-4" />
+  View Itinerary
+</Button>
+
+                        </div>
                       </div>
                     </CardContent>
                   </Card>

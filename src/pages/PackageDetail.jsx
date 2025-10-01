@@ -21,38 +21,33 @@ const PackageDetail = () => {
   if (!pkg) return <p className="text-center py-20">Loading...</p>;
 
   return (
-    <div className="max-w-5xl mx-auto py-20 px-6">
-      <button
-        onClick={() => navigate(-1)}
-        className="mb-6 text-blue-600 hover:underline"
-      >
-        ← Back
-      </button>
+     <div className="max-w-4xl mx-auto p-8">
+      <h1 className="text-4xl font-playfair font-bold mb-4 text-brand-orange">
+        {pkg.title}
+      </h1>
+      <img src={pkg.image} alt={pkg.title} className="w-full rounded-lg mb-6 shadow-lg" />
+      <p className="text-gray-700 mb-6">{pkg.description}</p>
 
-      <h1 className="text-4xl font-bold mb-6">{pkg.title}</h1>
-      <img
-        src={pkg.image}
-        alt={pkg.title}
-        className="w-full h-80 object-cover rounded-xl mb-6"
-      />
-      <p className="text-lg text-gray-700 mb-4">{pkg.description}</p>
-
-      <div className="flex gap-6 text-lg font-semibold text-blue-600 mb-6">
-        <span>{pkg.duration}</span>
-        <span>{pkg.price}</span>
-        <span>{pkg.location}</span>
+      <div className="flex items-center gap-6 mb-8">
+        <div className="flex items-center gap-2 text-brand-orange">
+          <MapPin className="w-5 h-5" />
+          <span>{pkg.location}</span>
+        </div>
+        <div className="flex items-center gap-2 text-brand-orange">
+          <Clock className="w-5 h-5" />
+          <span>{pkg.duration}</span>
+        </div>
+        {pkg.rating && (
+          <div className="flex items-center gap-2 text-yellow-400">
+            <Star className="w-5 h-5" />
+            <span>{pkg.rating}</span>
+          </div>
+        )}
       </div>
 
-      {/* Example Itinerary */}
-      <div>
-        <h2 className="text-2xl font-bold mb-3">Itinerary</h2>
-        <ul className="list-disc ml-6 text-gray-700 space-y-2">
-          <li>Day 1: Arrival & Orientation</li>
-          <li>Day 2: Adventure activities</li>
-          <li>Day 3+: Guided tours</li>
-          <li>Final Day: Departure</li>
-        </ul>
-      </div>
+      <Button className="bg-brand-orange hover:bg-brand-orange-light text-white rounded-xl px-8 py-3 shadow-lg hover:shadow-xl transition-all duration-300">
+        Book Now
+      </Button>
     </div>
   );
 };

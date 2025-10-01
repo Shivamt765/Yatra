@@ -6,7 +6,7 @@
     "description": "Explore Nepal’s vibrant culture and stunning Himalayan views.",
     "duration": "5D/4N",
     "price": "₹25,000",
-    "image": "https://source.unsplash.com/800x600/?nepal,mountains"
+    "image": "https://cdn.getyourguide.com/image/format=auto,fit=crop,gravity=auto,quality=60,width=270,height=180,dpr=1/tour_img/63c3bd8372b0e.jpeg"
   },
   {
     "id": 2,
@@ -15,7 +15,7 @@
     "description": "Spiritual journey to the holy temple of Muktinath.",
     "duration": "6D/5N",
     "price": "₹30,000",
-    "image": "https://source.unsplash.com/800x600/?temple,nepal"
+    "image": "https://images.unsplash.com/photo-1630049348746-8f6b6a0f2291?auto=format&fit=crop&w=800&q=80"
   },
   {
     "id": 3,
@@ -24,7 +24,7 @@
     "description": "Adventure-packed trip for students including Chitwan Safari.",
     "duration": "7D/6N",
     "price": "₹20,000",
-    "image": "https://source.unsplash.com/800x600/?students,adventure"
+    "image": "https://images.unsplash.com/photo-1587080269916-5e6b3b2f3f50?auto=format&fit=crop&w=800&q=80"
   },
   {
     "id": 4,
@@ -33,7 +33,7 @@
     "description": "Visit Pashupatinath, Janakpur, and Muktinath in one sacred trip.",
     "duration": "7D/6N",
     "price": "₹32,000",
-    "image": "https://source.unsplash.com/800x600/?pilgrimage,nepal"
+    "image": "https://images.unsplash.com/photo-1624394780179-8f4cf047f26a?auto=format&fit=crop&w=800&q=80"
   },
   {
     "id": 5,
@@ -42,238 +42,6 @@
     "description": "Luxury tour covering Kathmandu, Pokhara, Nagarkot & Bandipur.",
     "duration": "8D/7N",
     "price": "₹55,000",
-    "image": "https://source.unsplash.com/800x600/?luxury,nepal"
-  },
-
-  {
-    "id": 6,
-    "title": "Varanasi – Prayagraj – Ayodhya",
-    "location": "India",
-    "description": "Spiritual journey to holy cities along the Ganges.",
-    "duration": "4D/3N",
-    "price": "₹18,000",
-    "image": "https://source.unsplash.com/800x600/?varanasi,india"
-  },
-  {
-    "id": 7,
-    "title": "Char Dham Yatra",
-    "location": "India",
-    "description": "Complete pilgrimage covering Yamunotri, Gangotri, Kedarnath, and Badrinath.",
-    "duration": "12D/11N",
-    "price": "₹65,000",
-    "image": "https://source.unsplash.com/800x600/?himalaya,temple"
-  },
-  {
-    "id": 8,
-    "title": "Do Dham Yatra",
-    "location": "India",
-    "description": "Sacred Kedarnath & Badrinath pilgrimage.",
-    "duration": "7D/6N",
-    "price": "₹40,000",
-    "image": "https://source.unsplash.com/800x600/?kedarnath,temple"
-  },
-  {
-    "id": 9,
-    "title": "Char Dham Yatra by Helicopter",
-    "location": "India",
-    "description": "Luxury pilgrimage experience by helicopter.",
-    "duration": "5D/4N",
-    "price": "₹150,000",
-    "image": "https://source.unsplash.com/800x600/?helicopter,himalaya"
-  },
-  {
-    "id": 10,
-    "title": "Muktinath Pilgrimage",
-    "location": "Nepal",
-    "description": "Sacred Muktinath temple pilgrimage package.",
-    "duration": "6D/5N",
-    "price": "₹28,000",
-    "image": "https://source.unsplash.com/800x600/?muktinath,temple"
-  },
-
-  {
-    "id": 11,
-    "title": "Goa Student Budget Trip",
-    "location": "Goa",
-    "description": "Fun-filled budget trip for students to Goa.",
-    "duration": "4D/3N",
-    "price": "₹12,000",
-    "image": "https://source.unsplash.com/800x600/?goa,beach"
-  },
-  {
-    "id": 12,
-    "title": "Goa Honeymoon",
-    "location": "Goa",
-    "description": "Romantic honeymoon with premium resort & cruise dinner.",
-    "duration": "5D/4N",
-    "price": "₹45,000",
-    "image": "https://source.unsplash.com/800x600/?honeymoon,goa"
-  },
-  {
-    "id": 13,
-    "title": "Adventure Goa",
-    "location": "Goa",
-    "description": "Adventure trip with thrilling water sports.",
-    "duration": "4D/3N",
-    "price": "₹22,000",
-    "image": "https://source.unsplash.com/800x600/?watersports,goa"
-  },
-
-  {
-    "id": 14,
-    "title": "Bhutan Highlights",
-    "location": "Bhutan",
-    "description": "Discover Thimphu, Paro & Punakha.",
-    "duration": "7D/6N",
-    "price": "₹38,000",
-    "image": "https://source.unsplash.com/800x600/?bhutan,paro"
-  },
-  {
-    "id": 15,
-    "title": "Bhutan Short Escape",
-    "location": "Bhutan",
-    "description": "Quick escape covering Paro & Thimphu.",
-    "duration": "5D/4N",
-    "price": "₹28,000",
-    "image": "https://source.unsplash.com/800x600/?bhutan,thimphu"
-  },
-  {
-    "id": 16,
-    "title": "Bhutan Luxury Wellness Tour",
-    "location": "Bhutan",
-    "description": "Luxury retreat with wellness activities.",
-    "duration": "7D",
-    "price": "₹60,000",
-    "image": "https://source.unsplash.com/800x600/?wellness,spa"
-  },
-
-  {
-    "id": 17,
-    "title": "Meghalaya Tour",
-    "location": "North East India",
-    "description": "Explore Shillong, Cherrapunji, and Dawki.",
-    "duration": "6D/5N",
-    "price": "₹30,000",
-    "image": "https://source.unsplash.com/800x600/?meghalaya,waterfalls"
-  },
-  {
-    "id": 18,
-    "title": "Sikkim & Darjeeling",
-    "location": "North East India",
-    "description": "Gangtok, Nathula & Darjeeling hill circuit.",
-    "duration": "7D/6N",
-    "price": "₹35,000",
-    "image": "https://source.unsplash.com/800x600/?sikkim,darjeeling"
-  },
-  {
-    "id": 19,
-    "title": "Arunachal Pradesh Adventure",
-    "location": "North East India",
-    "description": "Discover Tawang, Dirang & Bomdila.",
-    "duration": "8D/7N",
-    "price": "₹40,000",
-    "image": "https://source.unsplash.com/800x600/?arunachal,tawang"
-  },
-  {
-    "id": 20,
-    "title": "North East Student Adventure",
-    "location": "North East India",
-    "description": "Exciting student trip with cultural experiences.",
-    "duration": "6D/5N",
-    "price": "₹25,000",
-    "image": "https://source.unsplash.com/800x600/?students,meghalaya"
-  },
-
-  {
-    "id": 21,
-    "title": "Nainital – Bhimtal – Mukteshwar",
-    "location": "Uttarakhand",
-    "description": "Lake tour in the Kumaon region.",
-    "duration": "4D/3N",
-    "price": "₹18,000",
-    "image": "https://source.unsplash.com/800x600/?nainital,lake"
-  },
-  {
-    "id": 22,
-    "title": "Mussoorie – Dhanaulti – Kanatal",
-    "location": "Uttarakhand",
-    "description": "Hill retreat in Garhwal.",
-    "duration": "4D/3N",
-    "price": "₹20,000",
-    "image": "https://source.unsplash.com/800x600/?mussoorie,hills"
-  },
-  {
-    "id": 23,
-    "title": "Jim Corbett Safari",
-    "location": "Uttarakhand",
-    "description": "Wildlife safari in Jim Corbett National Park.",
-    "duration": "3D/2N",
-    "price": "₹15,000",
-    "image": "https://source.unsplash.com/800x600/?tiger,safari"
-  },
-  {
-    "id": 24,
-    "title": "Rishikesh Rafting Adventure",
-    "location": "Uttarakhand",
-    "description": "Thrilling rafting experience in Rishikesh.",
-    "duration": "3D/2N",
-    "price": "₹12,000",
-    "image": "https://source.unsplash.com/800x600/?rafting,rishikesh"
-  },
-  {
-    "id": 25,
-    "title": "Auli Snow Tour",
-    "location": "Uttarakhand",
-    "description": "Skiing and snow experience in Auli.",
-    "duration": "4D/3N",
-    "price": "₹22,000",
-    "image": "https://source.unsplash.com/800x600/?auli,snow"
-  },
-
-  {
-    "id": 26,
-    "title": "Manali – Solang Valley – Kasol",
-    "location": "Himachal",
-    "description": "Student special adventure in Himachal.",
-    "duration": "5D/4N",
-    "price": "₹20,000",
-    "image": "https://source.unsplash.com/800x600/?manali,kasol"
-  },
-  {
-    "id": 27,
-    "title": "Shimla – Kufri – Kullu – Manali",
-    "location": "Himachal",
-    "description": "Family & honeymoon special Himachal trip.",
-    "duration": "6D/5N",
-    "price": "₹28,000",
-    "image": "https://source.unsplash.com/800x600/?shimla,kullu"
-  },
-  {
-    "id": 28,
-    "title": "Rajasthan Highlights",
-    "location": "Rajasthan",
-    "description": "Explore Jaipur, Jodhpur, Jaisalmer & Udaipur.",
-    "duration": "6D/5N",
-    "price": "₹35,000",
-    "image": "https://source.unsplash.com/800x600/?rajasthan,udaipur"
-  },
-
-  {
-    "id": 29,
-    "title": "Andaman Islands",
-    "location": "Andaman",
-    "description": "Explore Port Blair & Havelock beaches.",
-    "duration": "5D/4N",
-    "price": "₹40,000",
-    "image": "https://source.unsplash.com/800x600/?andaman,beach"
-  },
-  {
-    "id": 30,
-    "title": "Ooty – Mysore – Coorg",
-    "location": "South India",
-    "description": "South India hill circuit including Ooty & Coorg.",
-    "duration": "6D/5N",
-    "price": "₹30,000",
-    "image": "https://source.unsplash.com/800x600/?ooty,coorg"
+    "image": "https://images.unsplash.com/photo-1622626000000-72186f44512e?auto=format&fit=crop&w=800&q=80"
   }
 ]

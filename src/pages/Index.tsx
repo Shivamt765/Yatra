@@ -12,6 +12,8 @@ import ReelsSection from '@/components/ReelsSection';
 import OccasionBanner from '@/components/OccasionBanner';
 import FloatingContact from '@/components/FloatingContact';
 import MomentsSection from '@/components/MomentsSection';
+import WhyChoose from '@/components/WhyChoose';
+
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isQueryModalOpen, setIsQueryModalOpen] = useState(false);
@@ -38,6 +40,7 @@ const Index = () => {
       <MomentsSection />
       {/* <OccasionBanner /> */}
       <PackagesCarousel onQueryClick={handleQueryClick} />
+      <WhyChoose/>
       <ReelsSection />
       <TestimonialsSection />
       <Footer />
