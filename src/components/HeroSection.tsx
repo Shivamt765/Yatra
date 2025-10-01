@@ -42,48 +42,55 @@ const HeroSection = () => {
   const scrollToReels = () => document.getElementById('reels')?.scrollIntoView({ behavior: 'smooth' });
 
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Background */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center parallax-slow animate-fadeIn"
-        style={{ backgroundImage: `url(${heroImage})`, transform: 'scale(1.05)' }}
-      />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-black/30" />
+    <section className="relative h-screen flex items-center justify-center overflow-hidden bg-gray-900">
       
-      {/* Subtle Travel Sparks */}
+      {/* Background Image + Overlay */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center scale-105 parallax-slow"
+        style={{ backgroundImage: `url(${heroImage})` }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-black/50" />
+
+      {/* Floating Sparks */}
       <div className="absolute inset-0 pointer-events-none">
         {Array.from({ length: 6 }).map((_, i) => (
           <div
             key={i}
-            className={`absolute w-1 h-1 bg-white/60 rounded-full animate-spark`}
+            className={`absolute w-1.5 h-1.5 bg-white/50 rounded-full animate-spark`}
             style={{ left: `${10 + i * 15}%`, animationDelay: `${i * 0.2}s` }}
           />
         ))}
       </div>
 
       {/* Hero Content */}
-      <div className="relative z-10 text-center text-white px-8 max-w-5xl mx-auto">
+      <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
         <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
-          {/* Main Hero Heading with Poppins */}
-          <h1 className="font-poppins text-5xl md:text-7xl font-extrabold mb-4 leading-tight text-shadow-adventure">
+          
+          {/* Modern Heading */}
+          <h1 className="font-montserrat text-5xl md:text-7xl font-extrabold mb-4 leading-tight text-white drop-shadow-lg">
             {currentMessage.slice(0, charIndex)}
           </h1>
 
-          {/* Subheading / tagline */}
-          <p className="font-playfair text-lg md:text-xl mb-8 opacity-90 max-w-3xl mx-auto transition-all duration-1000 delay-300">
+          {/* Subheading */}
+          <p className="font-montserrat text-lg md:text-xl mb-8 text-white/80 max-w-3xl mx-auto transition-all duration-1000 delay-300">
             Curated experiences and adventures across mountains and valleys
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center transition-all duration-1000 delay-500">
-            <Button onClick={scrollToPackages} className="btn-hero text-lg hover:shadow-white/50 font-montserrat">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+            <Button 
+              onClick={scrollToPackages} 
+              className="bg-white/10 text-white font-montserrat rounded-full px-8 py-4 shadow-lg backdrop-blur-md hover:bg-white/20 transition-all duration-300"
+            >
               Explore Packages
               <ChevronDown className="ml-2 h-5 w-5 group-hover:translate-y-1 transition-transform" />
             </Button>
-            
-            <Button onClick={scrollToReels} variant="outline" className="glass-effect border-white/30 text-black hover:bg-white/10 px-8 py-4 text-lg font-montserrat">
-              <Play className="mr-2 h-5 w-5" />
-              Watch Stories
+
+            <Button 
+              onClick={scrollToReels} 
+              className="glass-effect text-white hover:bg-white/10 font-montserrat rounded-full px-8 py-4 flex items-center gap-2 backdrop-blur-md"
+            >
+              <Play className="h-5 w-5" /> Watch Stories
             </Button>
           </div>
         </div>
