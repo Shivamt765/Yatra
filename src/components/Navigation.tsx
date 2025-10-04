@@ -1,184 +1,78 @@
-// src/components/Navbar.jsx
 import { useState, useEffect } from "react";
-import { Menu, X, ChevronDown } from "lucide-react";
-import logo from "@/assets/logo.png";
+import { Link } from "react-router-dom";
+import { Menu, X } from "lucide-react";
+import logos from "@/assets/logos.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [servicesOpenMobile, setServicesOpenMobile] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 768);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
+    const handleResize = () => setIsDesktop(window.innerWidth >= 768);
+
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
-  const navLinks = [
-    { name: "Home", href: "#home" },
-    { name: "Packages", href: "#packages" },
-    { name: "Destinations", href: "#destinations" },
-    { name: "About", href: "#about" },
-    { name: "Contact", href: "#contact" },
-  ];
-
-  const services = [
-    { name: "Customised Tour Packages", href: "/customised-tours" },
-    { name: "Flight & Hotel Bookings", href: "/flight-hotel" },
-    { name: "Transport Services", href: "/transport" },
-    { name: "Corporate & Group Tours", href: "/corporate-tours" },
-  ];
+  const logoStyle = { height: isDesktop ? "5.7rem" : "5.7rem", width: "auto", transition: "all 0.3s ease", cursor: "pointer" };
 
   return (
-    <nav
-      className={`fixed w-full top-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-white/90 shadow backdrop-blur-md" : "bg-transparent"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center h-20">
-        {/* Logo (25% bigger) */}
+    <nav className={`fixed w-full top-0 z-50 bg-white shadow-md transition-all duration-300`}>
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center h-24 md:h-28">
         <div className="flex-shrink-0">
-          <img src={logo} alt="Logo" className="h-16 w-auto md:h-16 sm:h-14" />
+          <Link to="/">
+            <img src={logos} alt="Logo" style={logoStyle} />
+          </Link>
         </div>
 
-        {/* Desktop Navigation */}
+        {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-10 font-montserrat text-[15px] font-medium">
-          {navLinks.map((link, i) => (
-            <a
-              key={i}
-              href={link.href}
-              className="relative text-gray-800 hover:text-black transition group"
-            >
-              {link.name}
-              <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-black transition-all duration-300 group-hover:w-full"></span>
-            </a>
-          ))}
-
-          {/* Our Services (hover dropdown for desktop) */}
-          <div className="relative group">
-            <button className="flex items-center gap-1 text-gray-800 hover:text-black transition">
-              Our Services <ChevronDown size={16} />
-            </button>
-
-            {/* Dropdown - shows on hover */}
-            <div className="absolute top-full left-0 mt-3 w-72 bg-white shadow-lg rounded-md overflow-hidden opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:translate-y-1 transition-all duration-300">
-              {services.map((item, i) => (
-                <a
-                  key={i}
-                  href={item.href}
-                  className="block px-5 py-3 text-gray-700 hover:bg-gray-100 transition"
-                >
-                  {item.name}
-                </a>
-              ))}
-            </div>
-          </div>
+          <Link to="/" className="text-gray-800 hover:text-black transition">Home</Link>
+          <Link to="/packages" className="text-gray-800 hover:text-black transition">Packages</Link>
+          <a href="#destinations" className="text-gray-800 hover:text-black transition">Destinations</a>
+          <a href="#about" className="text-gray-800 hover:text-black transition">About</a>
+          <a href="#contact" className="text-gray-800 hover:text-black transition">Contact</a>
+          <a href="#services" className="text-gray-800 hover:text-black transition">Our Services</a>
         </div>
 
-        {/* CTA Button */}
         <div className="hidden md:block">
-          <a
-            href="#book"
-            className="px-6 py-2 rounded-full bg-black text-white font-semibold hover:bg-gray-900 transition duration-300"
-          >
-            Book Now
-          </a>
+          <Link to="/packages" className="px-6 py-2 rounded-full bg-black text-white font-semibold hover:bg-gray-900 transition duration-300">
+            Upcoming Trips
+          </Link>
         </div>
 
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden text-gray-800"
-          onClick={() => setIsOpen(true)}
-        >
+        {/* Mobile */}
+        <button className="md:hidden text-gray-800" onClick={() => setIsOpen(true)}>
           <Menu size={28} />
         </button>
       </div>
 
       {/* Mobile Drawer */}
-      <div
-        className={`fixed inset-0 z-40 transition-all duration-500 ${
-          isOpen ? "visible" : "invisible"
-        }`}
-      >
-        {/* Overlay */}
-        <div
-          className={`absolute inset-0 bg-black/40 transition-opacity duration-500 ${
-            isOpen ? "opacity-100" : "opacity-0"
-          }`}
-          onClick={() => setIsOpen(false)}
-        ></div>
-
-        {/* Drawer */}
-        <div
-          className={`absolute right-0 top-0 h-full w-72 bg-white shadow-lg transform transition-transform duration-500 ease-in-out ${
-            isOpen ? "translate-x-0" : "translate-x-full"
-          }`}
-        >
-          <div className="flex items-center justify-between p-5 border-b">
-            <img src={logo} alt="Logo" className="h-12 w-auto" />
-            <button
-              className="text-gray-800 hover:text-red-500"
-              onClick={() => setIsOpen(false)}
-            >
+      {isOpen && (
+        <div className="fixed inset-0 z-40 flex">
+          <div className="absolute inset-0 bg-black/40" onClick={() => setIsOpen(false)}></div>
+          <div className="relative ml-auto w-72 bg-white p-6">
+            <button className="absolute top-6 right-6" onClick={() => setIsOpen(false)}>
               <X size={28} />
             </button>
-          </div>
-
-          <div className="flex flex-col mt-6 space-y-6 px-6 font-montserrat">
-            {navLinks.map((link, i) => (
-              <a
-                key={i}
-                href={link.href}
-                onClick={() => setIsOpen(false)}
-                className="text-gray-800 font-medium hover:text-black transition duration-300"
-              >
-                {link.name}
-              </a>
-            ))}
-
-            {/* Services Mobile Expand (clickable) */}
-            <div className="border-t pt-4">
-              <button
-                onClick={() => setServicesOpenMobile(!servicesOpenMobile)}
-                className="w-full flex justify-between items-center text-gray-800 font-semibold"
-              >
-                Our Services{" "}
-                <ChevronDown
-                  size={18}
-                  className={`transition-transform ${
-                    servicesOpenMobile ? "rotate-180" : ""
-                  }`}
-                />
-              </button>
-              <div
-                className={`overflow-hidden transition-all duration-300 ${
-                  servicesOpenMobile ? "max-h-64 mt-2" : "max-h-0"
-                }`}
-              >
-                {services.map((item, i) => (
-                  <a
-                    key={i}
-                    href={item.href}
-                    onClick={() => setIsOpen(false)}
-                    className="block pl-3 py-2 text-gray-600 hover:text-black transition"
-                  >
-                    {item.name}
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            {/* CTA */}
-            <a
-              href="#book"
-              onClick={() => setIsOpen(false)}
-              className="mt-4 px-6 py-3 rounded-full bg-black text-white text-center font-semibold hover:bg-gray-900 transition"
-            >
-              Book Now
-            </a>
+            <nav className="flex flex-col mt-12 space-y-4">
+              <Link to="/" onClick={() => setIsOpen(false)} className="hover:text-black transition">Home</Link>
+              <Link to="/packages" onClick={() => setIsOpen(false)} className="hover:text-black transition">Packages</Link>
+              <a href="#destinations" onClick={() => setIsOpen(false)} className="hover:text-black transition">Destinations</a>
+              <a href="#about" onClick={() => setIsOpen(false)} className="hover:text-black transition">About</a>
+              <a href="#contact" onClick={() => setIsOpen(false)} className="hover:text-black transition">Contact</a>
+              <a href="#services" onClick={() => setIsOpen(false)} className="hover:text-black transition">Our Services</a>
+            </nav>
           </div>
         </div>
-      </div>
+      )}
     </nav>
   );
 };

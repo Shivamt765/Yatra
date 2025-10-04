@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PackageDetails from '@/components/PackageDetails';
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import Packages from './pages/Packages'; // <-- Add Packages page
 
 const queryClient = new QueryClient();
 
@@ -17,9 +18,9 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-          <Route path="/packages/:id" element={<PackageDetails />} />
+          <Route path="/packages" element={<Packages />} />           {/* Packages list */}
+          <Route path="/packages/:id" element={<PackageDetails />} /> {/* Package details */}
+          <Route path="*" element={<NotFound />} />                  {/* Catch-all must be last */}
         </Routes>
       </BrowserRouter>
     </TooltipProvider>

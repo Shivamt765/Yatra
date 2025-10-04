@@ -1,47 +1,129 @@
 [
   {
     "id": 1,
-    "title": "Kathmandu – Pokhara Tour",
-    "location": "Nepal",
-    "description": "Explore Nepal’s vibrant culture and stunning Himalayan views.",
-    "duration": "5D/4N",
-    "price": "₹25,000",
-    "image": "https://cdn.getyourguide.com/image/format=auto,fit=crop,gravity=auto,quality=60,width=270,height=180,dpr=1/tour_img/63c3bd8372b0e.jpeg"
+    "title": "Bali Paradise Escape",
+    "description": "Experience the magic of Bali with temple visits, rice terraces, and pristine beaches. Immerse yourself in the rich culture and natural beauty.",
+    "location": "Bali, Indonesia",
+    "price": "₹1,29,900",
+    "duration": "7D/6N",
+    "image": "/bali-temple.jpg",
+    "rating": 4.9,
+    "live": true,
+    "categories": ["upcoming", "family", "general"],
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Arrival & Beach Relaxation",
+        "activities": ["Airport pickup", "Hotel check-in", "Relax at the beach", "Welcome dinner"],
+        "meals": ["Dinner"],
+        "accommodation": "Beachfront Resort"
+      },
+      {
+        "day": 2,
+        "title": "Cultural Exploration",
+        "activities": ["Visit Uluwatu Temple", "Rice terrace walk", "Traditional dance show"],
+        "meals": ["Breakfast", "Lunch", "Dinner"],
+        "accommodation": "Beachfront Resort"
+      },
+      {
+        "day": 3,
+        "title": "Island Adventure",
+        "activities": ["Snorkeling at Nusa Penida", "Lunch at local cafe", "Sunset at Tanah Lot"],
+        "meals": ["Breakfast", "Lunch", "Dinner"],
+        "accommodation": "Beachfront Resort"
+      }
+    ],
+    "inclusions": ["Accommodation in 4-star resort", "All meals as per itinerary", "Transfers & transport", "Professional tour guide", "Entrance fees for activities"],
+    "exclusions": ["Flights", "Personal expenses", "Travel insurance", "Optional activities"]
   },
   {
     "id": 2,
-    "title": "Muktinath Yatra",
-    "location": "Nepal",
-    "description": "Spiritual journey to the holy temple of Muktinath.",
-    "duration": "6D/5N",
-    "price": "₹30,000",
-    "image": "https://images.unsplash.com/photo-1630049348746-8f6b6a0f2291?auto=format&fit=crop&w=800&q=80"
+    "title": "Swiss Alps Adventure",
+    "description": "Conquer the majestic Swiss Alps with guided hiking, skiing, and breathtaking mountain views. Perfect for adventure seekers.",
+    "location": "Switzerland",
+    "price": "₹2,49,900",
+    "duration": "10D/9N",
+    "image": "/swiss-alps.jpg",
+    "rating": 4.8,
+    "live": false,
+    "categories": ["upcoming", "corporate", "general"],
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Arrival & Orientation",
+        "activities": ["Airport pickup", "Hotel check-in", "Evening city walk"],
+        "meals": ["Dinner"],
+        "accommodation": "Alpine Resort"
+      },
+      {
+        "day": 2,
+        "title": "Skiing & Snow Fun",
+        "activities": ["Skiing lessons", "Snowboarding", "Evening hot chocolate"],
+        "meals": ["Breakfast", "Lunch", "Dinner"],
+        "accommodation": "Alpine Resort"
+      }
+    ],
+    "inclusions": ["Accommodation in mountain resort", "Meals as per itinerary", "Ski passes & equipment", "Local guide"],
+    "exclusions": ["Flights", "Personal expenses", "Adventure insurance"]
   },
   {
     "id": 3,
-    "title": "Nepal Student Adventure",
-    "location": "Nepal",
-    "description": "Adventure-packed trip for students including Chitwan Safari.",
-    "duration": "7D/6N",
-    "price": "₹20,000",
-    "image": "https://images.unsplash.com/photo-1587080269916-5e6b3b2f3f50?auto=format&fit=crop&w=800&q=80"
+    "title": "Tokyo Discovery Tour",
+    "description": "Explore the vibrant culture of Tokyo from ancient temples to modern technology. A perfect blend of tradition and innovation.",
+    "location": "Tokyo, Japan",
+    "price": "₹1,89,900",
+    "duration": "8D/7N",
+    "image": "/tokyo-city.jpg",
+    "rating": 4.9,
+    "live": true,
+    "categories": ["upcoming", "family", "general"],
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Arrival & Shibuya Walk",
+        "activities": ["Airport pickup", "Hotel check-in", "Evening walk in Shibuya"],
+        "meals": ["Dinner"],
+        "accommodation": "City Hotel"
+      },
+      {
+        "day": 2,
+        "title": "Historical & Modern Tokyo",
+        "activities": ["Visit Senso-ji Temple", "Explore Akihabara", "Tokyo Tower view"],
+        "meals": ["Breakfast", "Lunch", "Dinner"],
+        "accommodation": "City Hotel"
+      }
+    ],
+    "inclusions": ["Accommodation in 3-star hotel", "All meals as per itinerary", "Transport & metro passes", "Professional guide"],
+    "exclusions": ["Flights", "Shopping", "Optional activities"]
   },
   {
     "id": 4,
-    "title": "Nepal Pilgrimage",
-    "location": "Nepal",
-    "description": "Visit Pashupatinath, Janakpur, and Muktinath in one sacred trip.",
-    "duration": "7D/6N",
-    "price": "₹32,000",
-    "image": "https://images.unsplash.com/photo-1624394780179-8f4cf047f26a?auto=format&fit=crop&w=800&q=80"
-  },
-  {
-    "id": 5,
-    "title": "Luxury Nepal",
-    "location": "Nepal",
-    "description": "Luxury tour covering Kathmandu, Pokhara, Nagarkot & Bandipur.",
-    "duration": "8D/7N",
-    "price": "₹55,000",
-    "image": "https://images.unsplash.com/photo-1622626000000-72186f44512e?auto=format&fit=crop&w=800&q=80"
+    "title": "Maldives Luxury Retreat",
+    "description": "Indulge in overwater villas, crystal-clear waters, and world-class diving in this tropical paradise.",
+    "location": "Maldives",
+    "price": "₹3,29,900",
+    "duration": "6D/5N",
+    "image": "/maldives-resort.jpg",
+    "rating": 5.0,
+    "live": true,
+    "categories": ["upcoming", "family", "corporate"],
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Arrival & Resort Check-in",
+        "activities": ["Airport transfer", "Check-in villa", "Beach relaxation"],
+        "meals": ["Dinner"],
+        "accommodation": "Overwater Villa"
+      },
+      {
+        "day": 2,
+        "title": "Island Hopping & Water Sports",
+        "activities": ["Snorkeling tour", "Scuba diving", "Sunset cruise"],
+        "meals": ["Breakfast", "Lunch", "Dinner"],
+        "accommodation": "Overwater Villa"
+      }
+    ],
+    "inclusions": ["Luxury villa accommodation", "All meals", "Transfers & water activities", "Guide for tours"],
+    "exclusions": ["Flights", "Spa treatments", "Personal expenses"]
   }
 ]
