@@ -1,5 +1,6 @@
-import { MessageCircle, Eye, MapPin, Clock, Star } from 'lucide-react';
-import { Package } from '@/pages/Packages';
+import { useState } from "react";
+import { MessageCircle, Eye, MapPin, Clock, Star, ImageOff } from "lucide-react";
+import { Package } from "@/pages/Packages";
 
 interface PackageCardProps {
   package: Package;
@@ -8,22 +9,33 @@ interface PackageCardProps {
 }
 
 export const PackageCard = ({ package: pkg, onSendQuery, onViewItinerary }: PackageCardProps) => {
+  const [imgError, setImgError] = useState(false);
+
   return (
     <div
       className="group relative backdrop-blur-md bg-white/40 border border-white/20 
-                 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl 
-                 hover:-translate-y-2 transition-all duration-500"
+                 rounded-2xl shadow-lg hover:shadow-2xl 
+                 hover:-translate-y-2 transition-all duration-500 flex flex-col overflow-visible"
     >
       {/* Image Container */}
-      <div className="relative h-56 overflow-hidden">
-        <img
-          src={pkg.image}
-          alt={pkg.title}
-          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-          loading="lazy"
-        />
+      <div className="relative h-56 overflow-hidden flex items-center justify-center bg-gray-100">
+        {!imgError ? (
+          <img
+            src={pkg.image}
+            alt={pkg.title}
+            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+            loading="lazy"
+            onError={() => setImgError(true)}
+          />
+        ) : (
+          <div className="flex flex-col items-center justify-center text-gray-400">
+            <ImageOff className="w-12 h-12 mb-2" />
+            <span className="text-sm">Image not available</span>
+          </div>
+        )}
+
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-        
+
         {/* Live Badge */}
         {pkg.live && (
           <div className="absolute top-3 right-3 flex items-center gap-1 bg-green-500 text-white px-3 py-1 rounded-full text-xs font-semibold shadow-lg animate-pulse">
@@ -48,13 +60,15 @@ export const PackageCard = ({ package: pkg, onSendQuery, onViewItinerary }: Pack
       </div>
 
       {/* Content */}
-      <div className="p-5">
-        <h3 className="text-xl font-semibold text-gray-900 mb-2 line-clamp-1">
-          {pkg.title}
-        </h3>
-        <p className="text-sm text-gray-600 mb-4 line-clamp-2 leading-relaxed">
-          {pkg.description}
-        </p>
+      <div className="p-5 flex-1 flex flex-col justify-between">
+        <div>
+          <h3 className="text-xl font-semibold text-gray-900 mb-2 line-clamp-1">
+            {pkg.title}
+          </h3>
+          <p className="text-sm text-gray-600 mb-4 line-clamp-2 leading-relaxed">
+            {pkg.description}
+          </p>
+        </div>
 
         {/* Price & Duration */}
         <div className="flex items-center justify-between mb-4">
@@ -71,7 +85,7 @@ export const PackageCard = ({ package: pkg, onSendQuery, onViewItinerary }: Pack
         </div>
 
         {/* Action Buttons */}
-        <div className="flex gap-2">
+        <div className="flex gap-2 mt-auto">
           <button
             onClick={() => onSendQuery(pkg)}
             className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5
