@@ -62,45 +62,31 @@ export const QueryModal = ({ isOpen, onClose, package: pkg }: QueryModalProps) =
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = async (e: FormEvent) => {
+const handleSubmit = (e: FormEvent) => {
   e.preventDefault();
   if (!pkg) return;
 
   if (!validateForm()) return;
 
-  setIsSubmitting(true);
+  // Construct WhatsApp link
+  const phoneNumber = '919696415586'; // Replace with your number in international format
+  const message = `Hello! I'm interested in "${pkg.title}". My details:
+Name: ${formData.name}
+Email: ${formData.email}
+Phone: ${formData.phone}
+Message: ${formData.message}`;
 
-  try {
-    const sheetUrl = 'https://script.google.com/macros/s/AKfycbx5JceCGQC3GD4B66cAhnX7soLGDlVhwU3SH_3-PUuKZwT6oSWzlb2rvb7YJwhxaHWHxQ/exec'; // <-- Replace this with your Apps Script URL
+  // Encode the message for URL
+  const encodedMessage = encodeURIComponent(message);
 
-    const response = await fetch(sheetUrl, {
-      method: 'POST',
-      body: JSON.stringify({
-        package: pkg.title,
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        message: formData.message,
-      }),
-      headers: { 'Content-Type': 'application/json' },
-    });
+  // Open WhatsApp
+  window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
 
-    const data = await response.json();
-
-    if (data.success) {
-      setIsSuccess(true);
-      setTimeout(() => {
-        handleClose();
-      }, 2000);
-    } else {
-      console.error('Failed to save to sheet', data.error);
-    }
-  } catch (error) {
-    console.error('Error submitting form:', error);
-  } finally {
-    setIsSubmitting(false);
-  }
+  // Optionally show success state in modal
+  setIsSuccess(true);
+  setTimeout(() => handleClose(), 2000);
 };
+
 
 
   const handleClose = () => {
