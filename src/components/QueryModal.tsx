@@ -23,14 +23,10 @@ const QueryModal = ({ isOpen, onClose, packageData }: QueryModalProps) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // Simulate form submission
     toast({
       title: "Query Sent Successfully!",
       description: "Our travel experts will contact you within 24 hours.",
     });
-    
-    // Reset form
     setFormData({ name: '', email: '', phone: '', message: '' });
     onClose();
   };
@@ -44,20 +40,24 @@ const QueryModal = ({ isOpen, onClose, packageData }: QueryModalProps) => {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-md mx-auto">
-        <DialogHeader>
+      <DialogContent
+        className="max-w-md w-full mx-auto max-h-[90vh] overflow-y-auto rounded-2xl shadow-2xl 
+                   scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent"
+      >
+        <DialogHeader className="sticky top-0 bg-white/95 backdrop-blur-md z-10 pb-3">
           <DialogTitle className="text-2xl font-bold text-mountain-green flex items-center">
             <Send className="mr-2 h-6 w-6" />
             Send Query
           </DialogTitle>
           {packageData && (
             <p className="text-muted-foreground">
-              Interested in: <span className="font-semibold text-sky-blue">{packageData.title}</span>
+              Interested in:{" "}
+              <span className="font-semibold text-sky-blue">{packageData.title}</span>
             </p>
           )}
         </DialogHeader>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4 mt-2">
           <div className="relative">
             <User className="absolute left-3 top-3 h-5 w-5 text-muted-foreground" />
             <Input
