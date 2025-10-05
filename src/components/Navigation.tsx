@@ -76,16 +76,16 @@ const Navbar = () => {
       ],
       dropdown: false,
     },
-    {
-      title: "Our Services",
-      items: [
-        { name: "Customised Tour Packages", href: "/customised-tours", icon: <Plane size={18} /> },
-        { name: "Flight & Hotel Bookings", href: "/flight-hotel", icon: <Plane size={18} /> },
-        { name: "Transport Services", href: "/transport", icon: <Map size={18} /> },
-        { name: "Corporate & Group Tours", href: "/corporate-tours", icon: <Users size={18} /> },
-      ],
-      dropdown: true,
-    },
+    // {
+    //   title: "Our Services",
+    //   items: [
+    //     { name: "Customised Tour Packages", href: "/customised-tours", icon: <Plane size={18} /> },
+    //     { name: "Flight & Hotel Bookings", href: "/flight-hotel", icon: <Plane size={18} /> },
+    //     { name: "Transport Services", href: "/transport", icon: <Map size={18} /> },
+    //     { name: "Corporate & Group Tours", href: "/corporate-tours", icon: <Users size={18} /> },
+    //   ],
+    //   dropdown: true,
+    // },
     {
       title: "About & Contact",
       items: [
@@ -112,15 +112,13 @@ const Navbar = () => {
         </div>
 
         {/* Desktop */}
-        <div className="hidden md:flex items-center gap-10 font-montserrat text-[15px] font-medium">
+        <div className="hidden md:flex items-center gap-16 font-montserrat text-[15px] font-medium">
           <a href="#home" className="text-gray-800 hover:text-black transition">Home</a>
-          <Link to="/packages" className="flex items-center gap-2 text-gray-800 hover:text-black transition">
-            <Package size={18} /> Packages
-          </Link>
+          <Link to="/packages" className="flex items-center gap-2 text-gray-800 hover:text-black transition"> Packages</Link>
           <a href="#destinations" className="text-gray-800 hover:text-black transition">Destinations</a>
-          <a href="#about" className="text-gray-800 hover:text-black transition">About</a>
-          <a href="#contact" className="text-gray-800 hover:text-black transition">Contact</a>
-          <a href="#services" className="text-gray-800 hover:text-black transition">Our Services</a>
+           <Link to="/About" className="text-gray-800 hover:text-black transition"> About Us</Link> 
+           <Link to="/Contact" className="text-gray-800 hover:text-black transition">Contact</Link>
+          {/* <a href="#services" className="text-gray-800 hover:text-black transition">Our Services</a> */}
 
           <Link
             to="/packages#upcoming"

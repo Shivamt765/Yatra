@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { useToast } from '@/hooks/use-toast';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface QueryModalProps {
   isOpen: boolean;
@@ -19,17 +20,8 @@ const QueryModal = ({ isOpen, onClose, packageData }: QueryModalProps) => {
     phone: '',
     message: ''
   });
+  const [showAnimation, setShowAnimation] = useState(false);
   const { toast } = useToast();
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    toast({
-      title: "Query Sent Successfully!",
-      description: "Our travel experts will contact you within 24 hours.",
-    });
-    setFormData({ name: '', email: '', phone: '', message: '' });
-    onClose();
-  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -38,12 +30,66 @@ const QueryModal = ({ isOpen, onClose, packageData }: QueryModalProps) => {
     });
   };
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!packageData) return;
+
+    const phoneNumber = '919696415586'; // your WhatsApp number with country code
+
+    // Construct message
+    const msg = `
+Hello! I'm interested in the package: ${packageData.title}
+Name: ${formData.name}
+Email: ${formData.email}
+Phone: ${formData.phone}
+Message: ${formData.message}
+`;
+
+    const encodedMsg = encodeURIComponent(msg);
+
+    // Show airplane animation
+    setShowAnimation(true);
+
+    // Open WhatsApp in a new tab
+    window.open(`https://wa.me/${9696415586}?text=${encodedMsg}`, '_blank');
+
+    // Toast
+    toast({
+      title: "Query Sent!",
+      description: "Your message is ready to send on WhatsApp.",
+    });
+
+    // Clear form
+    setFormData({ name: '', email: '', phone: '', message: '' });
+
+    // Hide animation after 2 seconds and close modal
+    setTimeout(() => {
+      setShowAnimation(false);
+      onClose();
+    }, 2000);
+  };
+
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent
         className="max-w-md w-full mx-auto max-h-[90vh] overflow-y-auto rounded-2xl shadow-2xl 
-                   scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent"
+                   scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent relative"
       >
+        {/* Airplane Animation */}
+        <AnimatePresence>
+          {showAnimation && (
+            <motion.div
+              initial={{ y: 100, opacity: 0 }}
+              animate={{ y: -50, opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1.5, ease: 'easeOut' }}
+              className="absolute top-0 left-1/2 -translate-x-1/2 z-50"
+            >
+              <div className="w-12 h-12 bg-[url('/airplane.png')] bg-contain bg-no-repeat"></div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
         <DialogHeader className="sticky top-0 bg-white/95 backdrop-blur-md z-10 pb-3">
           <DialogTitle className="text-2xl font-bold text-mountain-green flex items-center">
             <Send className="mr-2 h-6 w-6" />
@@ -122,7 +168,7 @@ const QueryModal = ({ isOpen, onClose, packageData }: QueryModalProps) => {
               className="flex-1 btn-adventure"
             >
               <Send className="mr-2 h-4 w-4" />
-              Send Query
+              Send via WhatsApp
             </Button>
           </div>
         </form>

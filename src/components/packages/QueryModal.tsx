@@ -63,47 +63,45 @@ export const QueryModal = ({ isOpen, onClose, package: pkg }: QueryModalProps) =
   };
 
   const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
+  e.preventDefault();
+  if (!pkg) return;
 
-    if (!validateForm()) return;
+  if (!validateForm()) return;
 
-    setIsSubmitting(true);
+  setIsSubmitting(true);
 
-    try {
-      // Mock API call to POST /api/enquiries
-      const response = await fetch('/api/enquiries', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          packageId: pkg.id,
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          message: formData.message,
-        }),
-      });
+  try {
+    const sheetUrl = 'https://script.google.com/macros/s/AKfycbx5JceCGQC3GD4B66cAhnX7soLGDlVhwU3SH_3-PUuKZwT6oSWzlb2rvb7YJwhxaHWHxQ/exec'; // <-- Replace this with your Apps Script URL
 
-      // Simulate API response (since endpoint doesn't exist)
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // Mock success response
-      const data = { success: true, enquiryId: Math.floor(Math.random() * 10000) };
+    const response = await fetch(sheetUrl, {
+      method: 'POST',
+      body: JSON.stringify({
+        package: pkg.title,
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        message: formData.message,
+      }),
+      headers: { 'Content-Type': 'application/json' },
+    });
 
-      if (data.success) {
-        setIsSuccess(true);
-        setTimeout(() => {
-          handleClose();
-        }, 2000);
-      }
-    } catch (error) {
-      console.error('Failed to submit enquiry:', error);
-      // In production, show error toast/message
-    } finally {
-      setIsSubmitting(false);
+    const data = await response.json();
+
+    if (data.success) {
+      setIsSuccess(true);
+      setTimeout(() => {
+        handleClose();
+      }, 2000);
+    } else {
+      console.error('Failed to save to sheet', data.error);
     }
-  };
+  } catch (error) {
+    console.error('Error submitting form:', error);
+  } finally {
+    setIsSubmitting(false);
+  }
+};
+
 
   const handleClose = () => {
     setFormData({ name: '', email: '', phone: '', message: '' });

@@ -315,10 +315,10 @@ const PackageDetails = () => {
                 <Separator className="my-6" />
 
                 <div className="space-y-4">
-                  <Button className="w-full bg-brand-orange hover:bg-brand-orange/90 text-white">
+                  {/* <Button className="w-full bg-brand-orange hover:bg-brand-orange/90 text-white">
                     Book Now
-                  </Button>
-                  <Button variant="outline" className="w-full">
+                  </Button> */}
+                  <Button variant="outline" className="w-full bg-brand-orange hover:bg-brand-orange/90 text-white">
                     <MessageCircle className="mr-2 h-4 w-4" />
                     Send Enquiry
                   </Button>
