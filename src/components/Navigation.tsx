@@ -7,11 +7,11 @@ import {
   Book,
   Package,
   Users,
-  Plane,
   Map,
   Info,
   Phone,
   ChevronDown,
+  Newspaper,
 } from "lucide-react";
 import logos from "@/assets/logos.png";
 
@@ -27,6 +27,13 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+  useEffect(() => {
+  return () => {
+    // cleanup when Navbar unmounts or route changes
+    document.body.style.overflow = "auto";
+  };
+}, []);
+
 
   useEffect(() => {
     const handleResize = () => setIsDesktop(window.innerWidth >= 768);
@@ -55,7 +62,7 @@ const Navbar = () => {
     {
       title: "Explore",
       items: [
-        { name: "Home", href: "#home", icon: <Home size={18} /> },
+        { name: "Home", path: "/", icon: <Home size={18} /> },
         { name: "Travel Stories", href: "#stories", icon: <Book size={18} /> },
       ],
       dropdown: false,
@@ -76,23 +83,18 @@ const Navbar = () => {
       ],
       dropdown: false,
     },
-    // {
-    //   title: "Our Services",
-    //   items: [
-    //     { name: "Customised Tour Packages", href: "/customised-tours", icon: <Plane size={18} /> },
-    //     { name: "Flight & Hotel Bookings", href: "/flight-hotel", icon: <Plane size={18} /> },
-    //     { name: "Transport Services", href: "/transport", icon: <Map size={18} /> },
-    //     { name: "Corporate & Group Tours", href: "/corporate-tours", icon: <Users size={18} /> },
-    //   ],
-    //   dropdown: true,
-    // },
     {
       title: "About & Contact",
       items: [
-        { name: "About", href: "#about", icon: <Info size={18} /> },
-        { name: "Contact", href: "#contact", icon: <Phone size={18} /> },
+        { name: "About", path: "/About", icon: <Info size={18} /> },
+        { name: "Contact", path: "/Contact", icon: <Phone size={18} /> },
       ],
       dropdown: true,
+    },
+    {
+      title: "Blog",
+      items: [{ name: "Our Blog", path: "/Blog", icon: <Newspaper size={18} /> }],
+      dropdown: false,
     },
   ];
 
@@ -113,12 +115,24 @@ const Navbar = () => {
 
         {/* Desktop */}
         <div className="hidden md:flex items-center gap-16 font-montserrat text-[15px] font-medium">
-          <a href="#home" className="text-gray-800 hover:text-black transition">Home</a>
-          <Link to="/packages" className="flex items-center gap-2 text-gray-800 hover:text-black transition"> Packages</Link>
-          <a href="#destinations" className="text-gray-800 hover:text-black transition">Destinations</a>
-           <Link to="/About" className="text-gray-800 hover:text-black transition"> About Us</Link> 
-           <Link to="/Contact" className="text-gray-800 hover:text-black transition">Contact</Link>
-          {/* <a href="#services" className="text-gray-800 hover:text-black transition">Our Services</a> */}
+          <Link to="/" className="text-gray-800 hover:text-black transition">
+            Home
+          </Link>
+          <Link
+            to="/packages"
+            className="flex items-center gap-2 text-gray-800 hover:text-black transition"
+          >
+            Packages
+          </Link>
+          <Link to="/Blog" className="text-gray-800 hover:text-black transition">
+            Blog
+          </Link>
+          <Link to="/About" className="text-gray-800 hover:text-black transition">
+            About Us
+          </Link>
+          <Link to="/Contact" className="text-gray-800 hover:text-black transition">
+            Contact
+          </Link>
 
           <Link
             to="/packages#upcoming"
@@ -128,22 +142,45 @@ const Navbar = () => {
           </Link>
         </div>
 
-        <button className="md:hidden text-gray-800" onClick={() => setIsOpen(true)}>
+        <button
+          className="md:hidden text-gray-800"
+          onClick={() => setIsOpen(true)}
+        >
           <Menu size={28} />
         </button>
       </div>
 
       {/* Mobile Drawer */}
-      <div className={`fixed inset-0 z-40 transition-all duration-500 ${isOpen ? "visible" : "invisible"}`}>
-        <div className={`absolute inset-0 bg-black/40 transition-opacity duration-500 ${isOpen ? "opacity-100" : "opacity-0"}`} onClick={() => setIsOpen(false)} />
+      <div
+        className={`fixed inset-0 z-40 transition-all duration-500 ${
+          isOpen ? "visible" : "invisible"
+        }`}
+      >
+        <div
+          className={`absolute inset-0 bg-black/40 transition-opacity duration-500 ${
+            isOpen ? "opacity-100" : "opacity-0"
+          }`}
+          onClick={() => setIsOpen(false)}
+        />
 
-        <div className={`absolute right-0 top-0 h-full w-72 transform transition-transform duration-500 ease-in-out ${isOpen ? "translate-x-0" : "translate-x-full"}`} style={{ backgroundColor: "#fff" }}>
-          {/* Logo header with glass effect */}
-          <div style={{ backdropFilter: "blur(10px)", backgroundColor: "rgba(255,255,255,0.15)" }} className="flex items-center justify-between p-5 border-b">
+        <div
+          className={`absolute right-0 top-0 h-full w-72 transform transition-transform duration-500 ease-in-out ${
+            isOpen ? "translate-x-0" : "translate-x-full"
+          }`}
+          style={{ backgroundColor: "#fff" }}
+        >
+          {/* Logo header */}
+          <div
+            style={{ backdropFilter: "blur(10px)", backgroundColor: "rgba(255,255,255,0.15)" }}
+            className="flex items-center justify-between p-5 border-b"
+          >
             <Link to="/" onClick={() => setIsOpen(false)}>
               <img src={logos} alt="Logo" style={drawerLogoStyle} />
             </Link>
-            <button className="text-gray-800 hover:text-red-500" onClick={() => setIsOpen(false)}>
+            <button
+              className="text-gray-800 hover:text-red-500"
+              onClick={() => setIsOpen(false)}
+            >
               <X size={28} />
             </button>
           </div>
@@ -153,7 +190,9 @@ const Navbar = () => {
             {categories.map((cat, i) => (
               <div key={i}>
                 <div
-                  className={`font-semibold text-lg py-2 flex justify-between items-center ${cat.dropdown ? "cursor-pointer" : ""}`}
+                  className={`font-semibold text-lg py-2 flex justify-between items-center ${
+                    cat.dropdown ? "cursor-pointer" : ""
+                  }`}
                   onClick={() => {
                     if (cat.title === "Our Services") setServicesOpen(!servicesOpen);
                     if (cat.title === "About & Contact") setAboutOpen(!aboutOpen);
@@ -163,35 +202,59 @@ const Navbar = () => {
                   {cat.dropdown && (
                     <ChevronDown
                       size={16}
-                      className={`transition-transform duration-300 ${cat.title === "Our Services" && servicesOpen ? "rotate-180" : ""} ${cat.title === "About & Contact" && aboutOpen ? "rotate-180" : ""}`}
+                      className={`transition-transform duration-300 ${
+                        cat.title === "Our Services" && servicesOpen
+                          ? "rotate-180"
+                          : ""
+                      } ${
+                        cat.title === "About & Contact" && aboutOpen
+                          ? "rotate-180"
+                          : ""
+                      }`}
                     />
                   )}
                 </div>
-                <div className={`flex flex-col pl-3 space-y-2 transition-all duration-300 ${
-                  (cat.title === "Our Services" && servicesOpen) ||
-                  (cat.title === "About & Contact" && aboutOpen) ||
-                  !cat.dropdown
-                    ? "max-h-96"
-                    : "max-h-0 overflow-hidden"
-                }`}>
-                  {cat.items.map((item, idx) => (
+                <div
+                  className={`flex flex-col pl-3 space-y-2 transition-all duration-300 ${
+                    (cat.title === "Our Services" && servicesOpen) ||
+                    (cat.title === "About & Contact" && aboutOpen) ||
+                    !cat.dropdown
+                      ? "max-h-96"
+                      : "max-h-0 overflow-hidden"
+                  }`}
+                >
+                  {cat.items.map((item, idx) =>
                     item.path ? (
-                      <Link key={idx} to={item.path} onClick={() => setIsOpen(false)} className="flex items-center gap-3 hover:text-gray-800 transition">
+                      <Link
+                        key={idx}
+                        to={item.path}
+                        onClick={() => setIsOpen(false)}
+                        className="flex items-center gap-3 hover:text-gray-800 transition"
+                      >
                         {item.icon}
                         <span>{item.name}</span>
                       </Link>
                     ) : (
-                      <a key={idx} href={item.href} onClick={() => setIsOpen(false)} className="flex items-center gap-3 hover:text-gray-800 transition">
+                      <a
+                        key={idx}
+                        href={item.href}
+                        onClick={() => setIsOpen(false)}
+                        className="flex items-center gap-3 hover:text-gray-800 transition"
+                      >
                         {item.icon}
                         <span>{item.name}</span>
                       </a>
                     )
-                  ))}
+                  )}
                 </div>
               </div>
             ))}
 
-            <Link to="/packages#upcoming" onClick={() => setIsOpen(false)} className="mt-4 px-6 py-3 rounded-full bg-black text-white text-center font-semibold hover:bg-gray-900 transition">
+            <Link
+              to="/packages#upcoming"
+              onClick={() => setIsOpen(false)}
+              className="mt-4 px-6 py-3 rounded-full bg-black text-white text-center font-semibold hover:bg-gray-900 transition"
+            >
               Upcoming Trips
             </Link>
           </div>

@@ -1,6 +1,7 @@
 import { useState, FormEvent } from 'react';
 import { X, Send, CheckCircle, Loader2 } from 'lucide-react';
 import { Package } from '@/pages/Packages';
+import { supabase } from '@/lib/supabaseClient';
 
 interface QueryModalProps {
   isOpen: boolean;
@@ -38,56 +39,54 @@ export const QueryModal = ({ isOpen, onClose, package: pkg }: QueryModalProps) =
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
 
-    if (!formData.name.trim()) {
-      newErrors.name = 'Name is required';
-    }
-
-    if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+    if (!formData.name.trim()) newErrors.name = 'Name is required';
+    if (!formData.email.trim()) newErrors.email = 'Email is required';
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email))
       newErrors.email = 'Invalid email address';
-    }
-
-    if (!formData.phone.trim()) {
-      newErrors.phone = 'Phone number is required';
-    } else if (!/^[\d\s\-\+\(\)]{10,}$/.test(formData.phone)) {
+    if (!formData.phone.trim()) newErrors.phone = 'Phone number is required';
+    else if (!/^[\d\s\-\+\(\)]{10,}$/.test(formData.phone))
       newErrors.phone = 'Invalid phone number';
-    }
-
-    if (!formData.message.trim()) {
-      newErrors.message = 'Message is required';
-    }
+    if (!formData.message.trim()) newErrors.message = 'Message is required';
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-const handleSubmit = (e: FormEvent) => {
-  e.preventDefault();
-  if (!pkg) return;
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    if (!pkg) return;
 
-  if (!validateForm()) return;
+    if (!validateForm()) return;
 
-  // Construct WhatsApp link
-  const phoneNumber = '919696415586'; // Replace with your number in international format
-  const message = `Hello! I'm interested in "${pkg.title}". My details:
-Name: ${formData.name}
-Email: ${formData.email}
-Phone: ${formData.phone}
-Message: ${formData.message}`;
+    setIsSubmitting(true);
 
-  // Encode the message for URL
-  const encodedMessage = encodeURIComponent(message);
+    try {
+      const { data, error } = await supabase.from('package_queries').insert([
+        {
+          package_name: pkg.title,
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message,
+          created_at: new Date(), // optional, table has default
+        },
+      ]);
 
-  // Open WhatsApp
-  window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
+      if (error) {
+        console.error('Supabase insert error:', error);
+        alert('Failed to submit query. Please try again.');
+        setIsSubmitting(false);
+        return;
+      }
 
-  // Optionally show success state in modal
-  setIsSuccess(true);
-  setTimeout(() => handleClose(), 2000);
-};
-
-
+      setIsSuccess(true);
+      setTimeout(() => handleClose(), 2000);
+    } catch (err) {
+      console.error('Unexpected error:', err);
+      alert('Something went wrong. Please try again later.');
+      setIsSubmitting(false);
+    }
+  };
 
   const handleClose = () => {
     setFormData({ name: '', email: '', phone: '', message: '' });
@@ -121,7 +120,6 @@ Message: ${formData.message}`;
         {/* Modal Content */}
         <div className="p-6">
           {isSuccess ? (
-            // Success State
             <div className="text-center py-8">
               <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-green-100 flex items-center justify-center">
                 <CheckCircle className="h-8 w-8 text-green-600" />
@@ -132,99 +130,76 @@ Message: ${formData.message}`;
               </p>
             </div>
           ) : (
-            // Form State
             <>
-              {/* Header */}
               <div className="mb-6">
                 <h2 id="modal-title" className="text-2xl font-playfair italic text-gray-900 mb-2">
                   Send Query
                 </h2>
                 <p className="text-sm text-gray-600">
-                  Interested in <span className="font-semibold text-[hsl(var(--brand-orange))]">{pkg.title}</span>? Fill out the form below.
+                  Interested in{' '}
+                  <span className="font-semibold text-[hsl(var(--brand-orange))]">{pkg.title}</span>
+                  ? Fill out the form below.
                 </p>
               </div>
 
-              {/* Form */}
               <form onSubmit={handleSubmit} className="space-y-4">
-                {/* Name Field */}
+                {/* Name */}
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
                     Full Name <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="text"
-                    id="name"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     className={`w-full px-4 py-2 rounded-lg border ${
                       errors.name ? 'border-red-500' : 'border-gray-300'
                     } focus:ring-2 focus:ring-[hsl(var(--brand-orange))] focus:border-transparent transition-colors`}
                     placeholder="John Doe"
-                    aria-invalid={!!errors.name}
-                    aria-describedby={errors.name ? 'name-error' : undefined}
                   />
-                  {errors.name && (
-                    <p id="name-error" className="mt-1 text-sm text-red-600">
-                      {errors.name}
-                    </p>
-                  )}
+                  {errors.name && <p className="mt-1 text-sm text-red-600">{errors.name}</p>}
                 </div>
 
-                {/* Email Field */}
+                {/* Email */}
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
                     Email Address <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="email"
-                    id="email"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     className={`w-full px-4 py-2 rounded-lg border ${
                       errors.email ? 'border-red-500' : 'border-gray-300'
                     } focus:ring-2 focus:ring-[hsl(var(--brand-orange))] focus:border-transparent transition-colors`}
                     placeholder="john@example.com"
-                    aria-invalid={!!errors.email}
-                    aria-describedby={errors.email ? 'email-error' : undefined}
                   />
-                  {errors.email && (
-                    <p id="email-error" className="mt-1 text-sm text-red-600">
-                      {errors.email}
-                    </p>
-                  )}
+                  {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email}</p>}
                 </div>
 
-                {/* Phone Field */}
+                {/* Phone */}
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
                     Phone Number <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="tel"
-                    id="phone"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     className={`w-full px-4 py-2 rounded-lg border ${
                       errors.phone ? 'border-red-500' : 'border-gray-300'
                     } focus:ring-2 focus:ring-[hsl(var(--brand-orange))] focus:border-transparent transition-colors`}
                     placeholder="+91 9999999999"
-                    aria-invalid={!!errors.phone}
-                    aria-describedby={errors.phone ? 'phone-error' : undefined}
                   />
-                  {errors.phone && (
-                    <p id="phone-error" className="mt-1 text-sm text-red-600">
-                      {errors.phone}
-                    </p>
-                  )}
+                  {errors.phone && <p className="mt-1 text-sm text-red-600">{errors.phone}</p>}
                 </div>
 
-                {/* Message Field */}
+                {/* Message */}
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
                     Message <span className="text-red-500">*</span>
                   </label>
                   <textarea
-                    id="message"
                     rows={4}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
@@ -232,17 +207,11 @@ Message: ${formData.message}`;
                       errors.message ? 'border-red-500' : 'border-gray-300'
                     } focus:ring-2 focus:ring-[hsl(var(--brand-orange))] focus:border-transparent transition-colors resize-none`}
                     placeholder="Tell us about your travel preferences, group size, dates, etc."
-                    aria-invalid={!!errors.message}
-                    aria-describedby={errors.message ? 'message-error' : undefined}
                   />
-                  {errors.message && (
-                    <p id="message-error" className="mt-1 text-sm text-red-600">
-                      {errors.message}
-                    </p>
-                  )}
+                  {errors.message && <p className="mt-1 text-sm text-red-600">{errors.message}</p>}
                 </div>
 
-                {/* Submit Button */}
+                {/* Submit */}
                 <button
                   type="submit"
                   disabled={isSubmitting}

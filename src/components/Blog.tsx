@@ -1,73 +1,53 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Calendar, User, Tag, ArrowRight, BookOpen } from 'lucide-react';
+import { ArrowLeft, Calendar, User, ArrowRight, BookOpen } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { supabase } from '@/lib/supabaseClient'; // import supabase client
 
-const blogPosts = [
-  {
-    id: 1,
-    title: "Hidden Gems of Santorini: Beyond the Instagram Spots",
-    excerpt: "Discover the secret corners of Santorini that locals cherish. From hidden beaches to authentic tavernas, explore the island's true essence.",
-    image: "/santorini-sunset.jpg",
-    category: "Destinations",
-    author: "Sarah Mitchell",
-    date: "March 15, 2024",
-    readTime: "5 min read"
-  },
-  {
-    id: 2,
-    title: "Tokyo on a Budget: Experience Luxury for Less",
-    excerpt: "Think Tokyo is expensive? Think again. Learn how to navigate Japan's capital without breaking the bank while still enjoying world-class experiences.",
-    image: "/tokyo-city.jpg",
-    category: "Budget Travel",
-    author: "Michael Chen",
-    date: "March 10, 2024",
-    readTime: "7 min read"
-  },
-  {
-    id: 3,
-    title: "The Ultimate Guide to Maldives Water Villas",
-    excerpt: "Everything you need to know about choosing the perfect overwater bungalow in the Maldives, from booking tips to what to expect.",
-    image: "/maldives-resort.jpg",
-    category: "Luxury Travel",
-    author: "Emma Rodriguez",
-    date: "March 5, 2024",
-    readTime: "6 min read"
-  },
-  {
-    id: 4,
-    title: "Hiking the Swiss Alps: A Beginner's Journey",
-    excerpt: "Never hiked before? No problem. Follow our journey through Switzerland's most breathtaking trails designed for first-time hikers.",
-    image: "/swiss-alps.jpg",
-    category: "Adventure",
-    author: "David Thompson",
-    date: "February 28, 2024",
-    readTime: "8 min read"
-  },
-  {
-    id: 5,
-    title: "Spiritual Awakening: Temple Hopping in Bali",
-    excerpt: "Experience Bali's rich spiritual heritage through its magnificent temples. A guide to the most sacred and serene spots on the island.",
-    image: "/bali-temple.jpg",
-    category: "Culture",
-    author: "Aisha Patel",
-    date: "February 20, 2024",
-    readTime: "6 min read"
-  },
-  {
-    id: 6,
-    title: "Desert Dreams: 48 Hours in Dubai",
-    excerpt: "From futuristic skyscrapers to ancient souks, discover how to make the most of two days in the city of superlatives.",
-    image: "/dubai-desert.jpg",
-    category: "City Guides",
-    author: "James Wilson",
-    date: "February 15, 2024",
-    readTime: "5 min read"
-  }
-];
+interface BlogPost {
+  id: number;
+  title: string;
+  excerpt: string;
+  image: string;
+  category: string;
+  author: string;
+  date: string;
+  readTime: string;
+}
 
 const Blog = () => {
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
+  const [email, setEmail] = useState(''); // for newsletter input
+  const [message, setMessage] = useState(''); // success/error message
+
+  useEffect(() => {
+    fetch('/blogData.json') // public folder file
+      .then((res) => res.json())
+      .then((data) => setBlogPosts(data))
+      .catch((err) => console.error("Error loading blog data:", err));
+  }, []);
+
+  const handleSubscribe = async () => {
+    if (!email) {
+      setMessage("Please enter a valid email");
+      return;
+    }
+
+    const { data, error } = await supabase
+      .from('newsletter')
+      .insert([{ email }]);
+
+    if (error) {
+      console.error(error);
+      setMessage("Failed to subscribe. Maybe already subscribed?");
+    } else {
+      setMessage("Subscribed successfully!");
+      setEmail(''); // clear input
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
@@ -174,13 +154,20 @@ const Blog = () => {
           <div className="flex gap-4 max-w-md mx-auto">
             <input 
               type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
               className="flex-1 px-4 py-3 rounded-lg border bg-background focus:outline-none focus:ring-2 focus:ring-primary"
             />
-            <Button size="lg" className="whitespace-nowrap">
+            <Button 
+              size="lg" 
+              className="whitespace-nowrap"
+              onClick={handleSubscribe}
+            >
               Subscribe
             </Button>
           </div>
+          {message && <p className="mt-4 text-sm text-primary">{message}</p>}
         </div>
       </section>
     </div>

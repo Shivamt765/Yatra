@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import { X, Send, User, Mail, Phone, MessageSquare } from 'lucide-react';
+import { Send, User, Mail, Phone, MessageSquare } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { useToast } from '@/hooks/use-toast';
 import { motion, AnimatePresence } from 'framer-motion';
+import { supabase } from '@/lib/supabaseClient';
 
 interface QueryModalProps {
   isOpen: boolean;
@@ -24,57 +25,63 @@ const QueryModal = ({ isOpen, onClose, packageData }: QueryModalProps) => {
   const { toast } = useToast();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!packageData) return;
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  if (!packageData) return;
 
-    const phoneNumber = '919696415586'; // your WhatsApp number with country code
-
-    // Construct message
-    const msg = `
-Hello! I'm interested in the package: ${packageData.title}
-Name: ${formData.name}
-Email: ${formData.email}
-Phone: ${formData.phone}
-Message: ${formData.message}
-`;
-
-    const encodedMsg = encodeURIComponent(msg);
-
-    // Show airplane animation
+  try {
     setShowAnimation(true);
 
-    // Open WhatsApp in a new tab
-    window.open(`https://wa.me/${9696415586}?text=${encodedMsg}`, '_blank');
+    // Insert into Supabase table 'package_queries'
+    const { data, error } = await supabase
+      .from('package_queries')
+      .insert([{
+        package_name: packageData.title, // match table column
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        message: formData.message,
+        created_at: new Date(), // optional, default is set in table
+      }]);
 
-    // Toast
+    if (error) {
+      console.error('Error saving query:', error);
+      toast({
+        title: 'Error',
+        description: 'There was a problem submitting your query. Please try again.',
+        variant: 'destructive',
+      });
+    } else {
+      toast({
+        title: 'Query Submitted!',
+        description: 'Your query has been successfully saved. We will contact you soon.',
+      });
+      setFormData({ name: '', email: '', phone: '', message: '' });
+
+      // Hide animation after 1.5s and close modal
+      setTimeout(() => {
+        setShowAnimation(false);
+        onClose();
+      }, 1500);
+    }
+  } catch (err) {
+    console.error(err);
     toast({
-      title: "Query Sent!",
-      description: "Your message is ready to send on WhatsApp.",
+      title: 'Error',
+      description: 'Something went wrong. Please try again later.',
+      variant: 'destructive',
     });
+    setShowAnimation(false);
+  }
+};
 
-    // Clear form
-    setFormData({ name: '', email: '', phone: '', message: '' });
-
-    // Hide animation after 2 seconds and close modal
-    setTimeout(() => {
-      setShowAnimation(false);
-      onClose();
-    }, 2000);
-  };
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent
-        className="max-w-md w-full mx-auto max-h-[90vh] overflow-y-auto rounded-2xl shadow-2xl 
-                   scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent relative"
-      >
+      <DialogContent className="max-w-md w-full mx-auto max-h-[90vh] overflow-y-auto rounded-2xl shadow-2xl relative">
         {/* Airplane Animation */}
         <AnimatePresence>
           {showAnimation && (
@@ -97,8 +104,7 @@ Message: ${formData.message}
           </DialogTitle>
           {packageData && (
             <p className="text-muted-foreground">
-              Interested in:{" "}
-              <span className="font-semibold text-sky-blue">{packageData.title}</span>
+              Interested in: <span className="font-semibold text-sky-blue">{packageData.title}</span>
             </p>
           )}
         </DialogHeader>
@@ -155,20 +161,12 @@ Message: ${formData.message}
           </div>
 
           <div className="flex gap-3 pt-4">
-            <Button
-              type="button"
-              variant="outline"
-              onClick={onClose}
-              className="flex-1"
-            >
+            <Button type="button" variant="outline" onClick={onClose} className="flex-1">
               Cancel
             </Button>
-            <Button
-              type="submit"
-              className="flex-1 btn-adventure"
-            >
+            <Button type="submit" className="flex-1 btn-adventure">
               <Send className="mr-2 h-4 w-4" />
-              Send via WhatsApp
+              Submit Query
             </Button>
           </div>
         </form>

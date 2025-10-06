@@ -14,6 +14,7 @@ import FloatingContact from '@/components/FloatingContact';
 import MomentsSection from '@/components/MomentsSection';
 import WhyChoose from '@/components/WhyChoose';
 
+import HomeBlogCarousel from '@/components/HomeBlogCarousel';
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(false); // default false
@@ -42,29 +43,31 @@ const Index = () => {
     return <LoadingScreen onComplete={handleLoadingComplete} />;
   }
 
-  return (
-    <div className="min-h-screen bg-background">
-      <Navigation />
-      <HeroSection />
-      <PromotionalBanner />
-      <MomentsSection />
-      {/* <OccasionBanner /> */}
-      <PackagesCarousel onQueryClick={handleQueryClick} />
-      <WhyChoose />
-      <ReelsSection />
-      <TestimonialsSection />
-      <Footer />
+ return (
+  <div className="min-h-screen bg-background overflow-y-auto overflow-x-hidden">
+    <Navigation />
+    <HeroSection />
+    <PromotionalBanner />
+    <MomentsSection />
+    {/* <OccasionBanner /> */}
+    <PackagesCarousel onQueryClick={handleQueryClick} />
+    <WhyChoose />
+    <ReelsSection />
+    <HomeBlogCarousel/>
+    <TestimonialsSection />
+    <Footer />
 
-      <QueryModal
-        isOpen={isQueryModalOpen}
-        onClose={() => setIsQueryModalOpen(false)}
-        packageData={selectedPackage}
-      />
+    <QueryModal
+      isOpen={isQueryModalOpen}
+      onClose={() => setIsQueryModalOpen(false)}
+      packageData={selectedPackage}
+    />
 
-      <BookingNotifications />
-      <FloatingContact />
-    </div>
-  );
+    <BookingNotifications />
+    <FloatingContact />
+  </div>
+);
+
 };
 
 export default Index;

@@ -9,6 +9,7 @@ import NotFound from "./pages/NotFound";
 import Packages from './pages/Packages'; // <-- Add Packages page
 import AboutUs from "./components/About";
 import Contact from "./components/Contact";
+import Blog from "./components/Blog";
 
 const queryClient = new QueryClient();
 
@@ -23,8 +24,9 @@ const App = () => (
           <Route path="/packages" element={<Packages />} />           {/* Packages list */}
           <Route path="/packages/:id" element={<PackageDetails />} /> {/* Package details */}
           <Route path="*" element={<NotFound />} />                  {/* Catch-all must be last */}
-           <Route path="/about" element={<AboutUs />} />
-            <Route path="/contact" element={<Contact />} />
+          <Route path="/about" element={<AboutUs />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/Blog" element={<Blog />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
