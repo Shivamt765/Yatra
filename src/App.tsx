@@ -10,6 +10,7 @@ import Packages from './pages/Packages'; // <-- Add Packages page
 import AboutUs from "./components/About";
 import Contact from "./components/Contact";
 import Blog from "./components/Blog";
+import ContactAdmin from './pages/ContactAdmin';
 
 const queryClient = new QueryClient();
 
@@ -27,6 +28,7 @@ const App = () => (
           <Route path="/about" element={<AboutUs />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/Blog" element={<Blog />} />
+          <Route path="/Contact-admin" element={<ContactAdmin />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
