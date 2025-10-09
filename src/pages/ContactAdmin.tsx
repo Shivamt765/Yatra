@@ -50,6 +50,21 @@ const ContactAdmin = () => {
       if ((data?.length || 0) < PAGE_SIZE) setHasMoreQueries(false);
     }
   };
+  const queryHeaders = [
+  { label: 'ID', key: 'id' },
+  { label: 'Name', key: 'name' },
+  { label: 'Email', key: 'email' },
+  { label: 'Phone', key: 'phone' },
+  { label: 'Message', key: 'message' },
+  { label: 'Package Name', key: 'package_name' },
+  { label: 'Created At', key: 'created_at' }
+];
+
+const subscriberHeaders = [
+  { label: 'ID', key: 'id' },
+  { label: 'Email', key: 'email' },
+  { label: 'Created At', key: 'created_at' }
+];
 
   const fetchSubscribers = async (page = 1, append = true) => {
     const from = (page - 1) * PAGE_SIZE;
@@ -118,13 +133,15 @@ const ContactAdmin = () => {
         {/* Queries */}
         <Tabs.Content value="tab1">
           <div className="flex justify-end mb-4">
-            <CSVLink
-              data={queries}
-              filename="queries.csv"
-              className="flex items-center gap-2 bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600"
-            >
-              <Download className="w-4 h-4" /> Export CSV
-            </CSVLink>
+<CSVLink
+  data={queries}
+  headers={queryHeaders}
+  filename={"queries.csv"} // <-- Must be a string in quotes
+  uFEFF={true} // for Excel UTF-8
+  className="flex items-center gap-2 bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600"
+>
+  <Download className="w-4 h-4" /> Export Queries
+</CSVLink>
           </div>
           <InfiniteScroll
             dataLength={queries.length}
