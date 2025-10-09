@@ -1,41 +1,87 @@
 [
   {
-    "id": 1,
-    "title": "Bali Paradise Escape",
-    "description": "Experience the magic of Bali with temple visits, rice terraces, and pristine beaches. Immerse yourself in the rich culture and natural beauty.",
-    "location": "Bali, Indonesia",
-    "price": "₹1,29,900",
-    "duration": "7D/6N",
-    "image": "/bali-temple.jpg",
-    "rating": 4.9,
-    "live": true,
-    "categories": ["upcoming", "family", "general"],
-    "itinerary": [
-      {
-        "day": 1,
-        "title": "Arrival & Beach Relaxation",
-        "activities": ["Airport pickup", "Hotel check-in", "Relax at the beach", "Welcome dinner"],
-        "meals": ["Dinner"],
-        "accommodation": "Beachfront Resort"
-      },
-      {
-        "day": 2,
-        "title": "Cultural Exploration",
-        "activities": ["Visit Uluwatu Temple", "Rice terrace walk", "Traditional dance show"],
-        "meals": ["Breakfast", "Lunch", "Dinner"],
-        "accommodation": "Beachfront Resort"
-      },
-      {
-        "day": 3,
-        "title": "Island Adventure",
-        "activities": ["Snorkeling at Nusa Penida", "Lunch at local cafe", "Sunset at Tanah Lot"],
-        "meals": ["Breakfast", "Lunch", "Dinner"],
-        "accommodation": "Beachfront Resort"
-      }
-    ],
-    "inclusions": ["Accommodation in 4-star resort", "All meals as per itinerary", "Transfers & transport", "Professional tour guide", "Entrance fees for activities"],
-    "exclusions": ["Flights", "Personal expenses", "Travel insurance", "Optional activities"]
-  },
+  "id": 1,
+  "title": "Nepal Adventure",
+  "description": "Embark on an unforgettable 4-day journey from Gorakhpur to Pokhara and Chitwan. Experience serene lakes, breathtaking mountains, and the wild beauty of Chitwan National Park — perfect for families, couples, and nature lovers.",
+  "location": "Nepal",
+  "price": "₹11000",
+  "duration": "4D/3N",
+  "image": "/assets/Nepal2.jpg",
+  "rating": 4.9,
+  "live": true,
+  "categories": ["upcoming", "family", "nature","general"],
+    "gallery": [
+    "/assets/chitwan1.jpg",
+    "/assets/chitwan2.jpg",
+    "/assets/chitwan3.jpg",
+    "/assets/Nepal1.jpg"
+  ],
+  "itinerary": [
+    {
+      "day": 1,
+      "title": "Gorakhpur → Pokhara",
+      "activities": [
+        "Morning pickup from Gorakhpur (via Sonauli border)",
+        "On arrival, check-in at hotel",
+        "Evening free for leisure near Fewa Lake",
+        "Optional: Boating & Lakeside walk"
+      ],
+      "meals": ["Dinner"],
+      "accommodation": "Hotel in Pokhara"
+    },
+    {
+      "day": 2,
+      "title": "Pokhara Sightseeing",
+      "activities": [
+        "Visit: Bindhyabasini Temple, Devis Fall, Gupteshwar Cave, Seti River Gorge",
+        "Optional Adventure: Paragliding / Zip flyer",
+        "Evening shopping at Lakeside Market"
+      ],
+      "meals": ["Breakfast", "Dinner"],
+      "accommodation": "Hotel in Pokhara"
+    },
+    {
+      "day": 3,
+      "title": "Pokhara → Chitwan",
+      "activities": [
+        "Drive to Chitwan National Park (Approx. 5 hrs)",
+        "Arrival & check-in at jungle resort",
+        "Evening: Tharu Cultural Dance Show"
+      ],
+      "meals": ["Breakfast", "Dinner"],
+      "accommodation": "Jungle Resort in Chitwan"
+    },
+    {
+      "day": 4,
+      "title": "Chitwan Jungle Safari → Gorakhpur Return",
+      "activities": [
+        "Morning Jeep Safari / Elephant Safari",
+        "Visit: Crocodile Breeding Center & Riverside",
+        "After breakfast, return to Gorakhpur with happy memories ❤"
+      ],
+      "meals": ["Breakfast"],
+      "accommodation": "Check-out after breakfast"
+    }
+  ],
+  "inclusions": [
+    "Accommodation in standard hotels & resorts",
+    "Daily breakfast and dinner",
+    "All transfers and sightseeing by private vehicle",
+    "Tharu Cultural Dance Show in Chitwan",
+    "Jungle Safari in Chitwan National Park",
+    "Boating at Fewa Lake (optional)",
+    "All applicable taxes"
+  ],
+  "exclusions": [
+    "Airfare or train fare",
+    "Adventure activities like Paragliding / Zip flyer",
+    "Lunch during travel",
+    "Personal expenses",
+    "Entry fees not mentioned in inclusions",
+    "Travel insurance"
+  ]
+}
+,
   {
     "id": 2,
     "title": "Swiss Alps Adventure",
@@ -47,6 +93,12 @@
     "rating": 4.8,
     "live": false,
     "categories": ["upcoming", "corporate", "general"],
+      "gallery": [
+    "/bali1.jpg",
+    "/bali2.jpg",
+    "/bali3.jpg",
+    "/bali4.jpg"
+  ],
     "itinerary": [
       {
         "day": 1,
@@ -75,8 +127,14 @@
     "duration": "8D/7N",
     "image": "/tokyo-city.jpg",
     "rating": 4.9,
-    "live": true,
+    "live": false,
     "categories": ["upcoming", "family", "general"],
+      "gallery": [
+    "/bali1.jpg",
+    "/bali2.jpg",
+    "/bali3.jpg",
+    "/bali4.jpg"
+  ],
     "itinerary": [
       {
         "day": 1,
@@ -105,8 +163,14 @@
     "duration": "6D/5N",
     "image": "/maldives-resort.jpg",
     "rating": 5.0,
-    "live": true,
+    "live": false,
     "categories": ["upcoming", "family", "corporate"],
+      "gallery": [
+    "/bali1.jpg",
+    "/bali2.jpg",
+    "/bali3.jpg",
+    "/bali4.jpg"
+  ],
     "itinerary": [
       {
         "day": 1,

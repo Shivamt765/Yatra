@@ -22,7 +22,7 @@ const handleSendQuery = () => {
   // Function to open WhatsApp
   const handleWhatsApp = () => {
     const message = encodeURIComponent(`Hello! I am interested in the package: ${pkg.title}`);
-    window.open(`https://wa.me/919696415586?text=${message}`, "_blank");
+    window.open(`https://wa.me/919151491889?text=${message}`, "_blank");
   };
 
   return (

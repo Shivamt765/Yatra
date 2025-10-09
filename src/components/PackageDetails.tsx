@@ -12,17 +12,6 @@ import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import { supabase } from '@/lib/supabaseClient';
 
-interface Package {
-  id: string;
-  title: string;
-  description: string;
-  location: string;
-  price: string;
-  duration: string;
-  image: string;
-  rating?: number;
-}
-
 interface ItineraryDay {
   day: number;
   title: string;
@@ -45,6 +34,23 @@ interface FormErrors {
   message?: string;
 }
 
+interface Package {
+  id: number;
+  title: string;
+  description: string;
+  location: string;
+  price: string;
+  duration: string;
+  image: string;
+  rating?: number;
+  live?: boolean;
+  categories?: string[];
+  gallery?: string[];
+  itinerary?: ItineraryDay[];
+  inclusions?: string[];
+  exclusions?: string[];
+}
+
 const PackageDetails = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
@@ -52,21 +58,11 @@ const PackageDetails = () => {
   const [packageData, setPackageData] = useState<Package | null>(null);
   const [loading, setLoading] = useState(true);
 
-  // Modal & form state
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState<FormData>({ name: '', email: '', phone: '', message: '' });
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-
-  const itinerary: ItineraryDay[] = [
-    { day: 1, title: "Arrival & City Tour", activities: ["Airport pickup", "Check‑in to hotel", "City walk", "Welcome dinner"], meals: ["Lunch", "Dinner"], accommodation: "5-Star Hotel" },
-    { day: 2, title: "Adventure & Local Culture", activities: ["Morning trek", "River rafting", "Market visit", "Cultural show"], meals: ["Breakfast", "Lunch", "Dinner"], accommodation: "5-Star Hotel" },
-    { day: 3, title: "Sightseeing & Departure", activities: ["Temple visit", "Shopping time", "Airport drop"], meals: ["Breakfast", "Lunch"], accommodation: "Check-out" }
-  ];
-
-  const inclusions = ["Accommodation in 5-star hotels","All meals as per itinerary","AC vehicle for all transfers","Professional tour guide","All entrance fees","Travel insurance","24/7 customer support"];
-  const exclusions = ["Personal expenses","Additional activities not mentioned","Tips and gratuities","Airfare (unless specified)","Visa fees"];
 
   // Fetch package data
   useEffect(() => {
@@ -105,13 +101,12 @@ const PackageDetails = () => {
     setIsSubmitting(true);
 
     const { error } = await supabase.from('package_queries').insert([{
-  package_name: packageData.title, // matches table
-  name: formData.name,
-  email: formData.email,
-  phone: formData.phone,
-  message: formData.message
-}]);
-
+      package_name: packageData.title,
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      message: formData.message
+    }]);
 
     if (error) {
       console.error("Supabase insert error:", error);
@@ -119,11 +114,10 @@ const PackageDetails = () => {
       return;
     }
 
-    // Open WhatsApp
     const waMessage = encodeURIComponent(
       `Hello! I'm interested in "${packageData.title}". My details:\nName: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nMessage: ${formData.message}`
     );
-    window.open(`https://wa.me/919696415586?text=${waMessage}`, "_blank");
+    window.open(`https://wa.me/919151491889?text=${waMessage}`, "_blank");
 
     setIsSuccess(true);
     setTimeout(() => {
@@ -177,8 +171,25 @@ const PackageDetails = () => {
             </TabsList>
 
             <TabsContent value="itinerary">
+              {/* Gallery */}
+              {packageData.gallery && packageData.gallery.length > 0 && (
+                <div className="mb-6">
+                  <h3 className="text-lg font-semibold mb-3 flex items-center gap-2 text-brand-orange">
+                    <Camera className="h-5 w-5" /> Trip Gallery
+                  </h3>
+                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    {packageData.gallery.map((img, i) => (
+                      <div key={i} className="overflow-hidden rounded-xl shadow-md group relative">
+                        <img src={img} alt={`Gallery image ${i + 1}`} className="w-full h-40 object-cover group-hover:scale-110 transition-transform duration-500"/>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Dynamic itinerary */}
               <div className="space-y-4">
-                {itinerary.map(day => (
+                {packageData.itinerary?.map(day => (
                   <Card key={day.day} className="backdrop-blur-md bg-white/90 border-white/50">
                     <CardContent className="p-6 flex gap-4">
                       <div className="flex-shrink-0">
@@ -214,11 +225,21 @@ const PackageDetails = () => {
                 <CardContent className="p-6 grid md:grid-cols-2 gap-8">
                   <div>
                     <h3 className="text-lg font-semibold mb-4 flex items-center gap-2 text-green-700"><CheckCircle className="h-5 w-5"/> What's Included</h3>
-                    <ul className="space-y-2">{inclusions.map((i, idx)=><li key={idx} className="flex items-start gap-2"><CheckCircle className="h-4 w-4 text-green-600 mt-0.5"/><span className="text-gray-600">{i}</span></li>)}</ul>
+                    <ul className="space-y-2">{packageData.inclusions?.map((i, idx)=>(
+                      <li key={idx} className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-600 mt-0.5"/>
+                        <span className="text-gray-600">{i}</span>
+                      </li>
+                    ))}</ul>
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold mb-4 flex items-center gap-2 text-red-700"><XCircle className="h-5 w-5"/> What's Not Included</h3>
-                    <ul className="space-y-2">{exclusions.map((i, idx)=><li key={idx} className="flex items-start gap-2"><XCircle className="h-4 w-4 text-red-600 mt-0.5"/><span className="text-gray-600">{i}</span></li>)}</ul>
+                    <ul className="space-y-2">{packageData.exclusions?.map((i, idx)=>(
+                      <li key={idx} className="flex items-start gap-2">
+                        <XCircle className="h-4 w-4 text-red-600 mt-0.5"/>
+                        <span className="text-gray-600">{i}</span>
+                      </li>
+                    ))}</ul>
                   </div>
                 </CardContent>
               </Card>
@@ -227,14 +248,23 @@ const PackageDetails = () => {
             <TabsContent value="highlights">
               <Card className="backdrop-blur-md bg-white/90 border-white/50">
                 <CardContent className="p-6 grid md:grid-cols-2 gap-4">
-                  {[
-                    { icon: Camera, text: "Scenic photo opportunities" },
-                    { icon: Activity, text: "Adventure activities included" },
-                    { icon: Hotel, text: "Premium accommodation" },
-                    { icon: Utensils, text: "Authentic local cuisine" },
-                    { icon: Users, text: "Small group experience" },
-                    { icon: MapPin, text: "Hidden gems exploration" }
-                  ].map((h,i)=>(<div key={i} className="flex items-center gap-3 p-3 rounded-lg bg-orange-50"><h.icon className="h-5 w-5 text-brand-orange"/><span className="text-gray-700">{h.text}</span></div>))}
+                  {[Camera, Activity, Hotel, Utensils, Users, MapPin].map((icon, i) => {
+                    const texts = [
+                      "Scenic photo opportunities",
+                      "Adventure activities included",
+                      "Premium accommodation",
+                      "Authentic local cuisine",
+                      "Small group experience",
+                      "Hidden gems exploration"
+                    ];
+                    const IconComponent = icon as any;
+                    return (
+                      <div key={i} className="flex items-center gap-3 p-3 rounded-lg bg-orange-50">
+                        <IconComponent className="h-5 w-5 text-brand-orange"/>
+                        <span className="text-gray-700">{texts[i]}</span>
+                      </div>
+                    );
+                  })}
                 </CardContent>
               </Card>
             </TabsContent>
@@ -255,8 +285,8 @@ const PackageDetails = () => {
 
               <Separator className="my-6"/>
               <div className="space-y-2">
-                <a href="tel:+919999999999" className="flex items-center gap-2 text-sm text-gray-600 hover:text-brand-orange"><Phone className="h-4 w-4"/> +91 99999 99999</a>
-                <a href="mailto:support@travel.com" className="flex items-center gap-2 text-sm text-gray-600 hover:text-brand-orange"><Mail className="h-4 w-4"/> support@travel.com</a>
+                <a href="tel:+91 9151491889" className="flex items-center gap-2 text-sm text-gray-600 hover:text-brand-orange"><Phone className="h-4 w-4"/> +91 9151491889</a>
+                <a href="mailto:yatraholidayinfo@gmail.com" className="flex items-center gap-2 text-sm text-gray-600 hover:text-brand-orange"><Mail className="h-4 w-4"/> yatraholidayinfo@gmail.com</a>
               </div>
             </CardContent>
           </Card>
@@ -298,22 +328,20 @@ const PackageDetails = () => {
                               className={`w-full px-4 py-2 rounded-lg border ${errors[field as keyof FormErrors]?'border-red-500':'border-gray-300'} focus:ring-2 focus:ring-[hsl(var(--brand-orange))] transition-colors resize-none`}
                               placeholder={placeholder}
                             />
-                          ):(
-                            <input
-                              type={type}
-                              value={formData[field as keyof FormData]}
-                              onChange={e=>setFormData({...formData,[field]:e.target.value})}
-                              className={`w-full px-4 py-2 rounded-lg border ${errors[field as keyof FormErrors]?'border-red-500':'border-gray-300'} focus:ring-2 focus:ring-[hsl(var(--brand-orange))] transition-colors`}
-                              placeholder={placeholder}
-                            />
-                          )}
-                          {errors[field as keyof FormErrors] && <p className="mt-1 text-sm text-red-600">{errors[field as keyof FormErrors]}</p>}
+                          ):(<input
+                            type={type}
+                            value={formData[field as keyof FormData]}
+                            onChange={e=>setFormData({...formData,[field]:e.target.value})}
+                            className={`w-full px-4 py-2 rounded-lg border ${errors[field as keyof FormErrors]?'border-red-500':'border-gray-300'} focus:ring-2 focus:ring-[hsl(var(--brand-orange))] transition-colors`}
+                            placeholder={placeholder}
+                          />)}
+                          {errors[field as keyof FormErrors] && <p className="mt-1 text-sm text-red-500">{errors[field as keyof FormErrors]}</p>}
                         </div>
                       )
                     })}
-                    <button type="submit" disabled={isSubmitting} className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-[hsl(var(--brand-orange))] text-white rounded-xl hover:bg-[hsl(var(--brand-orange))]/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors">
-                      {isSubmitting ? <><Loader2 className="h-5 w-5 animate-spin"/> Sending...</> : <><Send className="h-5 w-5"/> Send Query</>}
-                    </button>
+                    <Button type="submit" disabled={isSubmitting} className="w-full flex items-center justify-center gap-2">
+                      {isSubmitting && <Loader2 className="animate-spin h-4 w-4"/>} Send Query
+                    </Button>
                   </form>
                 </>
               )}

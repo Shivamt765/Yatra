@@ -22,19 +22,19 @@ const Contact = () => {
     {
       icon: Phone,
       title: 'Phone',
-      details: ['+91 98765 43210', '+91 98765 43211'],
-      link: 'tel:+919876543210',
+      details: ['+91 9151491889'],
+      link: 'tel:+919151491889',
     },
     {
       icon: Mail,
       title: 'Email',
-      details: ['info@travelcompany.com', 'support@travelcompany.com'],
-      link: 'mailto:info@travelcompany.com',
+      details: ['yatraholidayinfo@gmail.com'],
+      link: 'mailto:yatraholidayinfo@gmail.com',
     },
     {
       icon: MapPin,
       title: 'Office',
-      details: ['123 Travel Street', 'Mumbai, Maharashtra 400001'],
+      details: ['Nandanagar Infront of Gorakhpur Airport', 'Gorakhpur,273008'],
       link: 'https://maps.google.com',
     },
     {
@@ -213,7 +213,7 @@ const Contact = () => {
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
-                        placeholder="John Doe"
+                        placeholder="Enter your name here"
                         required
                         className="h-12"
                       />
