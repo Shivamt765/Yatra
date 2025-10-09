@@ -1,9 +1,9 @@
 // PackageDetails.tsx
 import { useParams, useNavigate } from 'react-router-dom';
-import { useEffect, useState, FormEvent } from 'react';
+import { useEffect, useState, FormEvent, useRef } from 'react';
 import {
   ArrowLeft, MapPin, Clock, Star, Phone, Mail, MessageCircle,
-  Users, Hotel, Utensils, Camera, Activity, CheckCircle, XCircle, X, Send, Loader2
+  Users, Hotel, Utensils, Camera, Activity, CheckCircle, XCircle, X, Loader2
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -51,13 +51,80 @@ interface Package {
   exclusions?: string[];
 }
 
+const TripGallery = ({ gallery }: { gallery: string[] }) => {
+  const [selectedImg, setSelectedImg] = useState<string | null>(null);
+  const carouselRef = useRef<HTMLDivElement>(null);
+
+  // Auto scroll effect
+  useEffect(() => {
+    const carousel = carouselRef.current;
+    if (!carousel) return;
+    const scrollStep = 1; // speed
+    const interval = setInterval(() => {
+      if (carousel.scrollLeft >= carousel.scrollWidth - carousel.clientWidth) {
+        carousel.scrollLeft = 0;
+      } else {
+        carousel.scrollLeft += scrollStep;
+      }
+    }, 20);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="mb-6">
+      <h3 className="text-lg font-semibold mb-3 flex items-center gap-2 text-brand-orange">
+        <Camera className="h-5 w-5" /> Trip Gallery
+      </h3>
+
+      <div
+        ref={carouselRef}
+        className="flex gap-4 overflow-x-auto no-scrollbar whitespace-nowrap scroll-smooth"
+      >
+        {gallery.map((img, i) => (
+          <div
+            key={i}
+            className="relative inline-block w-60 h-40 flex-shrink-0 overflow-hidden rounded-xl shadow-md group cursor-pointer"
+            onClick={() => setSelectedImg(img)}
+          >
+            <img
+              src={img}
+              alt={`Gallery image ${i + 1}`}
+              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+            />
+          </div>
+        ))}
+      </div>
+
+      {selectedImg && (
+        <div
+          className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 transition-all"
+          onClick={() => setSelectedImg(null)}
+        >
+          <div className="relative max-w-4xl w-full px-4">
+            <button
+              className="absolute top-4 right-4 bg-white/30 hover:bg-white/50 p-2 rounded-full"
+              onClick={() => setSelectedImg(null)}
+            >
+              <X className="text-white" />
+            </button>
+            <img
+              src={selectedImg}
+              alt="Enlarged view"
+              className="w-full h-auto max-h-[80vh] object-contain rounded-lg"
+            />
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
 const PackageDetails = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
 
   const [packageData, setPackageData] = useState<Package | null>(null);
   const [loading, setLoading] = useState(true);
-
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState<FormData>({ name: '', email: '', phone: '', message: '' });
   const [errors, setErrors] = useState<FormErrors>({});
@@ -79,7 +146,6 @@ const PackageDetails = () => {
       });
   }, [id]);
 
-  // Validate form fields
   const validateForm = () => {
     const newErrors: FormErrors = {};
     if (!formData.name.trim()) newErrors.name = 'Name is required';
@@ -92,7 +158,6 @@ const PackageDetails = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  // Submit form to Supabase & WhatsApp
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!packageData) return;
@@ -162,7 +227,7 @@ const PackageDetails = () => {
             </CardContent>
           </Card>
 
-          {/* Tabs: Itinerary, Inclusions, Highlights */}
+          {/* Tabs */}
           <Tabs defaultValue="itinerary" className="w-full">
             <TabsList className="grid w-full grid-cols-3 mb-6">
               <TabsTrigger value="itinerary">Itinerary</TabsTrigger>
@@ -171,23 +236,8 @@ const PackageDetails = () => {
             </TabsList>
 
             <TabsContent value="itinerary">
-              {/* Gallery */}
-              {packageData.gallery && packageData.gallery.length > 0 && (
-                <div className="mb-6">
-                  <h3 className="text-lg font-semibold mb-3 flex items-center gap-2 text-brand-orange">
-                    <Camera className="h-5 w-5" /> Trip Gallery
-                  </h3>
-                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                    {packageData.gallery.map((img, i) => (
-                      <div key={i} className="overflow-hidden rounded-xl shadow-md group relative">
-                        <img src={img} alt={`Gallery image ${i + 1}`} className="w-full h-40 object-cover group-hover:scale-110 transition-transform duration-500"/>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
+              {packageData.gallery && <TripGallery gallery={packageData.gallery} />}
 
-              {/* Dynamic itinerary */}
               <div className="space-y-4">
                 {packageData.itinerary?.map(day => (
                   <Card key={day.day} className="backdrop-blur-md bg-white/90 border-white/50">

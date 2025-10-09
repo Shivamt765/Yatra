@@ -1,41 +1,47 @@
 [
   {
-  "id": 1,
-  "title": "Nepal Adventure",
-  "description": "Embark on an unforgettable 4-day journey from Gorakhpur to Pokhara and Chitwan. Experience serene lakes, breathtaking mountains, and the wild beauty of Chitwan National Park — perfect for families, couples, and nature lovers.",
-  "location": "Nepal",
-  "price": "₹11000",
+  "id": 5,
+  "title": "Gorakhpur to Nepal Highlights Tour",
+  "description": "Experience the best of Nepal in 4 days — from Lumbini’s sacred peace to Pokhara’s lakes and Chitwan’s jungle adventures. A perfect getaway from Gorakhpur for families, couples, and explorers.",
+  "location": "Lumbini, Pokhara & Chitwan – Nepal",
+  "price": "₹12,999",
   "duration": "4D/3N",
   "image": "/assets/Nepal2.jpg",
   "rating": 4.9,
   "live": true,
-  "categories": ["upcoming", "family", "nature","general"],
-    "gallery": [
+  "categories": ["nepal", "family", "nature", "general"],
+  "gallery": [
+    "/assets/lumbini.jpg",
+    "/assets/lumbini2.jpg",
+    "/assets/pokhra.jpg",
     "/assets/chitwan1.jpg",
     "/assets/chitwan2.jpg",
-    "/assets/chitwan3.jpg",
-    "/assets/Nepal1.jpg"
+    "/assets/chitwan3.jpg"
   ],
   "itinerary": [
     {
       "day": 1,
-      "title": "Gorakhpur → Pokhara",
+      "title": "Gorakhpur → Lumbini → Pokhara",
       "activities": [
-        "Morning pickup from Gorakhpur (via Sonauli border)",
-        "On arrival, check-in at hotel",
-        "Evening free for leisure near Fewa Lake",
-        "Optional: Boating & Lakeside walk"
+        "Meet & Greet at Gorakhpur Airport / Railway Station (around 8:00 AM)",
+        "Proceed to Sonauli Border for immigration formalities",
+        "Visit Lumbini – Birthplace of Lord Buddha (UNESCO Site)",
+        "Drive to Pokhara and check in at your hotel",
+        "Evening leisure time near Fewa Lake",
+        "Overnight stay in Pokhara"
       ],
       "meals": ["Dinner"],
       "accommodation": "Hotel in Pokhara"
     },
     {
       "day": 2,
-      "title": "Pokhara Sightseeing",
+      "title": "Pokhara Local Sightseeing",
       "activities": [
-        "Visit: Bindhyabasini Temple, Devis Fall, Gupteshwar Cave, Seti River Gorge",
-        "Optional Adventure: Paragliding / Zip flyer",
-        "Evening shopping at Lakeside Market"
+        "Early visit to Pumdikot Sunrise Point for Himalayan views",
+        "Explore Pokhara attractions: Bindhyabasini Temple, Mahendra & Bat Caves, Seti River Gorge",
+        "Visit International Mountain Museum, Devi’s Fall & Gupteshwor Mahadev Cave",
+        "Enjoy optional boating at Fewa Lake and visit Tal Barahi Temple",
+        "Overnight stay in Pokhara"
       ],
       "meals": ["Breakfast", "Dinner"],
       "accommodation": "Hotel in Pokhara"
@@ -44,150 +50,50 @@
       "day": 3,
       "title": "Pokhara → Chitwan",
       "activities": [
-        "Drive to Chitwan National Park (Approx. 5 hrs)",
-        "Arrival & check-in at jungle resort",
-        "Evening: Tharu Cultural Dance Show"
+        "After breakfast, depart for Chitwan",
+        "Check in at the resort and relax",
+        "Evening visit to Rapti River Sunset Point",
+        "Tharu Cultural Dance Show at local theatre",
+        "Overnight stay in Chitwan"
       ],
       "meals": ["Breakfast", "Dinner"],
       "accommodation": "Jungle Resort in Chitwan"
     },
     {
       "day": 4,
-      "title": "Chitwan Jungle Safari → Gorakhpur Return",
+      "title": "Chitwan Safari → Gorakhpur Return",
       "activities": [
-        "Morning Jeep Safari / Elephant Safari",
-        "Visit: Crocodile Breeding Center & Riverside",
-        "After breakfast, return to Gorakhpur with happy memories ❤"
+        "Early morning Jungle Safari in Chitwan National Park",
+        "Optional: Canoeing on Rapti River or Elephant Safari",
+        "Breakfast at resort and check out by 12:00 PM",
+        "Drive back to Gorakhpur for Airport / Railway Station drop"
       ],
       "meals": ["Breakfast"],
       "accommodation": "Check-out after breakfast"
     }
   ],
   "inclusions": [
-    "Accommodation in standard hotels & resorts",
+    "Accommodation in well-rated hotels and resorts",
     "Daily breakfast and dinner",
-    "All transfers and sightseeing by private vehicle",
+    "All sightseeing and transfers by private vehicle",
     "Tharu Cultural Dance Show in Chitwan",
     "Jungle Safari in Chitwan National Park",
     "Boating at Fewa Lake (optional)",
-    "All applicable taxes"
+    "Border assistance and taxes"
   ],
   "exclusions": [
     "Airfare or train fare",
-    "Adventure activities like Paragliding / Zip flyer",
+    "Adventure activities like Paragliding or Zip flyer",
     "Lunch during travel",
-    "Personal expenses",
+    "Personal expenses and tips",
     "Entry fees not mentioned in inclusions",
     "Travel insurance"
-  ]
-}
-,
-  {
-    "id": 2,
-    "title": "Swiss Alps Adventure",
-    "description": "Conquer the majestic Swiss Alps with guided hiking, skiing, and breathtaking mountain views. Perfect for adventure seekers.",
-    "location": "Switzerland",
-    "price": "₹2,49,900",
-    "duration": "10D/9N",
-    "image": "/swiss-alps.jpg",
-    "rating": 4.8,
-    "live": false,
-    "categories": ["upcoming", "corporate", "general"],
-      "gallery": [
-    "/bali1.jpg",
-    "/bali2.jpg",
-    "/bali3.jpg",
-    "/bali4.jpg"
   ],
-    "itinerary": [
-      {
-        "day": 1,
-        "title": "Arrival & Orientation",
-        "activities": ["Airport pickup", "Hotel check-in", "Evening city walk"],
-        "meals": ["Dinner"],
-        "accommodation": "Alpine Resort"
-      },
-      {
-        "day": 2,
-        "title": "Skiing & Snow Fun",
-        "activities": ["Skiing lessons", "Snowboarding", "Evening hot chocolate"],
-        "meals": ["Breakfast", "Lunch", "Dinner"],
-        "accommodation": "Alpine Resort"
-      }
-    ],
-    "inclusions": ["Accommodation in mountain resort", "Meals as per itinerary", "Ski passes & equipment", "Local guide"],
-    "exclusions": ["Flights", "Personal expenses", "Adventure insurance"]
-  },
-  {
-    "id": 3,
-    "title": "Tokyo Discovery Tour",
-    "description": "Explore the vibrant culture of Tokyo from ancient temples to modern technology. A perfect blend of tradition and innovation.",
-    "location": "Tokyo, Japan",
-    "price": "₹1,89,900",
-    "duration": "8D/7N",
-    "image": "/tokyo-city.jpg",
-    "rating": 4.9,
-    "live": false,
-    "categories": ["upcoming", "family", "general"],
-      "gallery": [
-    "/bali1.jpg",
-    "/bali2.jpg",
-    "/bali3.jpg",
-    "/bali4.jpg"
-  ],
-    "itinerary": [
-      {
-        "day": 1,
-        "title": "Arrival & Shibuya Walk",
-        "activities": ["Airport pickup", "Hotel check-in", "Evening walk in Shibuya"],
-        "meals": ["Dinner"],
-        "accommodation": "City Hotel"
-      },
-      {
-        "day": 2,
-        "title": "Historical & Modern Tokyo",
-        "activities": ["Visit Senso-ji Temple", "Explore Akihabara", "Tokyo Tower view"],
-        "meals": ["Breakfast", "Lunch", "Dinner"],
-        "accommodation": "City Hotel"
-      }
-    ],
-    "inclusions": ["Accommodation in 3-star hotel", "All meals as per itinerary", "Transport & metro passes", "Professional guide"],
-    "exclusions": ["Flights", "Shopping", "Optional activities"]
-  },
-  {
-    "id": 4,
-    "title": "Maldives Luxury Retreat",
-    "description": "Indulge in overwater villas, crystal-clear waters, and world-class diving in this tropical paradise.",
-    "location": "Maldives",
-    "price": "₹3,29,900",
-    "duration": "6D/5N",
-    "image": "/maldives-resort.jpg",
-    "rating": 5.0,
-    "live": false,
-    "categories": ["upcoming", "family", "corporate"],
-      "gallery": [
-    "/bali1.jpg",
-    "/bali2.jpg",
-    "/bali3.jpg",
-    "/bali4.jpg"
-  ],
-    "itinerary": [
-      {
-        "day": 1,
-        "title": "Arrival & Resort Check-in",
-        "activities": ["Airport transfer", "Check-in villa", "Beach relaxation"],
-        "meals": ["Dinner"],
-        "accommodation": "Overwater Villa"
-      },
-      {
-        "day": 2,
-        "title": "Island Hopping & Water Sports",
-        "activities": ["Snorkeling tour", "Scuba diving", "Sunset cruise"],
-        "meals": ["Breakfast", "Lunch", "Dinner"],
-        "accommodation": "Overwater Villa"
-      }
-    ],
-    "inclusions": ["Luxury villa accommodation", "All meals", "Transfers & water activities", "Guide for tours"],
-    "exclusions": ["Flights", "Spa treatments", "Personal expenses"]
+  "seo": {
+    "meta_title": "Gorakhpur to Nepal Tour – Lumbini Pokhara Chitwan 4 Days Package by Yatra Holiday",
+    "meta_description": "Book a 4-day Nepal tour from Gorakhpur with Yatra Holiday. Visit Lumbini, Pokhara & Chitwan — explore lakes, Buddha’s birthplace, and thrilling jungle safaris.",
+    "slug": "gorakhpur-to-nepal-tour-lumbini-pokhara-chitwan"
   }
+}
+
 ]
