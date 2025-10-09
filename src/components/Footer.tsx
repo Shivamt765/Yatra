@@ -62,20 +62,20 @@ const Footer = () => {
               <div className="flex items-start space-x-2 sm:space-x-3">
                 <MapPin className="h-4 w-4 sm:h-5 sm:w-5 mt-1 text-gray-400 flex-shrink-0" />
                 <div>
-                  <p className="text-gray-400">123 Adventure Street</p>
-                  <p className="text-gray-400">Rishikesh, Uttarakhand</p>
-                  <p className="text-gray-400">India - 249137</p>
+                  <p className="text-gray-400">Nandanagar Infront of Gorakhpur Airport</p>
+                  <p className="text-gray-400">Gorakhpur, Uttar Pradesh</p>
+                  <p className="text-gray-400">India - 273008</p>
                 </div>
               </div>
 
               <div className="flex items-center space-x-2 sm:space-x-3">
                 <Phone className="h-4 w-4 sm:h-5 sm:w-5 text-gray-400" />
-                <p className="text-gray-400">+91 98765 43210</p>
+                <p className="text-gray-400">+91 9151491889</p>
               </div>
 
               <div className="flex items-center space-x-2 sm:space-x-3">
                 <Mail className="h-4 w-4 sm:h-5 sm:w-5 text-gray-400" />
-                <p className="text-gray-400">info@nextgenscale.com</p>
+                <p className="text-gray-400">yatraholidayinfo@gmail.com</p>
               </div>
             </div>
           </div>
