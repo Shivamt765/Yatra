@@ -1,102 +1,108 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
-interface LeadFormProps {
-  whatsappNumber?: string;
-}
+const POPUP_INTERVAL = 3 * 60 * 1000; // 3 minutes in ms
 
-const LeadForm: React.FC<LeadFormProps> = ({
-  whatsappNumber = "9151491889",
-}) => {
+const LeadForm = ({ whatsappNumber = "9151491889" }) => {
   const [showPopup, setShowPopup] = useState(false);
+
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [destination, setDestination] = useState("");
   const [category, setCategory] = useState("Family & Group");
 
-  // Show popup only once per user
   useEffect(() => {
-    const hasVisited = localStorage.getItem("leadFormShown");
-    if (!hasVisited) {
+    const lastShown = localStorage.getItem("leadPopupLastShown");
+    const now = Date.now();
+
+    if (!lastShown || now - Number(lastShown) > POPUP_INTERVAL) {
       setShowPopup(true);
-      localStorage.setItem("leadFormShown", "true");
+      localStorage.setItem("leadPopupLastShown", now.toString());
     }
   }, []);
 
-  // Prevent background scroll
   useEffect(() => {
-    if (showPopup) document.body.style.overflow = "hidden";
-    else document.body.style.overflow = "auto";
+    document.body.style.overflow = showPopup ? "hidden" : "auto";
   }, [showPopup]);
 
-  const handleClose = () => setShowPopup(false);
+  const closePopup = () => setShowPopup(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
     if (!name || !phone || !destination) {
-      alert("Please fill all fields!");
+      alert("Please fill all fields");
       return;
     }
 
-    const msg = `Hello, my name is ${name}. I am interested in ${category} packages to ${destination}. My contact number is ${phone}.`;
-    const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(msg)}`;
+    const message = `Hello,
+Name: ${name}
+Phone: ${phone}
+Destination: ${destination}
+Type: ${category}`;
+
+    const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+      message
+    )}`;
+
     window.open(url, "_blank");
+    setShowPopup(false);
   };
 
   if (!showPopup) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
-      <div className="relative w-full max-w-lg p-6 rounded-3xl backdrop-blur-md bg-white/20 border border-white/30 shadow-lg">
-        {/* Close Button */}
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4">
+      <div className="relative w-full max-w-xl rounded-3xl p-8 backdrop-blur-xl bg-white/20 border border-white/30 shadow-2xl">
+        {/* Close */}
         <button
-          onClick={handleClose}
-          className="absolute top-4 right-4 text-white hover:text-orange-400 text-xl font-bold"
+          onClick={closePopup}
+          className="absolute top-4 right-4 text-white text-xl hover:text-orange-400"
         >
           ✕
         </button>
 
-        {/* Form Header */}
         <h2 className="text-3xl font-bold text-center text-white mb-6">
-          Plan Your Dream Trip
+          Let’s Plan Your Trip ✈️
         </h2>
 
-        <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="space-y-4">
           <input
-            type="text"
+            className="w-full rounded-xl px-4 py-3 bg-white/30 text-white placeholder-white/70 outline-none focus:ring-2 focus:ring-orange-400"
             placeholder="Your Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="p-3 rounded-xl border border-white/40 bg-white/30 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-orange-400"
           />
+
           <input
-            type="tel"
+            className="w-full rounded-xl px-4 py-3 bg-white/30 text-white placeholder-white/70 outline-none focus:ring-2 focus:ring-orange-400"
             placeholder="Phone Number"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
-            className="p-3 rounded-xl border border-white/40 bg-white/30 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-orange-400"
           />
+
           <input
-            type="text"
+            className="w-full rounded-xl px-4 py-3 bg-white/30 text-white placeholder-white/70 outline-none focus:ring-2 focus:ring-orange-400"
             placeholder="Destination"
             value={destination}
             onChange={(e) => setDestination(e.target.value)}
-            className="p-3 rounded-xl border border-white/40 bg-white/30 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-orange-400"
           />
+
           <select
             value={category}
             onChange={(e) => setCategory(e.target.value)}
-            className="p-3 rounded-xl border border-white/40 bg-white/30 text-white focus:outline-none focus:ring-2 focus:ring-orange-400"
+            className="w-full rounded-xl px-4 py-3 bg-white/30 text-white outline-none focus:ring-2 focus:ring-orange-400"
           >
             <option>Family & Group</option>
             <option>Honeymoon</option>
             <option>Adventure</option>
+            <option>Solo</option>
           </select>
 
           <button
             type="submit"
-            className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 rounded-xl transition"
+            className="w-full rounded-xl bg-orange-500 py-3 font-semibold text-white hover:bg-orange-600 transition"
           >
-            Send via WhatsApp
+            Send on WhatsApp
           </button>
         </form>
       </div>
