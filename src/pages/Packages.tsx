@@ -63,6 +63,17 @@ const Packages = () => {
 
   /* ================= READ CATEGORY FROM URL ================= */
   useEffect(() => {
+  // ✅ Fix mobile scroll lock
+  document.body.style.overflowY = "auto";
+  document.body.style.overflowX = "hidden";
+  document.body.style.webkitOverflowScrolling = "touch";
+
+  return () => {
+    document.body.style.overflowY = "auto";
+  };
+}, []);
+
+  useEffect(() => {
     const category = searchParams.get("category") as CategoryType | null;
 
     if (
@@ -150,7 +161,7 @@ const Packages = () => {
 
   /* ================= UI ================= */
   return (
-    <div className="min-h-screen overflow-x-hidden overflow-y-auto bg-gradient-to-br from-orange-50 via-white to-blue-50">
+    <div className="min-h-screen overflow-x-hidden bg-gradient-to-br from-orange-50 via-white to-blue-50">
 
       {/* ================= HERO ================= */}
       <section className="relative h-[50vh] flex items-center justify-center">

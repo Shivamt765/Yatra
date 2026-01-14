@@ -7,7 +7,7 @@
     "location": "Nepal",
     "price": "₹12,999",
     "duration": "4D/3N",
-    "image": "/assets/Nepal2.jpg",
+    "image": "/assets/npl.png",
     "rating": 4.9,
     "categories": ["family", "nature"],
     "itinerary": [
@@ -50,7 +50,7 @@
     "location": "Dubai, UAE",
     "price": "₹89,999",
     "duration": "6D/5N",
-    "image": "/assets/DL.png",
+    "image": "/assets/dubai.png",
     "rating": 4.9,
     "categories": ["luxury", "honeymoon"],
     "itinerary": [
@@ -107,7 +107,7 @@
     "location": "Bangkok, Thailand",
     "price": "₹29,999",
     "duration": "3D/2N",
-    "image": "/assets/bangkok.jpg",
+    "image": "/assets/bang high.png",
     "rating": 4.7,
     "categories": ["family"],
     "itinerary": [
@@ -143,7 +143,7 @@
     "location": "Thailand",
     "price": "₹39,999",
     "duration": "4D/3N",
-    "image": "/assets/pattaya.jpg",
+    "image": "/assets/p&b.png",
     "rating": 4.8,
     "categories": ["honeymoon"],
     "itinerary": [
@@ -186,7 +186,7 @@
     "location": "Sri Lanka",
     "price": "₹54,999",
     "duration": "6D/5N",
-    "image": "/assets/srilanka.jpg",
+    "image": "/assets/sri.png",
     "rating": 4.8,
     "categories": ["nature", "family"],
     "itinerary": [
@@ -243,7 +243,7 @@
     "location": "Thailand",
     "price": "₹1,09,999",
     "duration": "9D/8N",
-    "image": "/assets/thailand-4city.jpg",
+    "image": "/assets/thai.png",
     "rating": 5,
     "categories": ["luxury", "honeymoon", "family"],
     "itinerary": [
