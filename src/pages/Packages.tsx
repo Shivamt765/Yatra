@@ -53,7 +53,7 @@ const Packages = () => {
   const [activeCategory, setActiveCategory] =
     useState<CategoryType>("all");
 
-  // ✅ NEW
+  // Active country for international sub-menu
   const [activeCountry, setActiveCountry] = useState<string | null>(null);
 
   const [selectedPackage, setSelectedPackage] =
@@ -143,12 +143,12 @@ const Packages = () => {
         result = packages;
     }
 
-    // ✅ COUNTRY FILTER
+    // Country filter for international packages
     if (activeCategory === "international" && activeCountry) {
       result = result.filter(p => p.location === activeCountry);
     }
 
-    // SEARCH
+    // Search filter
     if (debouncedSearch.trim()) {
       const q = debouncedSearch.toLowerCase();
       result = result.filter(pkg =>
@@ -163,7 +163,7 @@ const Packages = () => {
 
   /* ================= UI ================= */
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-blue-50">
+    <div className="min-h-screen overflow-y-auto bg-gradient-to-br from-orange-50 via-white to-blue-50">
 
       {/* HERO */}
       <section className="relative h-[50vh] flex items-center justify-center">
@@ -221,7 +221,7 @@ const Packages = () => {
           onCategoryChange={setActiveCategory}
         />
 
-        {/* ✅ INTERNATIONAL SUB MENU */}
+        {/* INTERNATIONAL SUB MENU */}
         {activeCategory === "international" && internationalCountries.length > 0 && (
           <div className="flex flex-wrap justify-center gap-3 mb-10">
             <button
@@ -259,7 +259,7 @@ const Packages = () => {
           </div>
         )}
 
-        {!loading && !error && (
+        {!loading && !error && filteredPackages.length > 0 && (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 pb-20">
             {filteredPackages.map(pkg => (
               <PackageCard
@@ -279,6 +279,13 @@ const Packages = () => {
           <p className="text-center py-20 text-gray-500">
             🚧 Packages coming soon
           </p>
+        )}
+
+        {error && !loading && (
+          <div className="flex flex-col items-center py-20">
+            <AlertCircle className="h-12 w-12 text-red-500 mb-4" />
+            <p className="text-gray-600">{error}</p>
+          </div>
         )}
       </div>
 
