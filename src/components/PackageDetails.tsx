@@ -239,7 +239,8 @@ const PackageDetails = () => {
               {packageData.gallery && <TripGallery gallery={packageData.gallery} />}
 
               <div className="space-y-4">
-                {packageData.itinerary?.map(day => (
+                {packageData.itinerary && packageData.itinerary.length > 0 && packageData.itinerary.map(day => (
+
                   <Card key={day.day} className="backdrop-blur-md bg-white/90 border-white/50">
                     <CardContent className="p-6 flex gap-4">
                       <div className="flex-shrink-0">

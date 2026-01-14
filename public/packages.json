@@ -1,99 +1,315 @@
 [
   {
-  "id": 5,
-  "title": "Gorakhpur to Nepal Highlights Tour",
-  "description": "Experience the best of Nepal in 4 days — from Lumbini’s sacred peace to Pokhara’s lakes and Chitwan’s jungle adventures. A perfect getaway from Gorakhpur for families, couples, and explorers.",
-  "location": "Lumbini, Pokhara & Chitwan – Nepal",
-  "price": "₹12,999",
-  "duration": "4D/3N",
-  "image": "/assets/Nepal2.jpg",
-  "rating": 4.9,
-  "live": true,
-  "categories": ["nepal", "family", "nature", "general"],
-  "gallery": [
-    "/assets/lumbini.jpg",
-    "/assets/lumbini2.jpg",
-    "/assets/pokhra.jpg",
-    "/assets/chitwan1.jpg",
-    "/assets/chitwan2.jpg",
-    "/assets/chitwan3.jpg"
-  ],
-  "itinerary": [
-    {
-      "day": 1,
-      "title": "Gorakhpur → Lumbini → Pokhara",
-      "activities": [
-        "Meet & Greet at Gorakhpur Airport / Railway Station (around 8:00 AM)",
-        "Proceed to Sonauli Border for immigration formalities",
-        "Visit Lumbini – Birthplace of Lord Buddha (UNESCO Site)",
-        "Drive to Pokhara and check in at your hotel",
-        "Evening leisure time near Fewa Lake",
-        "Overnight stay in Pokhara"
-      ],
-      "meals": ["Dinner"],
-      "accommodation": "Hotel in Pokhara"
-    },
-    {
-      "day": 2,
-      "title": "Pokhara Local Sightseeing",
-      "activities": [
-        "Early visit to Pumdikot Sunrise Point for Himalayan views",
-        "Explore Pokhara attractions: Bindhyabasini Temple, Mahendra & Bat Caves, Seti River Gorge",
-        "Visit International Mountain Museum, Devi’s Fall & Gupteshwor Mahadev Cave",
-        "Enjoy optional boating at Fewa Lake and visit Tal Barahi Temple",
-        "Overnight stay in Pokhara"
-      ],
-      "meals": ["Breakfast", "Dinner"],
-      "accommodation": "Hotel in Pokhara"
-    },
-    {
-      "day": 3,
-      "title": "Pokhara → Chitwan",
-      "activities": [
-        "After breakfast, depart for Chitwan",
-        "Check in at the resort and relax",
-        "Evening visit to Rapti River Sunset Point",
-        "Tharu Cultural Dance Show at local theatre",
-        "Overnight stay in Chitwan"
-      ],
-      "meals": ["Breakfast", "Dinner"],
-      "accommodation": "Jungle Resort in Chitwan"
-    },
-    {
-      "day": 4,
-      "title": "Chitwan Safari → Gorakhpur Return",
-      "activities": [
-        "Early morning Jungle Safari in Chitwan National Park",
-        "Optional: Canoeing on Rapti River or Elephant Safari",
-        "Breakfast at resort and check out by 12:00 PM",
-        "Drive back to Gorakhpur for Airport / Railway Station drop"
-      ],
-      "meals": ["Breakfast"],
-      "accommodation": "Check-out after breakfast"
-    }
-  ],
-  "inclusions": [
-    "Accommodation in well-rated hotels and resorts",
-    "Daily breakfast and dinner",
-    "All sightseeing and transfers by private vehicle",
-    "Tharu Cultural Dance Show in Chitwan",
-    "Jungle Safari in Chitwan National Park",
-    "Boating at Fewa Lake (optional)",
-    "Border assistance and taxes"
-  ],
-  "exclusions": [
-    "Airfare or train fare",
-    "Adventure activities like Paragliding or Zip flyer",
-    "Lunch during travel",
-    "Personal expenses and tips",
-    "Entry fees not mentioned in inclusions",
-    "Travel insurance"
-  ],
-  "seo": {
-    "meta_title": "Gorakhpur to Nepal Tour – Lumbini Pokhara Chitwan 4 Days Package by Yatra Holiday",
-    "meta_description": "Book a 4-day Nepal tour from Gorakhpur with Yatra Holiday. Visit Lumbini, Pokhara & Chitwan — explore lakes, Buddha’s birthplace, and thrilling jungle safaris.",
-    "slug": "gorakhpur-to-nepal-tour-lumbini-pokhara-chitwan"
-  }
-}
+    "id": 1,
+    "type": "international",
+    "title": "Gorakhpur to Nepal Highlights Tour",
+    "description": "Explore Nepal’s spiritual and natural beauty with Lumbini, Pokhara and Chitwan.",
+    "location": "Nepal",
+    "price": "₹12,999",
+    "duration": "4D/3N",
+    "image": "/assets/Nepal2.jpg",
+    "rating": 4.9,
+    "categories": ["family", "nature"],
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Gorakhpur → Lumbini",
+        "activities": ["Border crossing", "Visit Lumbini Garden", "Hotel check-in"],
+        "meals": ["Dinner"],
+        "accommodation": "Hotel in Lumbini"
+      },
+      {
+        "day": 2,
+        "title": "Lumbini → Pokhara",
+        "activities": ["Drive to Pokhara", "Evening walk near Phewa Lake"],
+        "meals": ["Breakfast", "Dinner"],
+        "accommodation": "Hotel in Pokhara"
+      },
+      {
+        "day": 3,
+        "title": "Pokhara Sightseeing",
+        "activities": ["Davis Falls", "Gupteshwar Cave", "Boating in Phewa Lake"],
+        "meals": ["Breakfast", "Dinner"],
+        "accommodation": "Hotel in Pokhara"
+      },
+      {
+        "day": 4,
+        "title": "Return to Gorakhpur",
+        "activities": ["Breakfast", "Return journey"],
+        "meals": ["Breakfast"],
+        "accommodation": "—"
+      }
+    ]
+  },
 
+  {
+    "id": 2,
+    "type": "international",
+    "title": "Dubai Luxury International Tour",
+    "description": "Luxury shopping, Burj Khalifa, Marina Cruise and Desert Safari.",
+    "location": "Dubai, UAE",
+    "price": "₹89,999",
+    "duration": "6D/5N",
+    "image": "/assets/DL.png",
+    "rating": 4.9,
+    "categories": ["luxury", "honeymoon"],
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Arrival in Dubai",
+        "activities": ["Airport pickup", "Hotel check-in"],
+        "meals": ["Dinner"],
+        "accommodation": "4★ Hotel in Dubai"
+      },
+      {
+        "day": 2,
+        "title": "Dubai City Tour",
+        "activities": ["Burj Khalifa", "Dubai Mall", "Palm Jumeirah"],
+        "meals": ["Breakfast"],
+        "accommodation": "4★ Hotel in Dubai"
+      },
+      {
+        "day": 3,
+        "title": "Desert Safari",
+        "activities": ["Dune bashing", "Camel ride", "BBQ dinner"],
+        "meals": ["Breakfast", "Dinner"],
+        "accommodation": "4★ Hotel in Dubai"
+      },
+      {
+        "day": 4,
+        "title": "Abu Dhabi Tour",
+        "activities": ["Sheikh Zayed Mosque", "City sightseeing"],
+        "meals": ["Breakfast"],
+        "accommodation": "4★ Hotel in Dubai"
+      },
+      {
+        "day": 5,
+        "title": "Shopping & Leisure",
+        "activities": ["Gold Souk", "Mall of Emirates"],
+        "meals": ["Breakfast"],
+        "accommodation": "4★ Hotel in Dubai"
+      },
+      {
+        "day": 6,
+        "title": "Departure",
+        "activities": ["Airport transfer"],
+        "meals": ["Breakfast"],
+        "accommodation": "—"
+      }
+    ]
+  },
+
+  {
+    "id": 3,
+    "type": "international",
+    "title": "Bangkok Highlights Tour",
+    "description": "Temples, Safari World and Marine Park.",
+    "location": "Bangkok, Thailand",
+    "price": "₹29,999",
+    "duration": "3D/2N",
+    "image": "/assets/bangkok.jpg",
+    "rating": 4.7,
+    "categories": ["family"],
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Arrival & Temple Tour",
+        "activities": ["Golden Buddha", "Marble Temple"],
+        "meals": ["Dinner"],
+        "accommodation": "Hotel in Bangkok"
+      },
+      {
+        "day": 2,
+        "title": "Safari World",
+        "activities": ["Safari Park", "Marine Park"],
+        "meals": ["Breakfast", "Lunch"],
+        "accommodation": "Hotel in Bangkok"
+      },
+      {
+        "day": 3,
+        "title": "Departure",
+        "activities": ["Shopping", "Airport transfer"],
+        "meals": ["Breakfast"],
+        "accommodation": "—"
+      }
+    ]
+  },
+
+  {
+    "id": 4,
+    "type": "international",
+    "title": "Pattaya & Bangkok Fun Tour",
+    "description": "Coral Island, Alcazar Show and Bangkok city tour.",
+    "location": "Thailand",
+    "price": "₹39,999",
+    "duration": "4D/3N",
+    "image": "/assets/pattaya.jpg",
+    "rating": 4.8,
+    "categories": ["honeymoon"],
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Arrival → Pattaya",
+        "activities": ["Transfer to Pattaya", "Alcazar Show"],
+        "meals": ["Dinner"],
+        "accommodation": "Hotel in Pattaya"
+      },
+      {
+        "day": 2,
+        "title": "Coral Island",
+        "activities": ["Speedboat ride", "Water sports"],
+        "meals": ["Breakfast", "Lunch"],
+        "accommodation": "Hotel in Pattaya"
+      },
+      {
+        "day": 3,
+        "title": "Pattaya → Bangkok",
+        "activities": ["Drive to Bangkok", "City tour"],
+        "meals": ["Breakfast"],
+        "accommodation": "Hotel in Bangkok"
+      },
+      {
+        "day": 4,
+        "title": "Departure",
+        "activities": ["Shopping", "Airport transfer"],
+        "meals": ["Breakfast"],
+        "accommodation": "—"
+      }
+    ]
+  },
+
+  {
+    "id": 5,
+    "type": "international",
+    "title": "Sri Lanka Scenic & Cultural Tour",
+    "description": "Kandy, Nuwara Eliya, Bentota and Colombo.",
+    "location": "Sri Lanka",
+    "price": "₹54,999",
+    "duration": "6D/5N",
+    "image": "/assets/srilanka.jpg",
+    "rating": 4.8,
+    "categories": ["nature", "family"],
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Arrival → Kandy",
+        "activities": ["Airport pickup", "Temple of Tooth Relic"],
+        "meals": ["Dinner"],
+        "accommodation": "Hotel in Kandy"
+      },
+      {
+        "day": 2,
+        "title": "Kandy Sightseeing",
+        "activities": ["Cultural show", "Botanical Garden"],
+        "meals": ["Breakfast"],
+        "accommodation": "Hotel in Kandy"
+      },
+      {
+        "day": 3,
+        "title": "Nuwara Eliya",
+        "activities": ["Tea plantations", "Waterfalls"],
+        "meals": ["Breakfast"],
+        "accommodation": "Hotel in Nuwara Eliya"
+      },
+      {
+        "day": 4,
+        "title": "Bentota",
+        "activities": ["Beach leisure"],
+        "meals": ["Breakfast"],
+        "accommodation": "Beach Resort"
+      },
+      {
+        "day": 5,
+        "title": "Colombo City Tour",
+        "activities": ["City sightseeing", "Shopping"],
+        "meals": ["Breakfast"],
+        "accommodation": "Hotel in Colombo"
+      },
+      {
+        "day": 6,
+        "title": "Departure",
+        "activities": ["Airport transfer"],
+        "meals": ["Breakfast"],
+        "accommodation": "—"
+      }
+    ]
+  },
+
+  {
+    "id": 6,
+    "type": "international",
+    "title": "Thailand Grand Explorer – Pattaya, Bangkok, Phuket & Krabi",
+    "description": "Complete Thailand journey with islands, beaches and luxury stays.",
+    "location": "Thailand",
+    "price": "₹1,09,999",
+    "duration": "9D/8N",
+    "image": "/assets/thailand-4city.jpg",
+    "rating": 5,
+    "categories": ["luxury", "honeymoon", "family"],
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Bangkok → Pattaya",
+        "activities": ["Arrival", "Transfer to Pattaya"],
+        "meals": ["Dinner"],
+        "accommodation": "4★ Hotel Pattaya"
+      },
+      {
+        "day": 2,
+        "title": "Pattaya Sightseeing",
+        "activities": ["Nong Nooch Garden", "Sanctuary of Truth"],
+        "meals": ["Breakfast"],
+        "accommodation": "4★ Hotel Pattaya"
+      },
+      {
+        "day": 3,
+        "title": "Pattaya → Bangkok",
+        "activities": ["Temple tour", "Jurassic World Experience"],
+        "meals": ["Breakfast"],
+        "accommodation": "4★ Hotel Bangkok"
+      },
+      {
+        "day": 4,
+        "title": "Bangkok Free Day",
+        "activities": ["Shopping", "Optional dinner cruise"],
+        "meals": ["Breakfast"],
+        "accommodation": "4★ Hotel Bangkok"
+      },
+      {
+        "day": 5,
+        "title": "Bangkok → Phuket",
+        "activities": ["Flight to Phuket", "Beach leisure"],
+        "meals": ["Breakfast"],
+        "accommodation": "4★ Hotel Phuket"
+      },
+      {
+        "day": 6,
+        "title": "Phi Phi Island Tour",
+        "activities": ["Island hopping", "Snorkeling"],
+        "meals": ["Breakfast", "Lunch"],
+        "accommodation": "4★ Hotel Phuket"
+      },
+      {
+        "day": 7,
+        "title": "Phuket → Krabi",
+        "activities": ["Road/Ferry transfer", "Resort leisure"],
+        "meals": ["Breakfast"],
+        "accommodation": "Beach Resort Krabi"
+      },
+      {
+        "day": 8,
+        "title": "Krabi 4 Island Tour",
+        "activities": ["Island tour", "Snorkeling"],
+        "meals": ["Breakfast", "Lunch"],
+        "accommodation": "Beach Resort Krabi"
+      },
+      {
+        "day": 9,
+        "title": "Departure",
+        "activities": ["Airport transfer"],
+        "meals": ["Breakfast"],
+        "accommodation": "—"
+      }
+    ]
+  }
 ]
