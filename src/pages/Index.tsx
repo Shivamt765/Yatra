@@ -9,65 +9,62 @@ import Footer from '@/components/Footer';
 import QueryModal from '@/components/QueryModal';
 import BookingNotifications from '@/components/BookingNotifications';
 import ReelsSection from '@/components/ReelsSection';
-import OccasionBanner from '@/components/OccasionBanner';
-import FloatingContact from '@/components/FloatingContact';
 import MomentsSection from '@/components/MomentsSection';
 import WhyChoose from '@/components/WhyChoose';
-
 import HomeBlogCarousel from '@/components/HomeBlogCarousel';
+import LeadForm from "@/components/LeadForm";
 
 const Index = () => {
-  const [isLoading, setIsLoading] = useState(false); // default false
+  const [isLoading, setIsLoading] = useState(false);
   const [isQueryModalOpen, setIsQueryModalOpen] = useState(false);
-  const [selectedPackage, setSelectedPackage] = useState(null);
+  const [selectedPackage, setSelectedPackage] = useState<any>(null);
 
+  // Show loader only on first visit
   useEffect(() => {
-    // Check if loader was shown before
     const hasVisited = localStorage.getItem('loaderShown');
     if (!hasVisited) {
-      setIsLoading(true); // show loader
-      localStorage.setItem('loaderShown', 'true'); // mark as shown
+      setIsLoading(true);
+      localStorage.setItem('loaderShown', 'true');
     }
   }, []);
 
-  const handleLoadingComplete = () => {
-    setIsLoading(false);
-  };
-
+  const handleLoadingComplete = () => setIsLoading(false);
   const handleQueryClick = (packageData: any) => {
     setSelectedPackage(packageData);
     setIsQueryModalOpen(true);
   };
 
-  if (isLoading) {
-    return <LoadingScreen onComplete={handleLoadingComplete} />;
-  }
+  if (isLoading) return <LoadingScreen onComplete={handleLoadingComplete} />;
 
- return (
-  <div className="min-h-screen bg-background overflow-y-auto overflow-x-hidden">
-    <Navigation />
-    <HeroSection />
-    <PromotionalBanner />
-    <MomentsSection />
-    {/* <OccasionBanner /> */}
-    <PackagesCarousel onQueryClick={handleQueryClick} />
-    <WhyChoose />
-    <ReelsSection />
-    <HomeBlogCarousel/>
-    <TestimonialsSection />
-    <Footer />
+  return (
+    <div className="min-h-screen bg-background overflow-y-auto overflow-x-hidden">
 
-    <QueryModal
-      isOpen={isQueryModalOpen}
-      onClose={() => setIsQueryModalOpen(false)}
-      packageData={selectedPackage}
-    />
+      {/* Popup LeadForm */}
+      <LeadForm isPopup={true} />
 
-    <BookingNotifications />
-    <FloatingContact />
-  </div>
-);
+      <Navigation />
+      <HeroSection />
+      <PromotionalBanner />
+      <MomentsSection />
+      <PackagesCarousel onQueryClick={handleQueryClick} />
+      <WhyChoose />
+      <ReelsSection />
+      <HomeBlogCarousel/>
+      <TestimonialsSection />
 
+      {/* Inline persistent LeadForm above footer */}
+      
+      <Footer />
+
+      <QueryModal
+        isOpen={isQueryModalOpen}
+        onClose={() => setIsQueryModalOpen(false)}
+        packageData={selectedPackage}
+      />
+
+      <BookingNotifications />
+    </div>
+  );
 };
 
 export default Index;
