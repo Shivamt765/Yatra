@@ -22,20 +22,39 @@ const Navbar = () => {
   const [aboutOpen, setAboutOpen] = useState(false);
   const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 768);
 
+  /* ================= SAFE MENU CLOSE ================= */
+  const closeMenu = () => {
+    setIsOpen(false);
+    setPackagesOpen(false);
+    setAboutOpen(false);
+    document.body.style.overflow = "auto";
+  };
+
+  /* ================= SCROLL EFFECT ================= */
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  /* ================= RESIZE EFFECT ================= */
   useEffect(() => {
-    const handleResize = () => setIsDesktop(window.innerWidth >= 768);
+    const handleResize = () => {
+      const desktop = window.innerWidth >= 768;
+      setIsDesktop(desktop);
+      if (desktop) closeMenu();
+    };
+
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  /* ================= BODY SCROLL LOCK ================= */
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "auto";
+    return () => {
+      document.body.style.overflow = "auto";
+    };
   }, [isOpen]);
 
   const logoStyle = {
@@ -94,39 +113,30 @@ const Navbar = () => {
       }}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center h-24 md:h-28">
-        <Link to="/">
+        <Link to="/" onClick={closeMenu}>
           <img src={logos} alt="Logo" style={logoStyle} />
         </Link>
 
-        {/* DESKTOP */}
+        {/* ================= DESKTOP ================= */}
         <div className="hidden md:flex items-center gap-16 font-montserrat text-[15px] font-medium">
-          <Link to="/" className="text-gray-800 hover:text-black transition">
-            Home
-          </Link>
+          <Link to="/">Home</Link>
 
           <div className="relative group">
-            <div className="flex items-center gap-1 cursor-pointer text-gray-800 hover:text-black transition">
+            <div className="flex items-center gap-1 cursor-pointer">
               Packages <ChevronDown size={16} />
             </div>
 
             <div className="absolute top-full left-0 mt-3 w-60 bg-white rounded-xl shadow-lg
-              opacity-0 invisible group-hover:opacity-100 group-hover:visible
-              transition-all duration-300 z-50">
-              <Link to="/packages?category=international" className="block px-5 py-3 hover:bg-gray-100 rounded-t-xl">
-                International Tour
-              </Link>
-              <Link to="/packages?category=domestic" className="block px-5 py-3 hover:bg-gray-100">
-                Domestic Tour
-              </Link>
-              <Link to="/packages?category=family" className="block px-5 py-3 hover:bg-gray-100">
-                Family & Group Tour
-              </Link>
-              <Link to="/packages?category=honeymoon" className="block px-5 py-3 hover:bg-gray-100">
-                Honeymoon
-              </Link>
-              <Link to="/packages?category=adventure" className="block px-5 py-3 hover:bg-gray-100 rounded-b-xl">
-                Adventure
-              </Link>
+              opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
+              {categories[1].items.map((item, i) => (
+                <Link
+                  key={i}
+                  to={item.path!}
+                  className="block px-5 py-3 hover:bg-gray-100"
+                >
+                  {item.name}
+                </Link>
+              ))}
             </div>
           </div>
 
@@ -135,27 +145,37 @@ const Navbar = () => {
           <Link to="/Contact">Contact</Link>
         </div>
 
-        <button className="md:hidden text-gray-800" onClick={() => setIsOpen(true)}>
+        {/* ================= MOBILE BUTTON ================= */}
+        <button className="md:hidden" onClick={() => setIsOpen(true)}>
           <Menu size={28} />
         </button>
       </div>
 
-      {/* MOBILE */}
+      {/* ================= MOBILE DRAWER ================= */}
       <div className={`fixed inset-0 z-40 ${isOpen ? "visible" : "invisible"}`}>
-        <div className={`absolute inset-0 bg-black/40`} onClick={() => setIsOpen(false)} />
-        <div className={`absolute right-0 top-0 h-full w-72 bg-white transform transition-transform duration-500 ${isOpen ? "translate-x-0" : "translate-x-full"}`}>
-          <div className="flex items-center justify-between p-5 border-b">
-            <Link to="/" onClick={() => setIsOpen(false)}>
+        {/* BACKDROP */}
+        <div className="absolute inset-0 bg-black/40" onClick={closeMenu} />
+
+        {/* DRAWER PANEL */}
+        <div
+          className={`absolute right-0 top-0 h-full w-72 bg-white transition-transform duration-500 flex flex-col
+            ${isOpen ? "translate-x-0" : "translate-x-full"}`}
+        >
+          {/* HEADER */}
+          <div className="flex justify-between items-center p-5 border-b">
+            <Link to="/" onClick={closeMenu}>
               <img src={logos} alt="Logo" style={drawerLogoStyle} />
             </Link>
-            <X size={28} onClick={() => setIsOpen(false)} />
+            <X size={28} onClick={closeMenu} className="cursor-pointer" />
           </div>
 
-          <div className="flex flex-col mt-4 px-6 space-y-4">
+          {/* LINKS */}
+          <div className="flex-1 overflow-y-auto px-6 py-4 space-y-4">
             {categories.map((cat, i) => (
               <div key={i}>
+                {/* CATEGORY TITLE */}
                 <div
-                  className="font-semibold text-lg py-2 flex justify-between"
+                  className="font-semibold text-lg flex justify-between items-center cursor-pointer"
                   onClick={() => {
                     if (cat.title === "Packages") setPackagesOpen(!packagesOpen);
                     if (cat.title === "About & Contact") setAboutOpen(!aboutOpen);
@@ -165,18 +185,37 @@ const Navbar = () => {
                   {cat.dropdown && <ChevronDown size={16} />}
                 </div>
 
-                <div className={`${cat.dropdown ? (packagesOpen || aboutOpen ? "block" : "hidden") : "block"} pl-3 space-y-2`}>
-                  {cat.items.map((item, idx) => (
-                    <Link
-                      key={idx}
-                      to={item.path || "#"}
-                      onClick={() => setIsOpen(false)}
-                      className="flex items-center gap-3"
-                    >
-                      {item.icon}
-                      {item.name}
-                    </Link>
-                  ))}
+                {/* CATEGORY ITEMS */}
+                <div
+                  className={`pl-3 mt-2 flex flex-col space-y-2 ${
+                    !cat.dropdown ||
+                    (cat.title === "Packages" && packagesOpen) ||
+                    (cat.title === "About & Contact" && aboutOpen)
+                      ? "block"
+                      : "hidden"
+                  }`}
+                >
+                  {cat.items.map((item, idx) =>
+                    item.path ? (
+                      <Link
+                        key={idx}
+                        to={item.path}
+                        onClick={closeMenu}
+                        className="block py-2 text-gray-700 hover:text-orange-500 hover:pl-2 transition-all"
+                      >
+                        {item.name}
+                      </Link>
+                    ) : (
+                      <a
+                        key={idx}
+                        href={item.href}
+                        onClick={closeMenu}
+                        className="block py-2 text-gray-700 hover:text-orange-500 hover:pl-2 transition-all"
+                      >
+                        {item.name}
+                      </a>
+                    )
+                  )}
                 </div>
               </div>
             ))}

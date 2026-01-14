@@ -13,8 +13,6 @@ import { QueryModal } from "@/components/packages/QueryModal";
 import { useDebounce } from "@/hooks/useDebounce";
 import packageHero from "@/assets/package_horizontal.jpg";
 
-/* ================= TYPES ================= */
-
 export interface Package {
   id: number;
   title: string;
@@ -37,8 +35,6 @@ export type CategoryType =
   | "honeymoon"
   | "adventure";
 
-/* ================= COMPONENT ================= */
-
 const Packages = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
@@ -50,20 +46,15 @@ const Packages = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const debouncedSearch = useDebounce(searchQuery, 250);
 
-  const [activeCategory, setActiveCategory] =
-    useState<CategoryType>("all");
-
-  // Active country for international sub-menu
+  const [activeCategory, setActiveCategory] = useState<CategoryType>("all");
   const [activeCountry, setActiveCountry] = useState<string | null>(null);
 
-  const [selectedPackage, setSelectedPackage] =
-    useState<Package | null>(null);
+  const [selectedPackage, setSelectedPackage] = useState<Package | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   /* ================= READ CATEGORY FROM URL ================= */
   useEffect(() => {
     const category = searchParams.get("category") as CategoryType | null;
-
     if (
       category === "international" ||
       category === "domestic" ||
@@ -104,12 +95,11 @@ const Packages = () => {
   /* ================= INTERNATIONAL COUNTRIES (AUTO) ================= */
   const internationalCountries = useMemo(() => {
     if (activeCategory !== "international") return [];
-
     return Array.from(
       new Set(
         packages
-          .filter(p => p.type === "international")
-          .map(p => p.location)
+          .filter((p) => p.type === "international")
+          .map((p) => p.location)
       )
     );
   }, [packages, activeCategory]);
@@ -120,58 +110,49 @@ const Packages = () => {
 
     switch (activeCategory) {
       case "international":
-        result = packages.filter(p => p.type === "international");
+        result = packages.filter((p) => p.type === "international");
         break;
-
       case "domestic":
-        result = packages.filter(p => p.type === "domestic");
+        result = packages.filter((p) => p.type === "domestic");
         break;
-
       case "family":
-        result = packages.filter(p => p.categories.includes("family"));
+        result = packages.filter((p) => p.categories.includes("family"));
         break;
-
       case "honeymoon":
-        result = packages.filter(p => p.categories.includes("honeymoon"));
+        result = packages.filter((p) => p.categories.includes("honeymoon"));
         break;
-
       case "adventure":
-        result = packages.filter(p => p.categories.includes("adventure"));
+        result = packages.filter((p) => p.categories.includes("adventure"));
         break;
-
       default:
         result = packages;
     }
 
-    // Country filter for international packages
     if (activeCategory === "international" && activeCountry) {
-      result = result.filter(p => p.location === activeCountry);
+      result = result.filter((p) => p.location === activeCountry);
     }
 
-    // Search filter
     if (debouncedSearch.trim()) {
       const q = debouncedSearch.toLowerCase();
-      result = result.filter(pkg =>
-        pkg.title.toLowerCase().includes(q) ||
-        pkg.description.toLowerCase().includes(q) ||
-        pkg.location.toLowerCase().includes(q)
+      result = result.filter(
+        (pkg) =>
+          pkg.title.toLowerCase().includes(q) ||
+          pkg.description.toLowerCase().includes(q) ||
+          pkg.location.toLowerCase().includes(q)
       );
     }
 
     return result;
   }, [packages, activeCategory, activeCountry, debouncedSearch]);
 
-  /* ================= UI ================= */
   return (
-    <div className="min-h-screen overflow-y-auto bg-gradient-to-br from-orange-50 via-white to-blue-50">
+    <div className="flex flex-col h-full w-full overflow-y-auto bg-gradient-to-br from-orange-50 via-white to-blue-50">
 
       {/* HERO */}
       <section className="relative h-[50vh] flex items-center justify-center">
         <Link
           to="/"
-          className="absolute top-6 left-6 z-20 flex items-center gap-2
-                     px-4 py-2 rounded-full bg-white/20 backdrop-blur-md
-                     text-white text-sm hover:bg-white/30"
+          className="absolute top-6 left-6 z-20 flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 backdrop-blur-md text-white text-sm hover:bg-white/30"
         >
           <ArrowLeft className="w-4 h-4" />
           Back to Home
@@ -226,24 +207,24 @@ const Packages = () => {
           <div className="flex flex-wrap justify-center gap-3 mb-10">
             <button
               onClick={() => setActiveCountry(null)}
-              className={`px-5 py-2 rounded-full border text-sm
-                ${activeCountry === null
+              className={`px-5 py-2 rounded-full border text-sm ${
+                activeCountry === null
                   ? "bg-orange-500 text-white border-orange-500"
-                  : "bg-white hover:border-orange-300"}
-              `}
+                  : "bg-white hover:border-orange-300"
+              }`}
             >
               All International
             </button>
 
-            {internationalCountries.map(country => (
+            {internationalCountries.map((country) => (
               <button
                 key={country}
                 onClick={() => setActiveCountry(country)}
-                className={`px-5 py-2 rounded-full border text-sm
-                  ${activeCountry === country
+                className={`px-5 py-2 rounded-full border text-sm ${
+                  activeCountry === country
                     ? "bg-orange-500 text-white border-orange-500"
-                    : "bg-white hover:border-orange-300"}
-                `}
+                    : "bg-white hover:border-orange-300"
+                }`}
               >
                 {country}
               </button>
@@ -261,7 +242,7 @@ const Packages = () => {
 
         {!loading && !error && filteredPackages.length > 0 && (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 pb-20">
-            {filteredPackages.map(pkg => (
+            {filteredPackages.map((pkg) => (
               <PackageCard
                 key={pkg.id}
                 package={pkg}
@@ -276,9 +257,7 @@ const Packages = () => {
         )}
 
         {!loading && !error && filteredPackages.length === 0 && (
-          <p className="text-center py-20 text-gray-500">
-            🚧 Packages coming soon
-          </p>
+          <p className="text-center py-20 text-gray-500">🚧 Packages coming soon</p>
         )}
 
         {error && !loading && (
@@ -289,6 +268,7 @@ const Packages = () => {
         )}
       </div>
 
+      {/* QUERY MODAL */}
       <QueryModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
