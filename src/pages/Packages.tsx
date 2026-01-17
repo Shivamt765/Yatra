@@ -7,9 +7,11 @@ import {
   AlertCircle,
   ArrowLeft,
 } from "lucide-react";
+
 import { PackageCard } from "@/components/packages/PackageCard";
 import { CategoryTabs } from "@/components/packages/CategoryTabs";
 import { QueryModal } from "@/components/packages/QueryModal";
+import SimilarPackages from "@/components/SimilarPackages";
 import { useDebounce } from "@/hooks/useDebounce";
 import packageHero from "@/assets/package_horizontal.jpg";
 
@@ -22,9 +24,10 @@ export interface Package {
   price: string;
   image: string;
   rating: number;
-  live: boolean;
+  live?: boolean;
   type: "international" | "domestic";
   categories: string[];
+  slug: string;
 }
 
 export type CategoryType =
@@ -92,7 +95,7 @@ const Packages = () => {
     fetchPackages();
   }, []);
 
-  /* ================= INTERNATIONAL COUNTRIES (AUTO) ================= */
+  /* ================= INTERNATIONAL COUNTRIES ================= */
   const internationalCountries = useMemo(() => {
     if (activeCategory !== "international") return [];
     return Array.from(
@@ -106,26 +109,24 @@ const Packages = () => {
 
   /* ================= FILTER LOGIC ================= */
   const filteredPackages = useMemo(() => {
-    let result: Package[] = [];
+    let result = [...packages];
 
     switch (activeCategory) {
       case "international":
-        result = packages.filter((p) => p.type === "international");
+        result = result.filter((p) => p.type === "international");
         break;
       case "domestic":
-        result = packages.filter((p) => p.type === "domestic");
+        result = result.filter((p) => p.type === "domestic");
         break;
       case "family":
-        result = packages.filter((p) => p.categories.includes("family"));
+        result = result.filter((p) => p.categories.includes("family"));
         break;
       case "honeymoon":
-        result = packages.filter((p) => p.categories.includes("honeymoon"));
+        result = result.filter((p) => p.categories.includes("honeymoon"));
         break;
       case "adventure":
-        result = packages.filter((p) => p.categories.includes("adventure"));
+        result = result.filter((p) => p.categories.includes("adventure"));
         break;
-      default:
-        result = packages;
     }
 
     if (activeCategory === "international" && activeCountry) {
@@ -135,10 +136,10 @@ const Packages = () => {
     if (debouncedSearch.trim()) {
       const q = debouncedSearch.toLowerCase();
       result = result.filter(
-        (pkg) =>
-          pkg.title.toLowerCase().includes(q) ||
-          pkg.description.toLowerCase().includes(q) ||
-          pkg.location.toLowerCase().includes(q)
+        (p) =>
+          p.title.toLowerCase().includes(q) ||
+          p.description.toLowerCase().includes(q) ||
+          p.location.toLowerCase().includes(q)
       );
     }
 
@@ -147,7 +148,6 @@ const Packages = () => {
 
   return (
     <div className="flex flex-col h-full w-full overflow-y-auto bg-gradient-to-br from-orange-50 via-white to-blue-50">
-
       {/* HERO */}
       <section className="relative h-[50vh] flex items-center justify-center">
         <Link
@@ -173,7 +173,6 @@ const Packages = () => {
       </section>
 
       <div className="max-w-7xl mx-auto px-6 -mt-10 relative z-10">
-
         {/* SEARCH */}
         <div className="mb-8">
           <div className="relative max-w-2xl mx-auto">
@@ -196,43 +195,41 @@ const Packages = () => {
           </div>
         </div>
 
-        {/* CATEGORY TABS */}
         <CategoryTabs
           activeCategory={activeCategory}
           onCategoryChange={setActiveCategory}
         />
 
-        {/* INTERNATIONAL SUB MENU */}
-        {activeCategory === "international" && internationalCountries.length > 0 && (
-          <div className="flex flex-wrap justify-center gap-3 mb-10">
-            <button
-              onClick={() => setActiveCountry(null)}
-              className={`px-5 py-2 rounded-full border text-sm ${
-                activeCountry === null
-                  ? "bg-orange-500 text-white border-orange-500"
-                  : "bg-white hover:border-orange-300"
-              }`}
-            >
-              All International
-            </button>
-
-            {internationalCountries.map((country) => (
+        {activeCategory === "international" &&
+          internationalCountries.length > 0 && (
+            <div className="flex flex-wrap justify-center gap-3 mb-10">
               <button
-                key={country}
-                onClick={() => setActiveCountry(country)}
+                onClick={() => setActiveCountry(null)}
                 className={`px-5 py-2 rounded-full border text-sm ${
-                  activeCountry === country
+                  activeCountry === null
                     ? "bg-orange-500 text-white border-orange-500"
                     : "bg-white hover:border-orange-300"
                 }`}
               >
-                {country}
+                All International
               </button>
-            ))}
-          </div>
-        )}
 
-        {/* STATES */}
+              {internationalCountries.map((country) => (
+                <button
+                  key={country}
+                  onClick={() => setActiveCountry(country)}
+                  className={`px-5 py-2 rounded-full border text-sm ${
+                    activeCountry === country
+                      ? "bg-orange-500 text-white border-orange-500"
+                      : "bg-white hover:border-orange-300"
+                  }`}
+                >
+                  {country}
+                </button>
+              ))}
+            </div>
+          )}
+
         {loading && (
           <div className="flex flex-col items-center py-20">
             <Loader2 className="h-12 w-12 animate-spin text-orange-500" />
@@ -241,23 +238,43 @@ const Packages = () => {
         )}
 
         {!loading && !error && filteredPackages.length > 0 && (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 pb-20">
-            {filteredPackages.map((pkg) => (
-              <PackageCard
-                key={pkg.id}
-                package={pkg}
-                onViewItinerary={() => navigate(`/packages/${pkg.id}`)}
-                onSendQuery={() => {
+          <>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 pb-20">
+              {filteredPackages.map((pkg) => (
+                <PackageCard
+                  key={pkg.id}
+                  package={pkg}
+                  onViewItinerary={() =>
+                    navigate(`/packages/${pkg.slug}`)
+                  }
+                  onSendQuery={() => {
+                    setSelectedPackage(pkg);
+                    setIsModalOpen(true);
+                  }}
+                />
+              ))}
+            </div>
+
+            {selectedPackage && (
+              <SimilarPackages
+                packages={packages}
+                selectedPackage={selectedPackage}
+                onViewItinerary={(slug) =>
+                  navigate(`/packages/${slug}`)
+                }
+                onSendQuery={(pkg) => {
                   setSelectedPackage(pkg);
                   setIsModalOpen(true);
                 }}
               />
-            ))}
-          </div>
+            )}
+          </>
         )}
 
         {!loading && !error && filteredPackages.length === 0 && (
-          <p className="text-center py-20 text-gray-500">🚧 Packages coming soon</p>
+          <p className="text-center py-20 text-gray-500">
+            Packages coming soon
+          </p>
         )}
 
         {error && !loading && (
@@ -268,7 +285,6 @@ const Packages = () => {
         )}
       </div>
 
-      {/* QUERY MODAL */}
       <QueryModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}

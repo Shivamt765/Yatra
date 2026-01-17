@@ -41,9 +41,8 @@
       }
     ]
   },
-
   {
-    "id": 2,
+    "id": 4,
     "type": "international",
     "title": "Dubai Luxury International Tour",
     "description": "Luxury shopping, Burj Khalifa, Marina Cruise and Desert Safari.",
@@ -98,215 +97,253 @@
       }
     ]
   },
-
   {
-    "id": 3,
+    "id": 9,
     "type": "international",
-    "title": "Bangkok Highlights Tour",
-    "description": "Temples, Safari World and Marine Park.",
-    "location": "Bangkok, Thailand",
-    "price": "₹29,999",
-    "duration": "3D/2N",
-    "image": "/assets/bang high.png",
-    "rating": 4.7,
-    "categories": ["family"],
+    "title": "A Location of Happiness - Bhutan Tour",
+    "description": "Experience the serene beauty of Thimphu and Paro, featuring the iconic Tiger's Nest hike[cite: 1, 11].",
+    "location": "Bhutan",
+    "price": "₹34,999",
+    "duration": "5D/4N",
+    "image": "/assets/bhutan_happiness.png",
+    "rating": 4.9,
+    "categories": ["nature", "spiritual"],
     "itinerary": [
       {
         "day": 1,
-        "title": "Arrival & Temple Tour",
-        "activities": ["Golden Buddha", "Marble Temple"],
+        "title": "Bagdogra → Thimphu",
+        "activities": ["Airport pickup", "Transfer to Thimphu via Phuentsholing", "Immigration permit [cite: 1]"],
         "meals": ["Dinner"],
-        "accommodation": "Hotel in Bangkok"
+        "accommodation": "Hotel in Thimphu [cite: 1, 6]"
       },
       {
         "day": 2,
-        "title": "Safari World",
-        "activities": ["Safari Park", "Marine Park"],
-        "meals": ["Breakfast", "Lunch"],
-        "accommodation": "Hotel in Bangkok"
+        "title": "Thimphu Full Day Sightseeing",
+        "activities": ["Buddha Point", "Memorial Chorten", "Takin Zoo", "Folk Heritage Museum", "Tashicchhoe Dzong [cite: 6]"],
+        "meals": ["Breakfast", "Dinner"],
+        "accommodation": "Hotel in Thimphu [cite: 6]"
       },
       {
         "day": 3,
-        "title": "Departure",
-        "activities": ["Shopping", "Airport transfer"],
+        "title": "Thimphu → Punakha → Paro",
+        "activities": ["Dochu la Pass", "Punakha Dzong", "Suspension Bridge", "Transfer to Paro [cite: 7, 8]"],
+        "meals": ["Breakfast", "Dinner"],
+        "accommodation": "Hotel in Paro [cite: 8, 10]"
+      },
+      {
+        "day": 4,
+        "title": "Paro Hike & Wellness",
+        "activities": ["Hike to Tiger’s Nest Monastery", "Optional Hot Stone Bath [cite: 11, 16]"],
+        "meals": ["Breakfast", "Dinner"],
+        "accommodation": "Hotel in Paro [cite: 11, 16]"
+      },
+      {
+        "day": 5,
+        "title": "Chele-la Pass → Departure",
+        "activities": ["Chele-la Pass excursion", "Transfer to Jaigaon/Bagdogra [cite: 17, 21]"],
         "meals": ["Breakfast"],
-        "accommodation": "—"
+        "accommodation": "— [cite: 17, 21]"
       }
     ]
   },
-
   {
-    "id": 4,
+    "id": 10,
     "type": "international",
-    "title": "Pattaya & Bangkok Fun Tour",
-    "description": "Coral Island, Alcazar Show and Bangkok city tour.",
-    "location": "Thailand",
+    "title": "The Crown of Bhutan Tour",
+    "description": "A focused journey through the cultural heart of Bhutan, starting and ending in Paro[cite: 42, 55].",
+    "location": "Bhutan",
+    "price": "₹31,500",
+    "duration": "5D/4N",
+    "image": "/assets/bhutan_crown.png",
+    "rating": 4.8,
+    "categories": ["cultural", "family"],
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Arrival in Paro → Thimphu",
+        "activities": ["Paro Airport pickup", "Transfer to Thimphu capital [cite: 42]"],
+        "meals": ["Dinner"],
+        "accommodation": "Hotel in Thimphu [cite: 47]"
+      },
+      {
+        "day": 2,
+        "title": "Thimphu Sightseeing",
+        "activities": ["National Painting School", "Royal Textile Museum", "Handmade Paper Factory [cite: 47]"],
+        "meals": ["Breakfast", "Dinner"],
+        "accommodation": "Hotel in Thimphu [cite: 47]"
+      },
+      {
+        "day": 3,
+        "title": "Thimphu → Punakha → Paro",
+        "activities": ["Dochu la Pass", "Chhimi Lhakhang", "Suspension Bridge", "Transfer to Paro [cite: 49, 50]"],
+        "meals": ["Breakfast", "Dinner"],
+        "accommodation": "Hotel in Paro [cite: 51]"
+      },
+      {
+        "day": 4,
+        "title": "Paro Local Sightseeing",
+        "activities": ["Rinpung Dzong", "Kichu Lhakhang", "Ta Dzong (Museum) [cite: 51]"],
+        "meals": ["Breakfast", "Dinner"],
+        "accommodation": "Hotel in Paro [cite: 51, 55]"
+      },
+      {
+        "day": 5,
+        "title": "Departure",
+        "activities": ["Transfer to Paro International Airport [cite: 55]"],
+        "meals": ["Breakfast"],
+        "accommodation": "— [cite: 55]"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "type": "international",
+    "title": "Bhutan – A Land of Majesty",
+    "description": "An extended 6-day royal experience covering major historical sites and scenic valleys[cite: 77, 93].",
+    "location": "Bhutan",
     "price": "₹39,999",
-    "duration": "4D/3N",
-    "image": "/assets/p&b.png",
-    "rating": 4.8,
-    "categories": ["honeymoon"],
-    "itinerary": [
-      {
-        "day": 1,
-        "title": "Arrival → Pattaya",
-        "activities": ["Transfer to Pattaya", "Alcazar Show"],
-        "meals": ["Dinner"],
-        "accommodation": "Hotel in Pattaya"
-      },
-      {
-        "day": 2,
-        "title": "Coral Island",
-        "activities": ["Speedboat ride", "Water sports"],
-        "meals": ["Breakfast", "Lunch"],
-        "accommodation": "Hotel in Pattaya"
-      },
-      {
-        "day": 3,
-        "title": "Pattaya → Bangkok",
-        "activities": ["Drive to Bangkok", "City tour"],
-        "meals": ["Breakfast"],
-        "accommodation": "Hotel in Bangkok"
-      },
-      {
-        "day": 4,
-        "title": "Departure",
-        "activities": ["Shopping", "Airport transfer"],
-        "meals": ["Breakfast"],
-        "accommodation": "—"
-      }
-    ]
-  },
-
-  {
-    "id": 5,
-    "type": "international",
-    "title": "Sri Lanka Scenic & Cultural Tour",
-    "description": "Kandy, Nuwara Eliya, Bentota and Colombo.",
-    "location": "Sri Lanka",
-    "price": "₹54,999",
     "duration": "6D/5N",
-    "image": "/assets/sri.png",
-    "rating": 4.8,
-    "categories": ["nature", "family"],
+    "image": "/assets/bhutan_majesty.png",
+    "rating": 5.0,
+    "categories": ["luxury", "cultural"],
     "itinerary": [
       {
         "day": 1,
-        "title": "Arrival → Kandy",
-        "activities": ["Airport pickup", "Temple of Tooth Relic"],
+        "title": "Paro → Thimphu Arrival",
+        "activities": ["Pickup from Paro", "Transfer to Thimphu", "Evening leisure [cite: 77]"],
         "meals": ["Dinner"],
-        "accommodation": "Hotel in Kandy"
+        "accommodation": "Hotel in Thimphu [cite: 77, 82]"
       },
       {
         "day": 2,
-        "title": "Kandy Sightseeing",
-        "activities": ["Cultural show", "Botanical Garden"],
-        "meals": ["Breakfast"],
-        "accommodation": "Hotel in Kandy"
+        "title": "Thimphu Full Day Tour",
+        "activities": ["Durga Temple", "Coronation Park", "Tashicchhoe Dzong [cite: 82, 83]"],
+        "meals": ["Breakfast", "Dinner"],
+        "accommodation": "Hotel in Thimphu [cite: 83]"
       },
       {
         "day": 3,
-        "title": "Nuwara Eliya",
-        "activities": ["Tea plantations", "Waterfalls"],
-        "meals": ["Breakfast"],
-        "accommodation": "Hotel in Nuwara Eliya"
+        "title": "Thimphu → Punakha",
+        "activities": ["Drive to Punakha", "Punakha Dzong sightseeing [cite: 84, 85]"],
+        "meals": ["Breakfast", "Dinner"],
+        "accommodation": "Hotel in Punakha [cite: 85]"
       },
       {
         "day": 4,
-        "title": "Bentota",
-        "activities": ["Beach leisure"],
-        "meals": ["Breakfast"],
-        "accommodation": "Beach Resort"
+        "title": "Punakha → Paro",
+        "activities": ["Iron Bridge visit", "Local Paro market sightseeing [cite: 86, 88]"],
+        "meals": ["Breakfast", "Dinner"],
+        "accommodation": "Hotel in Paro [cite: 88]"
       },
       {
         "day": 5,
-        "title": "Colombo City Tour",
-        "activities": ["City sightseeing", "Shopping"],
-        "meals": ["Breakfast"],
-        "accommodation": "Hotel in Colombo"
+        "title": "Paro Hike to Tiger’s Nest",
+        "activities": ["Uphill hike to Taktsang Lhakhang", "Museum visit [cite: 89]"],
+        "meals": ["Breakfast", "Dinner"],
+        "accommodation": "Hotel in Paro [cite: 89, 93]"
       },
       {
         "day": 6,
-        "title": "Departure",
-        "activities": ["Airport transfer"],
+        "title": "Final Departure",
+        "activities": ["Transfer to Paro Airport [cite: 93]"],
         "meals": ["Breakfast"],
-        "accommodation": "—"
+        "accommodation": "— [cite: 93]"
       }
     ]
   },
-
   {
-    "id": 6,
+    "id": 12,
     "type": "international",
-    "title": "Thailand Grand Explorer – Pattaya, Bangkok, Phuket & Krabi",
-    "description": "Complete Thailand journey with islands, beaches and luxury stays.",
-    "location": "Thailand",
-    "price": "₹1,09,999",
-    "duration": "9D/8N",
-    "image": "/assets/thai.png",
-    "rating": 5,
-    "categories": ["luxury", "honeymoon", "family"],
+    "title": "Bhutan: The Land of Fantasy & Peace",
+    "description": "A comprehensive 7-day journey from Phuentsholing to the valleys of Thimphu, Punakha, and Paro[cite: 115, 131].",
+    "location": "Bhutan",
+    "price": "On Request",
+    "duration": "7D/6N",
+    "image": "/assets/bhutan_fantasy.png",
+    "rating": 4.7,
+    "categories": ["nature", "peaceful"],
     "itinerary": [
       {
         "day": 1,
-        "title": "Bangkok → Pattaya",
-        "activities": ["Arrival", "Transfer to Pattaya"],
+        "title": "Bagdogra → Phuentsholing",
+        "activities": ["Airport pickup", "Transfer to Phuentsholing [cite: 115]"],
         "meals": ["Dinner"],
-        "accommodation": "4★ Hotel Pattaya"
+        "accommodation": "Hotel in Phuentsholing [cite: 115]"
       },
       {
         "day": 2,
-        "title": "Pattaya Sightseeing",
-        "activities": ["Nong Nooch Garden", "Sanctuary of Truth"],
-        "meals": ["Breakfast"],
-        "accommodation": "4★ Hotel Pattaya"
+        "title": "Phuentsholing → Thimphu",
+        "activities": ["Immigration permit", "Drive to Thimphu [cite: 116, 117]"],
+        "meals": ["Breakfast", "Dinner"],
+        "accommodation": "Hotel in Thimphu [cite: 121]"
       },
       {
         "day": 3,
-        "title": "Pattaya → Bangkok",
-        "activities": ["Temple tour", "Jurassic World Experience"],
-        "meals": ["Breakfast"],
-        "accommodation": "4★ Hotel Bangkok"
+        "title": "Thimphu Sightseeing",
+        "activities": ["Buddha Point", "Takin Zoo", "Memorial Chorten", "Handmade Paper Factory [cite: 121]"],
+        "meals": ["Breakfast", "Dinner"],
+        "accommodation": "Hotel in Thimphu [cite: 121]"
       },
       {
         "day": 4,
-        "title": "Bangkok Free Day",
-        "activities": ["Shopping", "Optional dinner cruise"],
-        "meals": ["Breakfast"],
-        "accommodation": "4★ Hotel Bangkok"
+        "title": "Thimphu → Punakha → Paro",
+        "activities": ["Dochu la Pass", "Punakha Dzong", "Suspension Bridge", "Drive to Paro [cite: 122, 123]"],
+        "meals": ["Breakfast", "Dinner"],
+        "accommodation": "Hotel in Paro [cite: 123, 125]"
       },
       {
         "day": 5,
-        "title": "Bangkok → Phuket",
-        "activities": ["Flight to Phuket", "Beach leisure"],
-        "meals": ["Breakfast"],
-        "accommodation": "4★ Hotel Phuket"
+        "title": "Paro Local Sightseeing & Hike",
+        "activities": ["Optional Tiger’s Nest Hike", "Paro Museum", "Kichu Lhakhang [cite: 126]"],
+        "meals": ["Breakfast", "Dinner"],
+        "accommodation": "Hotel in Paro [cite: 126, 130]"
       },
       {
         "day": 6,
-        "title": "Phi Phi Island Tour",
-        "activities": ["Island hopping", "Snorkeling"],
-        "meals": ["Breakfast", "Lunch"],
-        "accommodation": "4★ Hotel Phuket"
+        "title": "Paro → Phuentsholing",
+        "activities": ["Return drive to border town [cite: 130]"],
+        "meals": ["Breakfast", "Dinner"],
+        "accommodation": "Hotel in Phuentsholing [cite: 130]"
       },
       {
         "day": 7,
-        "title": "Phuket → Krabi",
-        "activities": ["Road/Ferry transfer", "Resort leisure"],
-        "meals": ["Breakfast"],
-        "accommodation": "Beach Resort Krabi"
-      },
-      {
-        "day": 8,
-        "title": "Krabi 4 Island Tour",
-        "activities": ["Island tour", "Snorkeling"],
-        "meals": ["Breakfast", "Lunch"],
-        "accommodation": "Beach Resort Krabi"
-      },
-      {
-        "day": 9,
         "title": "Departure",
-        "activities": ["Airport transfer"],
+        "activities": ["Transfer to Bagdogra Airport [cite: 130, 131]"],
+        "meals": ["Breakfast"],
+        "accommodation": "—"
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "type": "international",
+    "title": "Nepal Tour Package - Gorakhpur to Pokhara",
+    "description": "Ideal short family holiday visiting Lumbini and the scenic beauty of Pokhara[cite: 1710].",
+    "location": "Nepal",
+    "price": "On Request",
+    "duration": "3D/2N",
+    "image": "/assets/nepal_pokhara.png",
+    "rating": 4.8,
+    "categories": ["family", "short holiday"],
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Gorakhpur → Pokhara via Lumbini",
+        "activities": ["Early departure", "Visit Lumbini (Birthplace of Buddha)", "Drive to Pokhara [cite: 1710]"],
+        "meals": ["Dinner"],
+        "accommodation": "Hotel in Pokhara [cite: 1710, 1711]"
+      },
+      {
+        "day": 2,
+        "title": "Pokhara Local Sightseeing",
+        "activities": ["Phewa Lake", "Tal Barahi Temple", "Devi’s Fall", "Gupteshwor Mahadev Cave [cite: 1711]"],
+        "meals": ["Breakfast", "Dinner"],
+        "accommodation": "Hotel in Pokhara [cite: 1711]"
+      },
+      {
+        "day": 3,
+        "title": "Pokhara → Gorakhpur",
+        "activities": ["Breakfast", "Drive back to Gorakhpur [cite: 1711]"],
         "meals": ["Breakfast"],
         "accommodation": "—"
       }

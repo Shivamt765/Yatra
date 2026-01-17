@@ -23,7 +23,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/packages" element={<Packages />} />           {/* Packages list */}
-          <Route path="/packages/:id" element={<PackageDetails />} /> {/* Package details */}
+          <Route path="/packages/:slug" element={<PackageDetails />} /> {/* Package details */}
           <Route path="*" element={<NotFound />} />                  {/* Catch-all must be last */}
           <Route path="/about" element={<AboutUs />} />
           <Route path="/contact" element={<Contact />} />

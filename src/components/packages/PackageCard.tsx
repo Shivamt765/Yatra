@@ -1,36 +1,59 @@
 import { useState } from "react";
 import { MessageCircle, Eye, MapPin, Clock, Star, ImageOff } from "lucide-react";
-import { Package } from "@/pages/Packages";
-import { supabase } from "@/lib/supabaseClient";
 import whatsappIcon from "@/assets/whatsapp.png";
+
+/* ================= PACKAGE TYPE (SOURCE OF TRUTH) ================= */
+
+export interface Package {
+  id: number;
+  slug: string;
+  title: string;
+  description: string;
+  location: string;
+  price: string;
+  duration: string;
+  image: string;
+  rating?: number;
+  live?: boolean;
+  type?: "international" | "domestic";
+  categories?: string[];
+}
+
+/* ================= PROPS ================= */
 
 interface PackageCardProps {
   package: Package;
   onSendQuery: (pkg: Package) => void;
-  onViewItinerary: (id: number) => void;
+  onViewItinerary: (slug: string) => void;
 }
 
-export const PackageCard = ({ package: pkg, onSendQuery, onViewItinerary }: PackageCardProps) => {
+/* ================= COMPONENT ================= */
+
+export const PackageCard = ({
+  package: pkg,
+  onSendQuery,
+  onViewItinerary,
+}: PackageCardProps) => {
   const [imgError, setImgError] = useState(false);
 
-  // Remove Supabase logic here
-const handleSendQuery = () => {
-  onSendQuery(pkg); // This will open the QueryModal from parent
-};
+  const handleSendQuery = () => {
+    onSendQuery(pkg);
+  };
 
-
-  // Function to open WhatsApp
   const handleWhatsApp = () => {
-    const message = encodeURIComponent(`Hello! I am interested in the package: ${pkg.title}`);
+    const message = encodeURIComponent(
+      `Hello! I am interested in the package: ${pkg.title}`
+    );
     window.open(`https://wa.me/919151491889?text=${message}`, "_blank");
   };
 
   return (
-    <div className="group relative backdrop-blur-md bg-white/40 border border-white/20 
-                    rounded-2xl shadow-lg hover:shadow-2xl 
-                    hover:-translate-y-2 transition-all duration-500 flex flex-col overflow-hidden">
-      
-      {/* Image */}
+    <div
+      className="group relative backdrop-blur-md bg-white/40 border border-white/20 
+                 rounded-2xl shadow-lg hover:shadow-2xl 
+                 hover:-translate-y-2 transition-all duration-500 flex flex-col overflow-hidden"
+    >
+      {/* IMAGE */}
       <div className="relative h-56 overflow-hidden flex items-center justify-center bg-gray-100">
         {!imgError ? (
           <img
@@ -69,16 +92,22 @@ const handleSendQuery = () => {
         )}
       </div>
 
-      {/* Content */}
+      {/* CONTENT */}
       <div className="p-5 flex-1 flex flex-col justify-between">
         <div>
-          <h3 className="text-xl font-semibold text-gray-900 mb-2 line-clamp-1">{pkg.title}</h3>
-          <p className="text-sm text-gray-600 mb-4 line-clamp-2 leading-relaxed">{pkg.description}</p>
+          <h3 className="text-xl font-semibold text-gray-900 mb-2 line-clamp-1">
+            {pkg.title}
+          </h3>
+          <p className="text-sm text-gray-600 mb-4 line-clamp-2 leading-relaxed">
+            {pkg.description}
+          </p>
         </div>
 
         <div className="flex items-center justify-between mb-4">
           <div>
-            <span className="text-2xl font-bold text-[hsl(var(--brand-orange))]">{pkg.price}</span>
+            <span className="text-2xl font-bold text-[hsl(var(--brand-orange))]">
+              {pkg.price}
+            </span>
             <span className="text-xs text-gray-500 ml-1">per person</span>
           </div>
           <div className="flex items-center gap-1 text-sm text-gray-600">
@@ -87,42 +116,42 @@ const handleSendQuery = () => {
           </div>
         </div>
 
-        {/* Buttons */}
+        {/* BUTTONS */}
         <div className="flex gap-1 mt-auto">
-          {/* Send Query */}
-           <button
-    onClick={handleSendQuery}
-    className="flex-1 flex items-center justify-center gap-1 px-3 py-1.5
-               border border-[hsl(var(--brand-orange))] text-[hsl(var(--brand-orange))]
-               rounded-lg hover:bg-[hsl(var(--brand-orange))] hover:text-white
-               transition-colors duration-300 font-medium text-xs"
-  >
-    <MessageCircle className="h-3 w-3" />
-    Query
-  </button>
+          {/* QUERY */}
+          <button
+            onClick={handleSendQuery}
+            className="flex-1 flex items-center justify-center gap-1 px-3 py-1.5
+                       border border-[hsl(var(--brand-orange))] text-[hsl(var(--brand-orange))]
+                       rounded-lg hover:bg-[hsl(var(--brand-orange))] hover:text-white
+                       transition-colors duration-300 font-medium text-xs"
+          >
+            <MessageCircle className="h-3 w-3" />
+            Query
+          </button>
 
-          {/* WhatsApp */}
- <button
-    onClick={handleWhatsApp}
-    className="flex items-center justify-center gap-1 px-3 py-1.5 
-               bg-green-500 text-white rounded-lg hover:bg-green-600 
-               transition-colors duration-300 font-medium text-xs"
-  >
-    <img src={whatsappIcon} alt="WhatsApp" className="w-4 h-4" />
-    WhatsApp
-  </button>
+          {/* WHATSAPP */}
+          <button
+            onClick={handleWhatsApp}
+            className="flex items-center justify-center gap-1 px-3 py-1.5 
+                       bg-green-500 text-white rounded-lg hover:bg-green-600 
+                       transition-colors duration-300 font-medium text-xs"
+          >
+            <img src={whatsappIcon} alt="WhatsApp" className="w-4 h-4" />
+            WhatsApp
+          </button>
 
-          {/* View Itinerary */}
-  <button
-    onClick={() => onViewItinerary(pkg.id)}
-    className="flex-1 flex items-center justify-center gap-1 px-3 py-1.5
-               bg-[hsl(var(--brand-orange))] text-white rounded-lg
-               hover:bg-[hsl(var(--brand-orange))]/90
-               transition-colors duration-300 font-medium text-xs"
-  >
-    <Eye className="h-3 w-3" />
-    View
-  </button>
+          {/* VIEW */}
+          <button
+            onClick={() => onViewItinerary(pkg.slug)}
+            className="flex-1 flex items-center justify-center gap-1 px-3 py-1.5
+                       bg-[hsl(var(--brand-orange))] text-white rounded-lg
+                       hover:bg-[hsl(var(--brand-orange))]/90
+                       transition-colors duration-300 font-medium text-xs"
+          >
+            <Eye className="h-3 w-3" />
+            View
+          </button>
         </div>
       </div>
     </div>
