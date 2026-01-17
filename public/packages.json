@@ -2,6 +2,7 @@
   {
     "id": 1,
     "type": "international",
+    "slug": "gorakhpur-to-nepal-highlights-tour",
     "title": "Gorakhpur to Nepal Highlights Tour",
     "description": "Explore Nepal’s spiritual and natural beauty with Lumbini, Pokhara and Chitwan.",
     "location": "Nepal",
@@ -42,8 +43,166 @@
     ]
   },
   {
+    "id": 9,
+    "type": "international",
+    "slug": "a-location-of-happiness-bhutan-tour",
+    "title": "A Location of Happiness - Bhutan Tour",
+    "description": "Experience the serene beauty of Thimphu and Paro, featuring the iconic Tiger's Nest hike[cite: 1, 11].",
+    "location": "Bhutan",
+    "price": "₹34,999",
+    "duration": "5D/4N",
+    "image": "/assets/bhutan_happiness.png",
+    "rating": 4.9,
+    "categories": ["nature", "spiritual"],
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Bagdogra → Thimphu",
+        "activities": ["Airport pickup", "Transfer to Thimphu via Phuentsholing", "Immigration permit"],
+        "meals": ["Dinner"],
+        "accommodation": "Hotel in Thimphu [cite: 1, 6]"
+      },
+      {
+        "day": 2,
+        "title": "Thimphu Full Day Sightseeing",
+        "activities": ["Buddha Point", "Memorial Chorten", "Takin Zoo", "Folk Heritage Museum", "Tashicchhoe Dzong"],
+        "meals": ["Breakfast", "Dinner"],
+        "accommodation": "Hotel in Thimphu [cite: 6]"
+      },
+      {
+        "day": 3,
+        "title": "Thimphu → Punakha → Paro",
+        "activities": ["Dochu la Pass", "Punakha Dzong", "Suspension Bridge", "Transfer to Paro"],
+        "meals": ["Breakfast", "Dinner"],
+        "accommodation": "Hotel in Paro [cite: 8, 10]"
+      },
+      {
+        "day": 4,
+        "title": "Paro Hike & Wellness",
+        "activities": ["Hike to Tiger’s Nest Monastery", "Optional Hot Stone Bath"],
+        "meals": ["Breakfast", "Dinner"],
+        "accommodation": "Hotel in Paro [cite: 11, 16]"
+      },
+      {
+        "day": 5,
+        "title": "Chele-la Pass → Departure",
+        "activities": ["Chele-la Pass excursion", "Transfer to Jaigaon/Bagdogra"],
+        "meals": ["Breakfast"],
+        "accommodation": "— [cite: 17, 21]"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "type": "international",
+    "slug": "the-crown-of-bhutan-tour",
+    "title": "The Crown of Bhutan Tour",
+    "description": "A focused journey through the cultural heart of Bhutan, starting and ending in Paro[cite: 42, 55].",
+    "location": "Bhutan",
+    "price": "₹31,500",
+    "duration": "5D/4N",
+    "image": "/assets/bhutan_crown.png",
+    "rating": 4.8,
+    "categories": ["cultural", "family"],
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Arrival in Paro → Thimphu",
+        "activities": ["Paro Airport pickup", "Transfer to Thimphu capital"],
+        "meals": ["Dinner"],
+        "accommodation": "Hotel in Thimphu "
+      },
+      {
+        "day": 2,
+        "title": "Thimphu Sightseeing",
+        "activities": ["National Painting School", "Royal Textile Museum", "Handmade Paper Factory"],
+        "meals": ["Breakfast", "Dinner"],
+        "accommodation": "Hotel in Thimphu [cite: 47]"
+      },
+      {
+        "day": 3,
+        "title": "Thimphu → Punakha → Paro",
+        "activities": ["Dochu la Pass", "Chhimi Lhakhang", "Suspension Bridge", "Transfer to Paro"],
+        "meals": ["Breakfast", "Dinner"],
+        "accommodation": "Hotel in Paro [cite: 49, 51]"
+      },
+      {
+        "day": 4,
+        "title": "Paro Local Sightseeing",
+        "activities": ["Rinpung Dzong", "Kichu Lhakhang", "Ta Dzong (Museum)"],
+        "meals": ["Breakfast", "Dinner"],
+        "accommodation": "Hotel in Paro [cite: 51, 55]"
+      },
+      {
+        "day": 5,
+        "title": "Departure",
+        "activities": ["Transfer to Paro International Airport"],
+        "meals": ["Breakfast"],
+        "accommodation": "— [cite: 55]"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "type": "international",
+    "slug": "bhutan-a-land-of-majesty",
+    "title": "Bhutan – A Land of Majesty",
+    "description": "An extended 6-day royal experience covering major historical sites and scenic valleys[cite: 77, 93].",
+    "location": "Bhutan",
+    "price": "₹39,999",
+    "duration": "6D/5N",
+    "image": "/assets/bhutan_majesty.png",
+    "rating": 5.0,
+    "categories": ["luxury", "cultural"],
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Paro → Thimphu Arrival",
+        "activities": ["Pickup from Paro", "Transfer to Thimphu", "Evening leisure"],
+        "meals": ["Dinner"],
+        "accommodation": "Hotel in Thimphu [cite: 77, 82]"
+      },
+      {
+        "day": 2,
+        "title": "Thimphu Full Day Tour",
+        "activities": ["Durga Temple", "Coronation Park", "Tashicchhoe Dzong"],
+        "meals": ["Breakfast", "Dinner"],
+        "accommodation": "Hotel in Thimphu [cite: 83]"
+      },
+      {
+        "day": 3,
+        "title": "Thimphu → Punakha",
+        "activities": ["Drive to Punakha", "Punakha Dzong sightseeing"],
+        "meals": ["Breakfast", "Dinner"],
+        "accommodation": "Hotel in Punakha [cite: 84, 85]"
+      },
+      {
+        "day": 4,
+        "title": "Punakha → Paro",
+        "activities": ["Iron Bridge visit", "Local Paro market sightseeing"],
+        "meals": ["Breakfast", "Dinner"],
+        "accommodation": "Hotel in Paro [cite: 86, 88]"
+      },
+      {
+        "day": 5,
+        "title": "Paro Hike to Tiger’s Nest",
+        "activities": ["Uphill hike to Taktsang Lhakhang", "Museum visit"],
+        "meals": ["Breakfast", "Dinner"],
+        "accommodation": "Hotel in Paro [cite: 89, 93]"
+      },
+      {
+        "day": 6,
+        "title": "Final Departure",
+        "activities": ["Transfer to Paro Airport"],
+        "meals": ["Breakfast"],
+        "accommodation": "— [cite: 93]"
+      }
+    ]
+  },
+  {
     "id": 4,
     "type": "international",
+    "slug": "dubai-luxury-international-tour",
     "title": "Dubai Luxury International Tour",
     "description": "Luxury shopping, Burj Khalifa, Marina Cruise and Desert Safari.",
     "location": "Dubai, UAE",
@@ -92,258 +251,6 @@
         "day": 6,
         "title": "Departure",
         "activities": ["Airport transfer"],
-        "meals": ["Breakfast"],
-        "accommodation": "—"
-      }
-    ]
-  },
-  {
-    "id": 9,
-    "type": "international",
-    "title": "A Location of Happiness - Bhutan Tour",
-    "description": "Experience the serene beauty of Thimphu and Paro, featuring the iconic Tiger's Nest hike[cite: 1, 11].",
-    "location": "Bhutan",
-    "price": "₹34,999",
-    "duration": "5D/4N",
-    "image": "/assets/bhutan_happiness.png",
-    "rating": 4.9,
-    "categories": ["nature", "spiritual"],
-    "itinerary": [
-      {
-        "day": 1,
-        "title": "Bagdogra → Thimphu",
-        "activities": ["Airport pickup", "Transfer to Thimphu via Phuentsholing", "Immigration permit [cite: 1]"],
-        "meals": ["Dinner"],
-        "accommodation": "Hotel in Thimphu [cite: 1, 6]"
-      },
-      {
-        "day": 2,
-        "title": "Thimphu Full Day Sightseeing",
-        "activities": ["Buddha Point", "Memorial Chorten", "Takin Zoo", "Folk Heritage Museum", "Tashicchhoe Dzong [cite: 6]"],
-        "meals": ["Breakfast", "Dinner"],
-        "accommodation": "Hotel in Thimphu [cite: 6]"
-      },
-      {
-        "day": 3,
-        "title": "Thimphu → Punakha → Paro",
-        "activities": ["Dochu la Pass", "Punakha Dzong", "Suspension Bridge", "Transfer to Paro [cite: 7, 8]"],
-        "meals": ["Breakfast", "Dinner"],
-        "accommodation": "Hotel in Paro [cite: 8, 10]"
-      },
-      {
-        "day": 4,
-        "title": "Paro Hike & Wellness",
-        "activities": ["Hike to Tiger’s Nest Monastery", "Optional Hot Stone Bath [cite: 11, 16]"],
-        "meals": ["Breakfast", "Dinner"],
-        "accommodation": "Hotel in Paro [cite: 11, 16]"
-      },
-      {
-        "day": 5,
-        "title": "Chele-la Pass → Departure",
-        "activities": ["Chele-la Pass excursion", "Transfer to Jaigaon/Bagdogra [cite: 17, 21]"],
-        "meals": ["Breakfast"],
-        "accommodation": "— [cite: 17, 21]"
-      }
-    ]
-  },
-  {
-    "id": 10,
-    "type": "international",
-    "title": "The Crown of Bhutan Tour",
-    "description": "A focused journey through the cultural heart of Bhutan, starting and ending in Paro[cite: 42, 55].",
-    "location": "Bhutan",
-    "price": "₹31,500",
-    "duration": "5D/4N",
-    "image": "/assets/bhutan_crown.png",
-    "rating": 4.8,
-    "categories": ["cultural", "family"],
-    "itinerary": [
-      {
-        "day": 1,
-        "title": "Arrival in Paro → Thimphu",
-        "activities": ["Paro Airport pickup", "Transfer to Thimphu capital [cite: 42]"],
-        "meals": ["Dinner"],
-        "accommodation": "Hotel in Thimphu [cite: 47]"
-      },
-      {
-        "day": 2,
-        "title": "Thimphu Sightseeing",
-        "activities": ["National Painting School", "Royal Textile Museum", "Handmade Paper Factory [cite: 47]"],
-        "meals": ["Breakfast", "Dinner"],
-        "accommodation": "Hotel in Thimphu [cite: 47]"
-      },
-      {
-        "day": 3,
-        "title": "Thimphu → Punakha → Paro",
-        "activities": ["Dochu la Pass", "Chhimi Lhakhang", "Suspension Bridge", "Transfer to Paro [cite: 49, 50]"],
-        "meals": ["Breakfast", "Dinner"],
-        "accommodation": "Hotel in Paro [cite: 51]"
-      },
-      {
-        "day": 4,
-        "title": "Paro Local Sightseeing",
-        "activities": ["Rinpung Dzong", "Kichu Lhakhang", "Ta Dzong (Museum) [cite: 51]"],
-        "meals": ["Breakfast", "Dinner"],
-        "accommodation": "Hotel in Paro [cite: 51, 55]"
-      },
-      {
-        "day": 5,
-        "title": "Departure",
-        "activities": ["Transfer to Paro International Airport [cite: 55]"],
-        "meals": ["Breakfast"],
-        "accommodation": "— [cite: 55]"
-      }
-    ]
-  },
-  {
-    "id": 11,
-    "type": "international",
-    "title": "Bhutan – A Land of Majesty",
-    "description": "An extended 6-day royal experience covering major historical sites and scenic valleys[cite: 77, 93].",
-    "location": "Bhutan",
-    "price": "₹39,999",
-    "duration": "6D/5N",
-    "image": "/assets/bhutan_majesty.png",
-    "rating": 5.0,
-    "categories": ["luxury", "cultural"],
-    "itinerary": [
-      {
-        "day": 1,
-        "title": "Paro → Thimphu Arrival",
-        "activities": ["Pickup from Paro", "Transfer to Thimphu", "Evening leisure [cite: 77]"],
-        "meals": ["Dinner"],
-        "accommodation": "Hotel in Thimphu [cite: 77, 82]"
-      },
-      {
-        "day": 2,
-        "title": "Thimphu Full Day Tour",
-        "activities": ["Durga Temple", "Coronation Park", "Tashicchhoe Dzong [cite: 82, 83]"],
-        "meals": ["Breakfast", "Dinner"],
-        "accommodation": "Hotel in Thimphu [cite: 83]"
-      },
-      {
-        "day": 3,
-        "title": "Thimphu → Punakha",
-        "activities": ["Drive to Punakha", "Punakha Dzong sightseeing [cite: 84, 85]"],
-        "meals": ["Breakfast", "Dinner"],
-        "accommodation": "Hotel in Punakha [cite: 85]"
-      },
-      {
-        "day": 4,
-        "title": "Punakha → Paro",
-        "activities": ["Iron Bridge visit", "Local Paro market sightseeing [cite: 86, 88]"],
-        "meals": ["Breakfast", "Dinner"],
-        "accommodation": "Hotel in Paro [cite: 88]"
-      },
-      {
-        "day": 5,
-        "title": "Paro Hike to Tiger’s Nest",
-        "activities": ["Uphill hike to Taktsang Lhakhang", "Museum visit [cite: 89]"],
-        "meals": ["Breakfast", "Dinner"],
-        "accommodation": "Hotel in Paro [cite: 89, 93]"
-      },
-      {
-        "day": 6,
-        "title": "Final Departure",
-        "activities": ["Transfer to Paro Airport [cite: 93]"],
-        "meals": ["Breakfast"],
-        "accommodation": "— [cite: 93]"
-      }
-    ]
-  },
-  {
-    "id": 12,
-    "type": "international",
-    "title": "Bhutan: The Land of Fantasy & Peace",
-    "description": "A comprehensive 7-day journey from Phuentsholing to the valleys of Thimphu, Punakha, and Paro[cite: 115, 131].",
-    "location": "Bhutan",
-    "price": "On Request",
-    "duration": "7D/6N",
-    "image": "/assets/bhutan_fantasy.png",
-    "rating": 4.7,
-    "categories": ["nature", "peaceful"],
-    "itinerary": [
-      {
-        "day": 1,
-        "title": "Bagdogra → Phuentsholing",
-        "activities": ["Airport pickup", "Transfer to Phuentsholing [cite: 115]"],
-        "meals": ["Dinner"],
-        "accommodation": "Hotel in Phuentsholing [cite: 115]"
-      },
-      {
-        "day": 2,
-        "title": "Phuentsholing → Thimphu",
-        "activities": ["Immigration permit", "Drive to Thimphu [cite: 116, 117]"],
-        "meals": ["Breakfast", "Dinner"],
-        "accommodation": "Hotel in Thimphu [cite: 121]"
-      },
-      {
-        "day": 3,
-        "title": "Thimphu Sightseeing",
-        "activities": ["Buddha Point", "Takin Zoo", "Memorial Chorten", "Handmade Paper Factory [cite: 121]"],
-        "meals": ["Breakfast", "Dinner"],
-        "accommodation": "Hotel in Thimphu [cite: 121]"
-      },
-      {
-        "day": 4,
-        "title": "Thimphu → Punakha → Paro",
-        "activities": ["Dochu la Pass", "Punakha Dzong", "Suspension Bridge", "Drive to Paro [cite: 122, 123]"],
-        "meals": ["Breakfast", "Dinner"],
-        "accommodation": "Hotel in Paro [cite: 123, 125]"
-      },
-      {
-        "day": 5,
-        "title": "Paro Local Sightseeing & Hike",
-        "activities": ["Optional Tiger’s Nest Hike", "Paro Museum", "Kichu Lhakhang [cite: 126]"],
-        "meals": ["Breakfast", "Dinner"],
-        "accommodation": "Hotel in Paro [cite: 126, 130]"
-      },
-      {
-        "day": 6,
-        "title": "Paro → Phuentsholing",
-        "activities": ["Return drive to border town [cite: 130]"],
-        "meals": ["Breakfast", "Dinner"],
-        "accommodation": "Hotel in Phuentsholing [cite: 130]"
-      },
-      {
-        "day": 7,
-        "title": "Departure",
-        "activities": ["Transfer to Bagdogra Airport [cite: 130, 131]"],
-        "meals": ["Breakfast"],
-        "accommodation": "—"
-      }
-    ]
-  },
-  {
-    "id": 13,
-    "type": "international",
-    "title": "Nepal Tour Package - Gorakhpur to Pokhara",
-    "description": "Ideal short family holiday visiting Lumbini and the scenic beauty of Pokhara[cite: 1710].",
-    "location": "Nepal",
-    "price": "On Request",
-    "duration": "3D/2N",
-    "image": "/assets/nepal_pokhara.png",
-    "rating": 4.8,
-    "categories": ["family", "short holiday"],
-    "itinerary": [
-      {
-        "day": 1,
-        "title": "Gorakhpur → Pokhara via Lumbini",
-        "activities": ["Early departure", "Visit Lumbini (Birthplace of Buddha)", "Drive to Pokhara [cite: 1710]"],
-        "meals": ["Dinner"],
-        "accommodation": "Hotel in Pokhara [cite: 1710, 1711]"
-      },
-      {
-        "day": 2,
-        "title": "Pokhara Local Sightseeing",
-        "activities": ["Phewa Lake", "Tal Barahi Temple", "Devi’s Fall", "Gupteshwor Mahadev Cave [cite: 1711]"],
-        "meals": ["Breakfast", "Dinner"],
-        "accommodation": "Hotel in Pokhara [cite: 1711]"
-      },
-      {
-        "day": 3,
-        "title": "Pokhara → Gorakhpur",
-        "activities": ["Breakfast", "Drive back to Gorakhpur [cite: 1711]"],
         "meals": ["Breakfast"],
         "accommodation": "—"
       }
