@@ -15,6 +15,8 @@ import SimilarPackages from "@/components/SimilarPackages";
 import { useDebounce } from "@/hooks/useDebounce";
 import packageHero from "@/assets/package_horizontal.jpg";
 
+/* ================= TYPES ================= */
+
 export interface Package {
   id: number;
   title: string;
@@ -38,6 +40,8 @@ export type CategoryType =
   | "honeymoon"
   | "adventure";
 
+/* ================= COMPONENT ================= */
+
 const Packages = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
@@ -55,7 +59,8 @@ const Packages = () => {
   const [selectedPackage, setSelectedPackage] = useState<Package | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  /* ================= READ CATEGORY FROM URL ================= */
+  /* ================= URL CATEGORY ================= */
+
   useEffect(() => {
     const category = searchParams.get("category") as CategoryType | null;
     if (
@@ -71,19 +76,19 @@ const Packages = () => {
     }
   }, [searchParams]);
 
-  /* ================= RESET COUNTRY ON CATEGORY CHANGE ================= */
   useEffect(() => {
     setActiveCountry(null);
   }, [activeCategory]);
 
-  /* ================= FETCH PACKAGES ================= */
+  /* ================= FETCH ================= */
+
   useEffect(() => {
     const fetchPackages = async () => {
       try {
         setLoading(true);
-        const response = await fetch("/packages.json");
-        if (!response.ok) throw new Error();
-        const data = await response.json();
+        const res = await fetch("/packages.json");
+        if (!res.ok) throw new Error();
+        const data = await res.json();
         setPackages(data);
       } catch {
         setError("Failed to load packages");
@@ -91,11 +96,11 @@ const Packages = () => {
         setLoading(false);
       }
     };
-
     fetchPackages();
   }, []);
 
-  /* ================= INTERNATIONAL COUNTRIES ================= */
+  /* ================= COUNTRIES ================= */
+
   const internationalCountries = useMemo(() => {
     if (activeCategory !== "international") return [];
     return Array.from(
@@ -107,7 +112,8 @@ const Packages = () => {
     );
   }, [packages, activeCategory]);
 
-  /* ================= FILTER LOGIC ================= */
+  /* ================= FILTER ================= */
+
   const filteredPackages = useMemo(() => {
     let result = [...packages];
 
@@ -147,15 +153,15 @@ const Packages = () => {
   }, [packages, activeCategory, activeCountry, debouncedSearch]);
 
   return (
-    <div className="flex flex-col h-full w-full overflow-y-auto bg-gradient-to-br from-orange-50 via-white to-blue-50">
+    <div className="flex flex-col w-full bg-gradient-to-br from-orange-50 via-white to-blue-50">
       {/* HERO */}
-      <section className="relative h-[50vh] flex items-center justify-center">
+      <section className="relative h-[45vh] sm:h-[50vh] flex items-center justify-center">
         <Link
           to="/"
-          className="absolute top-6 left-6 z-20 flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 backdrop-blur-md text-white text-sm hover:bg-white/30"
+          className="absolute top-4 left-4 sm:top-6 sm:left-6 z-20 flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 backdrop-blur-md text-white text-sm"
         >
           <ArrowLeft className="w-4 h-4" />
-          Back to Home
+          Back
         </Link>
 
         <div
@@ -164,15 +170,17 @@ const Packages = () => {
         />
         <div className="absolute inset-0 bg-black/60" />
 
-        <div className="relative z-10 text-center text-white">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6">
+        <div className="relative z-10 text-center text-white px-4">
+          <h1 className="text-4xl sm:text-6xl font-bold mb-4">
             Let's Plan Your Adventure
           </h1>
-          <p className="text-xl">Discover hand-picked travel experiences</p>
+          <p className="text-base sm:text-xl">
+            Discover hand-picked travel experiences
+          </p>
         </div>
       </section>
 
-      <div className="max-w-7xl mx-auto px-6 -mt-10 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 -mt-10 relative z-10 w-full">
         {/* SEARCH */}
         <div className="mb-8">
           <div className="relative max-w-2xl mx-auto">
@@ -200,15 +208,16 @@ const Packages = () => {
           onCategoryChange={setActiveCategory}
         />
 
+        {/* COUNTRY FILTER */}
         {activeCategory === "international" &&
           internationalCountries.length > 0 && (
-            <div className="flex flex-wrap justify-center gap-3 mb-10">
+            <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8">
               <button
                 onClick={() => setActiveCountry(null)}
-                className={`px-5 py-2 rounded-full border text-sm ${
+                className={`px-4 py-2 rounded-full border text-sm ${
                   activeCountry === null
                     ? "bg-orange-500 text-white border-orange-500"
-                    : "bg-white hover:border-orange-300"
+                    : "bg-white"
                 }`}
               >
                 All International
@@ -218,10 +227,10 @@ const Packages = () => {
                 <button
                   key={country}
                   onClick={() => setActiveCountry(country)}
-                  className={`px-5 py-2 rounded-full border text-sm ${
+                  className={`px-4 py-2 rounded-full border text-sm ${
                     activeCountry === country
                       ? "bg-orange-500 text-white border-orange-500"
-                      : "bg-white hover:border-orange-300"
+                      : "bg-white"
                   }`}
                 >
                   {country}
@@ -230,16 +239,17 @@ const Packages = () => {
             </div>
           )}
 
+        {/* STATES */}
         {loading && (
           <div className="flex flex-col items-center py-20">
             <Loader2 className="h-12 w-12 animate-spin text-orange-500" />
-            <p className="mt-4 text-gray-600">Loading packages...</p>
           </div>
         )}
 
         {!loading && !error && filteredPackages.length > 0 && (
           <>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 pb-20">
+            {/* ✅ RESPONSIVE GRID */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 pb-20">
               {filteredPackages.map((pkg) => (
                 <PackageCard
                   key={pkg.id}
@@ -255,6 +265,7 @@ const Packages = () => {
               ))}
             </div>
 
+            {/* SIMILAR */}
             {selectedPackage && (
               <SimilarPackages
                 packages={packages}
@@ -277,7 +288,7 @@ const Packages = () => {
           </p>
         )}
 
-        {error && !loading && (
+        {error && (
           <div className="flex flex-col items-center py-20">
             <AlertCircle className="h-12 w-12 text-red-500 mb-4" />
             <p className="text-gray-600">{error}</p>
