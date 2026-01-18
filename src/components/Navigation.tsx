@@ -13,7 +13,7 @@ import {
   ChevronDown,
   Newspaper,
 } from "lucide-react";
-import logos from "@/assets/logos.png";
+import logos from "@/assets/pashuptinath.webp";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);

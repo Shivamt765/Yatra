@@ -1,5 +1,5 @@
 import { Mail, Phone, MapPin, Facebook, Instagram, Twitter, Youtube } from 'lucide-react';
-import logos from "../assets/logos.png";
+import logos from "../assets/pashuptinath.webp";
 
 const Footer = () => {
   return (
@@ -75,7 +75,7 @@ const Footer = () => {
 
               <div className="flex items-center space-x-2 sm:space-x-3">
                 <Mail className="h-4 w-4 sm:h-5 sm:w-5 text-gray-400" />
-                <p className="text-gray-400">yatraholidayinfo@gmail.com</p>
+                <p className="text-gray-400">pashupatinathholidays@gmail.com</p>
               </div>
             </div>
           </div>

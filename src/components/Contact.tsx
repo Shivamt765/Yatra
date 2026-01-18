@@ -28,8 +28,8 @@ const Contact = () => {
     {
       icon: Mail,
       title: 'Email',
-      details: ['yatraholidayinfo@gmail.com'],
-      link: 'mailto:yatraholidayinfo@gmail.com',
+      details: ['pashupatinathholidays@gmail.com'],
+      link: 'mailto:pashupatinathholidays@gmail.com',
     },
     {
       icon: MapPin,

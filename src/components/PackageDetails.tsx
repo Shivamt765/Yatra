@@ -356,9 +356,9 @@ const PackageDetails = () => {
               <Phone className="inline h-4 w-4 mr-2" />
               +91 9151491889
             </a>
-            <a href="mailto:yatraholidayinfo@gmail.com" className="block text-sm">
+            <a href="mailto:pashupatinathholidays@gmail.com" className="block text-sm">
               <Mail className="inline h-4 w-4 mr-2" />
-              yatraholidayinfo@gmail.com
+              pashupatinathholidays@gmail.com
             </a>
           </CardContent>
         </Card>
