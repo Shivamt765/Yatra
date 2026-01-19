@@ -23,6 +23,7 @@ const Navbar = () => {
   const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 768);
 
   /* ================= SAFE MENU CLOSE ================= */
+
   const closeMenu = () => {
     setIsOpen(false);
     setPackagesOpen(false);
@@ -58,7 +59,7 @@ const Navbar = () => {
   }, [isOpen]);
 
   const logoStyle = {
-    height: "5.7rem",
+    height: "8.2rem",
     width: "auto",
     cursor: "pointer",
   };

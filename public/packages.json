@@ -255,5 +255,189 @@
         "accommodation": "—"
       }
     ]
-  }
+  },
+  {
+  "id": 101,
+  "type": "domestic",
+  "slug": "kailash-mansarovar-yatra-12n-13d-overland",
+  "title": "Kailash Mansarovar Yatra – 12 Nights / 13 Days (Overland)",
+  "description": "A sacred spiritual journey to Mount Kailash and Mansarovar Lake via Kathmandu with full parikrama experience.",
+  "location": "Tibet (Via Kathmandu)",
+  "price": "2,50,000",
+  "duration": "13D/12N",
+  "image": "/assets/mansarovar_overland.png",
+  "rating": 5.0,
+  "categories": ["spiritual", "pilgrimage"],
+  "itinerary": [
+    {
+      "day": 1,
+      "title": "Arrival in Kathmandu",
+      "activities": ["Airport pickup", "Hotel check-in", "Yatra briefing"],
+      "meals": ["Dinner"],
+      "accommodation": "Hotel in Kathmandu"
+    },
+    {
+      "day": 2,
+      "title": "Kathmandu Sightseeing",
+      "activities": ["Pashupatinath Temple", "Boudhanath Stupa", "Sleeping Vishnu Temple"],
+      "meals": ["Breakfast", "Dinner"],
+      "accommodation": "Hotel in Kathmandu"
+    },
+    {
+      "day": 3,
+      "title": "Kathmandu → Kyirung",
+      "activities": ["Drive to Kyirung", "Border formalities"],
+      "meals": ["Breakfast", "Dinner"],
+      "accommodation": "Guest House in Kyirung"
+    },
+    {
+      "day": 4,
+      "title": "Kyirung → Gyirung",
+      "activities": ["Immigration process", "Short drive"],
+      "meals": ["Breakfast", "Dinner"],
+      "accommodation": "Hotel in Gyirung"
+    },
+    {
+      "day": 5,
+      "title": "Gyirung → Saga",
+      "activities": ["Drive via Brahmaputra River"],
+      "meals": ["Breakfast", "Dinner"],
+      "accommodation": "Hotel in Saga"
+    },
+    {
+      "day": 6,
+      "title": "Saga → Mansarovar",
+      "activities": ["Drive to Mansarovar Lake"],
+      "meals": ["Breakfast", "Dinner"],
+      "accommodation": "Guest House near Mansarovar"
+    },
+    {
+      "day": 7,
+      "title": "Mansarovar Parikrama → Darchen",
+      "activities": ["Holy bath", "Puja & Homa", "Lake parikrama"],
+      "meals": ["Breakfast", "Dinner"],
+      "accommodation": "Hotel in Darchen"
+    },
+    {
+      "day": 8,
+      "title": "Darchen → Diraphuk",
+      "activities": ["Yamdwar darshan", "Trek (12 km)"],
+      "meals": ["Breakfast", "Dinner"],
+      "accommodation": "Guest House in Diraphuk"
+    },
+    {
+      "day": 9,
+      "title": "Diraphuk → Zutalphuk",
+      "activities": ["Cross Dolma La Pass", "Trek (22 km)"],
+      "meals": ["Breakfast", "Dinner"],
+      "accommodation": "Guest House in Zutalphuk"
+    },
+    {
+      "day": 10,
+      "title": "Zutalphuk → Saga",
+      "activities": ["Trek to Darchen", "Drive to Saga"],
+      "meals": ["Breakfast", "Dinner"],
+      "accommodation": "Hotel in Saga"
+    },
+    {
+      "day": 11,
+      "title": "Saga → Gyirung",
+      "activities": ["Return drive"],
+      "meals": ["Breakfast", "Dinner"],
+      "accommodation": "Guest House in Gyirung"
+    },
+    {
+      "day": 12,
+      "title": "Gyirung → Kathmandu",
+      "activities": ["Border formalities", "Drive to Kathmandu"],
+      "meals": ["Breakfast", "Dinner"],
+      "accommodation": "Hotel in Kathmandu"
+    },
+    {
+      "day": 13,
+      "title": "Departure",
+      "activities": ["Airport drop"],
+      "meals": ["Breakfast"],
+      "accommodation": "—"
+    }
+  ]
+},
+{
+  "id": 102,
+  "type": "domestic",
+  "slug": "kailash-mansarovar-yatra-8n-9d-helicopter",
+  "title": "Kailash Mansarovar Yatra – 8 Nights / 9 Days (Helicopter)",
+  "description": "Fast and comfortable Kailash Mansarovar Yatra via helicopter from Lucknow, ideal for senior pilgrims.",
+  "location": "Tibet (Via Lucknow)",
+  "price": "28,500",
+  "duration": "9D/8N",
+  "image": "/assets/mansarovar_heli.png",
+  "rating": 4.9,
+  "categories": ["spiritual", "pilgrimage"],
+  "itinerary": [
+    {
+      "day": 1,
+      "title": "Lucknow → Nepalgunj",
+      "activities": ["Airport arrival", "Drive to Nepalgunj"],
+      "meals": ["Dinner"],
+      "accommodation": "Hotel in Nepalgunj"
+    },
+    {
+      "day": 2,
+      "title": "Nepalgunj → Simikot",
+      "activities": ["Flight to Simikot"],
+      "meals": ["Breakfast", "Dinner"],
+      "accommodation": "Guest House in Simikot"
+    },
+    {
+      "day": 3,
+      "title": "Simikot → Hilsa → Purang",
+      "activities": ["Helicopter to Hilsa", "Drive to Purang"],
+      "meals": ["Breakfast", "Dinner"],
+      "accommodation": "Hotel in Purang"
+    },
+    {
+      "day": 4,
+      "title": "Acclimatization Day",
+      "activities": ["Rest", "Local walk"],
+      "meals": ["Breakfast", "Dinner"],
+      "accommodation": "Hotel in Purang"
+    },
+    {
+      "day": 5,
+      "title": "Purang → Mansarovar",
+      "activities": ["Lake parikrama", "Holy bath", "Puja & Homa"],
+      "meals": ["Breakfast", "Dinner"],
+      "accommodation": "Guest House near Mansarovar"
+    },
+    {
+      "day": 6,
+      "title": "Mansarovar → Diraphuk",
+      "activities": ["Drive to Darchen", "Yamdwar darshan", "Trek"],
+      "meals": ["Breakfast", "Dinner"],
+      "accommodation": "Guest House in Diraphuk"
+    },
+    {
+      "day": 7,
+      "title": "Diraphuk → Zutalphuk",
+      "activities": ["Dolma La Pass crossing", "Trek"],
+      "meals": ["Breakfast", "Dinner"],
+      "accommodation": "Guest House in Zutalphuk"
+    },
+    {
+      "day": 8,
+      "title": "Zutalphuk → Hilsa",
+      "activities": ["Trek to Darchen", "Drive to Hilsa"],
+      "meals": ["Breakfast", "Dinner"],
+      "accommodation": "Guest House in Hilsa"
+    },
+    {
+      "day": 9,
+      "title": "Hilsa → Lucknow",
+      "activities": ["Helicopter & flight transfers", "Drive to Lucknow"],
+      "meals": ["Breakfast"],
+      "accommodation": "—"
+    }
+  ]
+}
 ]
