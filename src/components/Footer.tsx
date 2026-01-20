@@ -15,7 +15,7 @@ const Footer = () => {
               <img
                 src={logos}
                 alt="Company Logo"
-                className="h-10 sm:h-12 md:h-16 lg:h-20 w-auto object-contain transition-all duration-300"
+                className="h-10 sm:h-12 md:h-16 lg:h-20 w-auto object-contain transform scale-[1.9] origin-center transition-all duration-300"
               />
             </div>
 
@@ -29,7 +29,7 @@ const Footer = () => {
               {[Facebook, Instagram, Twitter, Youtube].map((Icon, index) => (
                 <a
                   key={index}
-                  href="#"
+                  href="https://www.instagram.com/pashupatinathholidays/"
                   className="bg-gray-800 p-2 sm:p-3 rounded-full hover:bg-gray-700 transition-colors duration-300 group"
                 >
                   <Icon className="h-4 w-4 sm:h-5 sm:w-5 text-gray-400 group-hover:text-white transition-transform group-hover:scale-110" />

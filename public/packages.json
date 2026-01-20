@@ -258,7 +258,7 @@
   },
   {
   "id": 101,
-  "type": "domestic",
+  "type": "international",
   "slug": "kailash-mansarovar-yatra-12n-13d-overland",
   "title": "Kailash Mansarovar Yatra – 12 Nights / 13 Days (Overland)",
   "description": "A sacred spiritual journey to Mount Kailash and Mansarovar Lake via Kathmandu with full parikrama experience.",
@@ -364,7 +364,7 @@
 },
 {
   "id": 102,
-  "type": "domestic",
+  "type": "international",
   "slug": "kailash-mansarovar-yatra-8n-9d-helicopter",
   "title": "Kailash Mansarovar Yatra – 8 Nights / 9 Days (Helicopter)",
   "description": "Fast and comfortable Kailash Mansarovar Yatra via helicopter from Lucknow, ideal for senior pilgrims.",
@@ -439,5 +439,79 @@
       "accommodation": "—"
     }
   ]
+},{
+  "id": 103,
+  "type": "international",
+  "slug": "nepal-tour-package-2n-3d-gorakhpur-pokhara",
+  "title": "Nepal Tour Package – 2 Nights / 3 Days",
+  "description": "Short and comfortable Nepal tour from Gorakhpur to Pokhara, ideal for family and short holiday travelers.",
+  "location": "Nepal (Gorakhpur → Pokhara)",
+  "price": "On Request",
+  "duration": "3D/2N",
+  "image": "/assets/pokhara_tour.png",
+  "rating": 4.8,
+  "categories": ["family", "holiday", "sightseeing"],
+  "tour_details": {
+    "vehicle": "Dzire / Ertiga / Innova (As per Pax)",
+    "meals": "Breakfast & Dinner",
+    "hotel": "Standard / Deluxe (As per choice)",
+    "food": "Pure Veg Available",
+    "group_size": "2–6 Pax"
+  },
+  "itinerary": [
+    {
+      "day": 1,
+      "title": "Gorakhpur → Pokhara via Lumbini",
+      "distance": "Approx. 350 KM",
+      "travel_time": "10–11 Hours (Including Border Formalities)",
+      "activities": [
+        "Early morning departure from Gorakhpur",
+        "Enroute visit Lumbini (Birth Place of Lord Buddha)",
+        "Lunch en-route (own cost)",
+        "Evening arrival at Pokhara",
+        "Hotel check-in"
+      ],
+      "meals": ["Dinner"],
+      "accommodation": "Hotel in Pokhara"
+    },
+    {
+      "day": 2,
+      "title": "Pokhara Local Sightseeing",
+      "activities": [
+        "Breakfast at hotel",
+        "Phewa Lake (Boating optional)",
+        "Tal Barahi Temple",
+        "Devi’s Fall",
+        "Gupteshwor Mahadev Cave",
+        "Evening free for market walk"
+      ],
+      "meals": ["Breakfast", "Dinner"],
+      "accommodation": "Hotel in Pokhara"
+    },
+    {
+      "day": 3,
+      "title": "Pokhara → Gorakhpur",
+      "activities": [
+        "Breakfast at hotel",
+        "Hotel check-out",
+        "Drive back to Gorakhpur",
+        "Drop by late evening"
+      ],
+      "meals": ["Breakfast"],
+      "accommodation": "—"
+    }
+  ],
+  "inclusions": [
+    "2 Nights Hotel Accommodation",
+    "Daily Breakfast & Dinner",
+    "All Transfers & Sightseeing by Private Vehicle",
+    "Driver Allowance, Fuel, Parking"
+  ],
+  "exclusions": [
+    "Lunch",
+    "Boating / Personal Expenses",
+    "Nepal Entry Permit (if applicable)"
+  ],
+  "booking_by": "Pashupatinath Holidays"
 }
 ]

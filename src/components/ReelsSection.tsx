@@ -6,12 +6,12 @@ import { Card } from '@/components/ui/card';
 const reels = [
   {
     id: 1,
-    title: "Everest Base Camp Adventure",
-    thumbnail: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=600&fit=crop",
+    title: "Nepal tour",
+    thumbnail: "https://www.instagram.com/p/DTpUubREjwo/",
     duration: "2:45",
     platform: "instagram",
-    link: "https://instagram.com/yatraholiday",
-    views: "25K"
+    link: "https://www.instagram.com/p/DTpUubREjwo/",
+    views: "5K"
   },
   {
     id: 2,
