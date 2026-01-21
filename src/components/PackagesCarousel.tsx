@@ -22,7 +22,7 @@ const PackagesCarousel = () => {
   const [placeholder, setPlaceholder] = useState("");
   const navigate = useNavigate();
 
-  const placeholderTexts = ["Nepla Trip", "Swiss Alps adventure", "Tokyo discovery", "Maldives escape"];
+  const placeholderTexts = ["Nepal Trip", "Dubai luxury", "Mansaovar", "Thailand"];
 
   useEffect(() => {
     fetch('/packages.json')
