@@ -22,7 +22,7 @@ const PackagesCarousel = () => {
   const [placeholder, setPlaceholder] = useState("");
   const navigate = useNavigate();
 
-  const placeholderTexts = ["Nepal Trip", "Dubai luxury", "Mansaovar", "Thailand"];
+  const placeholderTexts = ["Nepal Trip", "Dubai luxury Tour", "Mansarovar Trip", "Thailand tour"];
 
   useEffect(() => {
     fetch('/packages.json')
@@ -182,7 +182,7 @@ const PackagesCarousel = () => {
                         </div>
                         <div className="space-y-2">
                           <Button
-  onClick={() => navigate(`/packages/${pkg.id}`)}
+  onClick={() => navigate(`/packages/details/${pkg.slug}`)}
   className="bg-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/90 text-white rounded-xl px-6 shadow-lg hover:shadow-xl transition-all duration-300"
 >
   <Send className="mr-2 h-4 w-4" />

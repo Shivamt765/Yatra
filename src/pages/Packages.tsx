@@ -1,11 +1,10 @@
 import { useState, useEffect, useMemo } from "react";
-import { useNavigate, useSearchParams, Link } from "react-router-dom";
+import { useNavigate, useParams, Link, Outlet } from "react-router-dom";
 import { Search, X, Loader2, AlertCircle, ArrowLeft } from "lucide-react";
 
 import { PackageCard } from "@/components/packages/PackageCard";
 import { CategoryTabs } from "@/components/packages/CategoryTabs";
 import { QueryModal } from "@/components/packages/QueryModal";
-import SimilarPackages from "@/components/SimilarPackages";
 import { useDebounce } from "@/hooks/useDebounce";
 import packageHero from "@/assets/package_horizontal.jpg";
 
@@ -39,7 +38,7 @@ export type CategoryType =
 
 const Packages = () => {
   const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
+  const { category, country } = useParams();
 
   const [packages, setPackages] = useState<Package[]>([]);
   const [loading, setLoading] = useState(true);
@@ -48,7 +47,9 @@ const Packages = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const debouncedSearch = useDebounce(searchQuery, 250);
 
-  const [activeCategory, setActiveCategory] = useState<CategoryType>("all");
+  const [activeCategory, setActiveCategory] =
+    useState<CategoryType>("all");
+
   const [activeCountry, setActiveCountry] = useState<string | null>(null);
 
   const [selectedPackage, setSelectedPackage] = useState<Package | null>(null);
@@ -57,19 +58,17 @@ const Packages = () => {
   /* ================= URL CATEGORY ================= */
 
   useEffect(() => {
-    const category = searchParams.get("category") as CategoryType | null;
-    if (
-      category === "international" ||
-      category === "domestic" ||
-      category === "family" ||
-      category === "honeymoon" ||
-      category === "adventure"
-    ) {
-      setActiveCategory(category);
+    if (category === "international") {
+      setActiveCategory("international");
+      setActiveCountry(country || null);
+    } else if (category === "domestic") {
+      setActiveCategory("domestic");
+      setActiveCountry(null);
     } else {
       setActiveCategory("all");
+      setActiveCountry(null);
     }
-  }, [searchParams]);
+  }, [category, country]);
 
   useEffect(() => {
     if (activeCategory !== "international") {
@@ -205,14 +204,16 @@ const Packages = () => {
 
         <CategoryTabs
           activeCategory={activeCategory}
-          onCategoryChange={setActiveCategory}
+          onCategoryChange={(cat) => {
+            navigate(cat === "all" ? "/packages" : `/packages/${cat}`);
+          }}
         />
 
         {/* COUNTRY FILTER */}
         {activeCategory === "international" && (
           <div className="flex flex-wrap justify-center gap-2 mb-8">
             <button
-              onClick={() => setActiveCountry(null)}
+              onClick={() => navigate("/packages/international")}
               className={`px-4 py-2 rounded-full border text-sm ${
                 activeCountry === null
                   ? "bg-orange-500 text-white border-orange-500"
@@ -225,7 +226,9 @@ const Packages = () => {
             {internationalCountries.map((country) => (
               <button
                 key={country}
-                onClick={() => setActiveCountry(country)}
+                onClick={() =>
+                  navigate(`/packages/international/${country}`)
+                }
                 className={`px-4 py-2 rounded-full border text-sm ${
                   activeCountry === country
                     ? "bg-orange-500 text-white border-orange-500"
@@ -251,7 +254,7 @@ const Packages = () => {
                 key={pkg.id}
                 package={pkg}
                 onViewItinerary={() =>
-                  navigate(`/packages/${pkg.slug}`)
+                  navigate(`/packages/details/${pkg.slug}`)
                 }
                 onSendQuery={() => {
                   setSelectedPackage(pkg);
@@ -275,6 +278,9 @@ const Packages = () => {
         onClose={() => setIsModalOpen(false)}
         package={selectedPackage}
       />
+
+      {/* IMPORTANT: This makes nested routes work */}
+      <Outlet />
     </div>
   );
 };
