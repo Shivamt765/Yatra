@@ -1,17 +1,12 @@
-import React, { useMemo } from "react";
-import { PackageCard } from "@/components/packages/PackageCard";
-import type { Package } from "@/components/packages/PackageCard";
-
-/* ================= PROPS ================= */
+import { useMemo } from "react";
+import { Package } from "@/types";
 
 interface SimilarPackagesProps {
   packages: Package[];
-  selectedPackage: Package | null;
+  selectedPackage: Package;
   onViewItinerary: (slug: string) => void;
-  onSendQuery: (pkg: Package) => void;
+  onSendQuery: () => void;
 }
-
-/* ================= COMPONENT ================= */
 
 const SimilarPackages = ({
   packages,
@@ -19,51 +14,72 @@ const SimilarPackages = ({
   onViewItinerary,
   onSendQuery,
 }: SimilarPackagesProps) => {
+  // Filter similar packages
   const similar = useMemo(() => {
-    if (!selectedPackage) return [];
-
     return packages
-      .filter((p) => p.id !== selectedPackage.id)
-      .map((p) => {
-        let score = 0;
-
-        if (p.location === selectedPackage.location) score += 5;
-        if (p.type === selectedPackage.type) score += 3;
-
-        const commonCategories =
-          p.categories?.filter((c) =>
-            selectedPackage.categories?.includes(c)
-          ) || [];
-        score += commonCategories.length * 2;
-
-        return { pkg: p, score };
-      })
-      .sort((a, b) => b.score - a.score)
-      .slice(0, 6)
-      .map((x) => x.pkg);
-  }, [packages, selectedPackage]);
-
-  if (!similar.length) return null;
+      .filter((p) => p.slug !== selectedPackage.slug)
+      .slice(0, 4);
+  }, [packages, selectedPackage.slug]);
 
   return (
-    <section className="mt-10">
-      <h2 className="text-xl font-bold mb-4">People also like</h2>
+    <div className="mt-10">
+      {/* Heading */}
+      <div className="flex justify-between items-center mb-6">
+        <h2 className="text-2xl font-semibold">Similar Packages</h2>
+      </div>
 
-    
-           
-          <div className="flex overflow-x-auto gap-4 no-scrollbar">
-  {similar.map((pkg) => (
-    <div className="min-w-[260px]" key={pkg.id}>
-      <PackageCard
-        package={pkg}
-        onViewItinerary={() => onViewItinerary(pkg.slug)}
-        onSendQuery={() => onSendQuery(pkg)}
-      />
+      {/* Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {similar.map((pkg) => (
+          <div
+            key={pkg.id}
+            className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
+          >
+            {/* Image */}
+            <div className="relative">
+              <img
+                src={pkg.image}
+                alt={pkg.title}
+                className="w-full h-44 object-cover"
+              />
+
+              {/* Price Tag */}
+              <div className="absolute top-3 right-3 bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                {pkg.price ? `₹ ${pkg.price}` : "On Request"}
+              </div>
+            </div>
+
+            {/* Content */}
+            <div className="p-4">
+              <h3 className="text-lg font-semibold mb-1">
+                {pkg.title}
+              </h3>
+
+              <p className="text-sm text-gray-600 mb-3">
+                {pkg.location} • {pkg.duration}
+              </p>
+
+              <button
+                onClick={() => onViewItinerary(pkg.slug)}
+                className="w-full bg-orange-500 hover:bg-orange-600 text-white py-2 rounded-full text-sm font-semibold"
+              >
+                View Details
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Query Button */}
+      <div className="mt-6 flex justify-end">
+        <button
+          onClick={onSendQuery}
+          className="px-6 py-2 rounded-full bg-gray-900 text-white"
+        >
+          Ask About This Package
+        </button>
+      </div>
     </div>
-  ))}
-</div>
-
-    </section>
   );
 };
 

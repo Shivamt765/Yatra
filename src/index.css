@@ -298,3 +298,15 @@
     transform: scale(1);
   }
 }
+/* Hide scrollbar */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+/* Hover lift effect like JustWravel */
+.similar-card:hover {
+  transform: translateY(-6px);
+}

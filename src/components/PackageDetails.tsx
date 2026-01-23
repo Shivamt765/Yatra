@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { useEffect, useState, FormEvent, useRef } from "react";
+import { useEffect, useState, FormEvent } from "react";
 import {
   ArrowLeft,
   MapPin,
@@ -8,32 +8,20 @@ import {
   Phone,
   Mail,
   MessageCircle,
-  Users,
-  Hotel,
-  Utensils,
-  Camera,
-  Activity,
-  CheckCircle,
-  XCircle,
   X,
   Loader2,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { supabase } from "@/lib/supabaseClient";
 import SimilarPackages from "@/components/SimilarPackages";
-
-/* ================= TYPES ================= */
 
 interface ItineraryDay {
   day: number;
   title: string;
   activities: string[];
-  meals: string[];
-  accommodation: string;
 }
 
 interface Package {
@@ -68,77 +56,6 @@ interface FormErrors {
   message?: string;
 }
 
-/* ================= GALLERY ================= */
-
-const TripGallery = ({ gallery }: { gallery: string[] }) => {
-  const [selectedImg, setSelectedImg] = useState<string | null>(null);
-  const carouselRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const carousel = carouselRef.current;
-    if (!carousel) return;
-
-    const interval = setInterval(() => {
-      carousel.scrollLeft =
-        carousel.scrollLeft >= carousel.scrollWidth - carousel.clientWidth
-          ? 0
-          : carousel.scrollLeft + 1;
-    }, 20);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  return (
-    <div className="mb-6">
-      <h3 className="text-lg font-semibold mb-3 flex items-center gap-2 text-brand-orange">
-        <Camera className="h-5 w-5" /> Trip Gallery
-      </h3>
-
-      <div
-        ref={carouselRef}
-        className="flex gap-4 overflow-x-auto no-scrollbar"
-      >
-        {gallery.map((img, i) => (
-          <div
-            key={i}
-            className="w-60 h-40 flex-shrink-0 overflow-hidden rounded-xl shadow-md cursor-pointer"
-            onClick={() => setSelectedImg(img)}
-          >
-            <img
-              src={img}
-              alt=""
-              className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
-            />
-          </div>
-        ))}
-      </div>
-
-      {selectedImg && (
-        <div
-          className="fixed inset-0 bg-black/80 flex items-center justify-center z-50"
-          onClick={() => setSelectedImg(null)}
-        >
-          <div className="relative max-w-4xl w-full px-4">
-            <button
-              className="absolute top-4 right-4 bg-white/30 p-2 rounded-full"
-              onClick={() => setSelectedImg(null)}
-            >
-              <X className="text-white" />
-            </button>
-            <img
-              src={selectedImg}
-              alt=""
-              className="w-full max-h-[80vh] object-contain rounded-lg"
-            />
-          </div>
-        </div>
-      )}
-    </div>
-  );
-};
-
-/* ================= MAIN COMPONENT ================= */
-
 const PackageDetails = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
@@ -160,8 +77,6 @@ const PackageDetails = () => {
 
   const [errors, setErrors] = useState<FormErrors>({});
 
-  /* ================= FETCH PACKAGE ================= */
-
   useEffect(() => {
     fetch("/packages.json")
       .then((res) => res.json())
@@ -173,8 +88,6 @@ const PackageDetails = () => {
       })
       .catch(() => setLoading(false));
   }, [slug]);
-
-  /* ================= FORM ================= */
 
   const validateForm = () => {
     const newErrors: FormErrors = {};
@@ -208,12 +121,10 @@ const PackageDetails = () => {
     }, 2000);
   };
 
-  /* ================= STATES ================= */
-
   if (loading)
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <Loader2 className="h-10 w-10 animate-spin text-brand-orange" />
+        <Loader2 className="h-10 w-10 animate-spin text-orange-500" />
       </div>
     );
 
@@ -224,72 +135,64 @@ const PackageDetails = () => {
       </div>
     );
 
-  /* ================= UI ================= */
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-blue-50">
-      {/* HERO */}
-      <div className="relative h-[400px]">
+    <div className="min-h-screen bg-[#f8f9fa]">
+      <div className="relative h-[420px]">
         <img
           src={packageData.image}
           alt={packageData.title}
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-black/60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-black/70" />
+
         <Button
           onClick={() => navigate(-1)}
           className="absolute top-6 left-6 bg-white/20 text-white"
         >
           <ArrowLeft className="mr-2 h-4 w-4" /> Back
         </Button>
-        <div className="absolute bottom-6 left-6 text-white">
-          <h1 className="text-4xl font-bold mb-2">{packageData.title}</h1>
-          <div className="flex gap-4 text-sm">
-            <span className="flex items-center gap-1">
-              <MapPin className="h-4 w-4" /> {packageData.location}
-            </span>
-            <span className="flex items-center gap-1">
-              <Clock className="h-4 w-4" /> {packageData.duration}
-            </span>
-            {packageData.rating && (
-              <span className="flex items-center gap-1">
-                <Star className="h-4 w-4 fill-yellow-400" />
-                {packageData.rating}
-              </span>
-            )}
-          </div>
+
+        <div className="absolute bottom-8 left-6 text-white max-w-3xl">
+          <h1 className="text-4xl md:text-5xl font-bold font-sans leading-tight">
+            {packageData.title}
+          </h1>
+          <p className="mt-2 text-lg font-medium">
+            {packageData.location} • {packageData.duration}
+          </p>
+          {packageData.rating && (
+            <p className="mt-1 text-sm font-semibold text-yellow-400">
+              ⭐ {packageData.rating} / 5
+            </p>
+          )}
         </div>
       </div>
 
-      {/* CONTENT */}
       <div className="max-w-7xl mx-auto px-4 py-10 grid lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2">
-          <Card className="mb-6">
+          <Card className="mb-6 bg-white shadow-none border border-gray-200">
             <CardContent className="p-6">
-              <h2 className="text-2xl font-semibold mb-3">Overview</h2>
-              <p className="text-gray-600">{packageData.description}</p>
+              <h2 className="text-2xl font-semibold mb-3">
+                Overview
+              </h2>
+              <p className="text-gray-700">{packageData.description}</p>
             </CardContent>
           </Card>
 
           <Tabs defaultValue="itinerary">
-            <TabsList className="grid grid-cols-3 mb-6">
+            <TabsList className="grid grid-cols-3 mb-6 bg-white border border-gray-200 rounded-lg">
               <TabsTrigger value="itinerary">Itinerary</TabsTrigger>
               <TabsTrigger value="inclusions">Inclusions</TabsTrigger>
               <TabsTrigger value="highlights">Highlights</TabsTrigger>
             </TabsList>
 
             <TabsContent value="itinerary">
-              {packageData.gallery && (
-                <TripGallery gallery={packageData.gallery} />
-              )}
-
               {packageData.itinerary?.map((day) => (
-                <Card key={day.day} className="mb-4">
+                <Card key={day.day} className="mb-4 bg-white border border-gray-200">
                   <CardContent className="p-6">
                     <h3 className="font-semibold mb-2">
                       Day {day.day}: {day.title}
                     </h3>
-                    <ul className="list-disc list-inside text-gray-600">
+                    <ul className="list-disc list-inside text-gray-700">
                       {day.activities.map((a, i) => (
                         <li key={i}>{a}</li>
                       ))}
@@ -298,19 +201,16 @@ const PackageDetails = () => {
                 </Card>
               ))}
 
-              {/* SIMILAR PACKAGES */}
               <SimilarPackages
                 packages={allPackages}
                 selectedPackage={packageData}
-                onViewItinerary={(slug) =>
-                  navigate(`/packages/${slug}`)
-                }
+                onViewItinerary={(slug) => navigate(`/packages/${slug}`)}
                 onSendQuery={() => setIsModalOpen(true)}
               />
             </TabsContent>
 
             <TabsContent value="inclusions">
-              <Card>
+              <Card className="bg-white border border-gray-200">
                 <CardContent className="p-6 grid md:grid-cols-2 gap-6">
                   <div>
                     <h3 className="font-semibold mb-2">Included</h3>
@@ -329,7 +229,7 @@ const PackageDetails = () => {
             </TabsContent>
 
             <TabsContent value="highlights">
-              <Card>
+              <Card className="bg-white border border-gray-200">
                 <CardContent className="p-6">
                   Premium stays • Local experiences • Expert guides
                 </CardContent>
@@ -338,33 +238,37 @@ const PackageDetails = () => {
           </Tabs>
         </div>
 
-        {/* SIDEBAR */}
-        <Card className="h-fit sticky top-6">
+        <Card className="h-fit sticky top-6 bg-white border border-gray-200">
           <CardContent className="p-6 text-center">
             <p className="text-sm text-gray-600">Starting from</p>
-            <p className="text-4xl font-bold text-brand-orange">
+            <p className="text-3xl font-bold text-orange-500 mt-2">
               {packageData.price}
             </p>
+
             <Button
-              className="w-full mt-4"
+              className="w-full mt-4 bg-orange-500 hover:bg-orange-600 text-white"
               onClick={() => setIsModalOpen(true)}
             >
               <MessageCircle className="mr-2 h-4 w-4" /> Send Enquiry
             </Button>
-            <Separator className="my-6" />
-            <a href="tel:+919151491889" className="block text-sm">
-              <Phone className="inline h-4 w-4 mr-2" />
+
+            <Separator className="my-4" />
+
+            <a href="tel:+919151491889" className="block text-sm text-gray-700">
+              <Phone className="inline h-4 w-4 mr-2 text-orange-500" />
               +91 9151491889
             </a>
-            <a href="mailto:pashupatinathholidays@gmail.com" className="block text-sm">
-              <Mail className="inline h-4 w-4 mr-2" />
+            <a
+              href="mailto:pashupatinathholidays@gmail.com"
+              className="block text-sm text-gray-700 mt-2"
+            >
+              <Mail className="inline h-4 w-4 mr-2 text-orange-500" />
               pashupatinathholidays@gmail.com
             </a>
           </CardContent>
         </Card>
       </div>
 
-      {/* MODAL */}
       {isModalOpen && (
         <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
           <div className="bg-white p-6 rounded-xl w-full max-w-lg">

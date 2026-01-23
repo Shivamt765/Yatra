@@ -1,62 +1,62 @@
 [
   {
     "id": 1,
-    "title": "Hidden Gems of Santorini: Beyond the Instagram Spots",
-    "excerpt": "Discover the secret corners of Santorini that locals cherish. From hidden beaches to authentic tavernas, explore the island's true essence.",
-    "image": "/santorini-sunset.jpg",
-    "category": "Destinations",
-    "author": "Sarah Mitchell",
+    "title": "Hidden Gems of Nepal: Offbeat Places Beyond Kathmandu & Pokhara",
+    "excerpt": "Explore lesser-known destinations in Nepal beyond Kathmandu and Pokhara. Discover peaceful villages, scenic mountain valleys, and authentic local experiences perfect for travelers seeking offbeat Nepal tour packages.",
+    "image": "/nepal-hidden-gems.jpg",
+    "category": "Nepal Destinations",
+    "author": "Travel Desk",
     "date": "March 15, 2024",
-    "readTime": "5 min read"
-  },
-  {
-    "id": 2,
-    "title": "Tokyo on a Budget: Experience Luxury for Less",
-    "excerpt": "Think Tokyo is expensive? Think again. Learn how to navigate Japan's capital without breaking the bank while still enjoying world-class experiences.",
-    "image": "/tokyo-city.jpg",
-    "category": "Budget Travel",
-    "author": "Michael Chen",
-    "date": "March 10, 2024",
-    "readTime": "7 min read"
-  },
-  {
-    "id": 3,
-    "title": "The Ultimate Guide to Maldives Water Villas",
-    "excerpt": "Everything you need to know about choosing the perfect overwater bungalow in the Maldives, from booking tips to what to expect.",
-    "image": "/maldives-resort.jpg",
-    "category": "Luxury Travel",
-    "author": "Emma Rodriguez",
-    "date": "March 5, 2024",
     "readTime": "6 min read"
   },
   {
-    "id": 4,
-    "title": "Hiking the Swiss Alps: A Beginner's Journey",
-    "excerpt": "Never hiked before? No problem. Follow our journey through Switzerland's most breathtaking trails designed for first-time hikers.",
-    "image": "/swiss-alps.jpg",
-    "category": "Adventure",
-    "author": "David Thompson",
-    "date": "February 28, 2024",
+    "id": 2,
+    "title": "Kailash Mansarovar Yatra Guide: Route, Cost, Best Time & Tips",
+    "excerpt": "Planning your Kailash Mansarovar Yatra? This complete guide covers routes via Nepal, travel cost, best season, permits, and spiritual insights for a smooth and sacred journey.",
+    "image": "/kailash-mansarovar.jpg",
+    "category": "Spiritual Travel",
+    "author": "Pilgrimage Expert",
+    "date": "March 12, 2024",
     "readTime": "8 min read"
   },
   {
+    "id": 3,
+    "title": "Uttarakhand Tour Packages: Hill Stations, Temples & Nature Escapes",
+    "excerpt": "Discover the best Uttarakhand tour packages covering Nainital, Mussoorie, Rishikesh, Kedarnath, and scenic Himalayan retreats ideal for family trips, pilgrimages, and nature lovers.",
+    "image": "/uttarakhand-tour.jpg",
+    "category": "Hill Stations",
+    "author": "Travel Desk",
+    "date": "March 8, 2024",
+    "readTime": "7 min read"
+  },
+  {
+    "id": 4,
+    "title": "Rajasthan Travel Guide: Forts, Deserts & Royal Heritage Tours",
+    "excerpt": "Experience the royal charm of Rajasthan with curated travel packages covering Jaipur, Jodhpur, Jaisalmer, Udaipur, desert safaris, palaces, and cultural heritage tours.",
+    "image": "/rajasthan-forts.jpg",
+    "category": "Cultural Tours",
+    "author": "Heritage Specialist",
+    "date": "March 3, 2024",
+    "readTime": "7 min read"
+  },
+  {
     "id": 5,
-    "title": "Spiritual Awakening: Temple Hopping in Bali",
-    "excerpt": "Experience Bali's rich spiritual heritage through its magnificent temples. A guide to the most sacred and serene spots on the island.",
-    "image": "/bali-temple.jpg",
-    "category": "Culture",
-    "author": "Aisha Patel",
-    "date": "February 20, 2024",
+    "title": "Goa Tour Packages: Beaches, Nightlife & Relaxed Holidays",
+    "excerpt": "Plan the perfect Goa vacation with our beachside tour packages. From relaxing beaches and nightlife to family-friendly resorts and honeymoon escapes, Goa has it all.",
+    "image": "/goa-beach.jpg",
+    "category": "Beach Holidays",
+    "author": "Travel Desk",
+    "date": "February 26, 2024",
     "readTime": "6 min read"
   },
   {
     "id": 6,
-    "title": "Desert Dreams: 48 Hours in Dubai",
-    "excerpt": "From futuristic skyscrapers to ancient souks, discover how to make the most of two days in the city of superlatives.",
-    "image": "/dubai-desert.jpg",
-    "category": "City Guides",
-    "author": "James Wilson",
-    "date": "February 15, 2024",
-    "readTime": "5 min read"
+    "title": "Nepal Tour Packages for Families, Couples & Adventure Seekers",
+    "excerpt": "Choose from the best Nepal tour packages designed for families, honeymoon couples, and adventure lovers. Enjoy temples, Himalayan views, trekking, and cultural experiences.",
+    "image": "/nepal-tour-packages.jpg",
+    "category": "Travel Packages",
+    "author": "Nepal Travel Expert",
+    "date": "February 20, 2024",
+    "readTime": "6 min read"
   }
 ]
