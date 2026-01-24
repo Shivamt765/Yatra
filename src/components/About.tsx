@@ -14,6 +14,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Helmet } from 'react-helmet-async';
 import founderImage from '/assets/keshav-prasad-gupta-founder.jpeg';
+
 const AboutUs = () => {
   const stats = [
     { icon: Users, value: '50K+', label: 'Happy Travelers' },
@@ -55,15 +56,15 @@ const AboutUs = () => {
       {/* SEO HELMET */}
       <Helmet>
         <title>
-          About Pashupatinath Holidays | Nepal, Kathmandu, Pokhara, Rajasthan & Ayodhya Tours
+          About Pashupatinath Holidays | Domestic & International Tour Experts
         </title>
         <meta
           name="description"
-          content="Pashupatinath Holidays is a trusted travel company offering Nepal tour packages including Kathmandu and Pokhara sightseeing, Pashupatinath Temple darshan, Ayodhya Ram Mandir tours, Rajasthan heritage trips and Thailand holiday packages."
+          content="Pashupatinath Holidays is a trusted travel company offering domestic and international tour packages including Nepal, Rajasthan, Ayodhya, Thailand and more."
         />
         <meta
           name="keywords"
-          content="Nepal tour package, Kathmandu tour, Pokhara sightseeing, Pashupatinath temple darshan, Nepal pilgrimage tour, Ayodhya Ram Mandir darshan, Rajasthan tour package, Udaipur Jaipur tour, Thailand tour package"
+          content="domestic tour package, international tour package, Nepal tour, Rajasthan tour, Thailand tour, Ayodhya tour, travel company"
         />
       </Helmet>
 
@@ -88,14 +89,12 @@ const AboutUs = () => {
             Home
           </Link>
 
+          {/* UPDATED GENERAL HEADING */}
           <h1 className="font-playfair text-5xl md:text-7xl font-bold mb-6">
-            Nepal, Kathmandu, Pokhara, Rajasthan & Ayodhya Tour Experts
+            Domestic & International Tour Experts
           </h1>
 
-          <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
-            Pashupatinath Holidays – Trusted travel experts for Nepal trips,
-            pilgrimage tours, Rajasthan heritage journeys and international holidays
-          </p>
+          {/* REMOVE PARAGRAPH UNDER HEADING */}
         </div>
       </section>
 
@@ -147,10 +146,10 @@ const AboutUs = () => {
       {/* FOUNDER SECTION */}
       <section className="container mx-auto px-4 py-20 max-w-5xl grid md:grid-cols-2 gap-10 items-center">
         <img
-  src={founderImage}
-  alt="Keshav Prasad Gupta Founder of Pashupatinath Holidays Nepal and Rajasthan Tour Company"
-  className="w-72 h-72 object-cover rounded-2xl shadow-xl mx-auto"
-/>
+          src={founderImage}
+          alt="Keshav Prasad Gupta Founder of Pashupatinath Holidays"
+          className="w-full max-w-md mx-auto rounded-2xl shadow-xl object-cover object-top aspect-[4/5]"
+        />
 
         <div>
           <h2 className="font-playfair text-4xl font-bold mb-4">

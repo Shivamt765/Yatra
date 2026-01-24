@@ -25,7 +25,7 @@ export default {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         
-        // Yatra Holiday Brand Colors
+        // Pashupatinath Holidays Brand Colors
         "brand-orange": {
           DEFAULT: "hsl(var(--brand-orange))",
           light: "hsl(var(--brand-orange-light))",

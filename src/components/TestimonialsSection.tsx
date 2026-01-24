@@ -23,7 +23,7 @@ const stories = [
     name: "Seema Sharma",
     location: "Lucknow, Uttar Pradesh",
     rating: 5,
-    text: "Booked a family tour with Pashupatinath Tours — all destinations (Muktinath to Pokhara) were perfectly handled.",
+    text: "Booked a family tour with Pashupatinath Holidays — all destinations (Muktinath to Pokhara) were perfectly handled.",
     image: "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?w=100&h=100&fit=crop&crop=face",
   },
   {
@@ -59,10 +59,10 @@ const ModernTravelStories = () => {
       {/* Heading */}
       <div className="text-center mb-16 px-4">
         <h2 className="text-5xl font-playfair italic text-gray-900 mb-4">
-          Traveler Stories
+          Best Traveler Reviews | Pashupatinath Holidays
         </h2>
         <p className="text-gray-500 max-w-3xl mx-auto text-lg">
-          Real adventures from our travelers around India. Each story is unique, immersive, and unforgettable.
+          Read real travel experiences from our customers — Nepal, Pokhara, Muktinath, Kedarnath & more.
         </p>
       </div>
 

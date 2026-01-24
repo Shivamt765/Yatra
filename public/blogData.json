@@ -1,6 +1,7 @@
 [
   {
     "id": 1,
+    "slug": "hidden-gems-of-nepal",
     "title": "Hidden Gems of Nepal: Offbeat Places Beyond Kathmandu & Pokhara",
     "excerpt": "Explore lesser-known destinations in Nepal beyond Kathmandu and Pokhara. Discover peaceful villages, scenic mountain valleys, and authentic local experiences perfect for travelers seeking offbeat Nepal tour packages.",
     "image": "/nepal-hidden-gems.jpg",
@@ -11,6 +12,7 @@
   },
   {
     "id": 2,
+    "slug": "kailash-mansarovar-yatra-guide",
     "title": "Kailash Mansarovar Yatra Guide: Route, Cost, Best Time & Tips",
     "excerpt": "Planning your Kailash Mansarovar Yatra? This complete guide covers routes via Nepal, travel cost, best season, permits, and spiritual insights for a smooth and sacred journey.",
     "image": "/kailash-mansarovar.jpg",
@@ -21,6 +23,7 @@
   },
   {
     "id": 3,
+    "slug": "uttarakhand-tour-packages",
     "title": "Uttarakhand Tour Packages: Hill Stations, Temples & Nature Escapes",
     "excerpt": "Discover the best Uttarakhand tour packages covering Nainital, Mussoorie, Rishikesh, Kedarnath, and scenic Himalayan retreats ideal for family trips, pilgrimages, and nature lovers.",
     "image": "/uttarakhand-tour.jpg",
@@ -31,6 +34,7 @@
   },
   {
     "id": 4,
+    "slug": "rajasthan-travel-guide",
     "title": "Rajasthan Travel Guide: Forts, Deserts & Royal Heritage Tours",
     "excerpt": "Experience the royal charm of Rajasthan with curated travel packages covering Jaipur, Jodhpur, Jaisalmer, Udaipur, desert safaris, palaces, and cultural heritage tours.",
     "image": "/rajasthan-forts.jpg",
@@ -41,6 +45,7 @@
   },
   {
     "id": 5,
+    "slug": "goa-tour-packages",
     "title": "Goa Tour Packages: Beaches, Nightlife & Relaxed Holidays",
     "excerpt": "Plan the perfect Goa vacation with our beachside tour packages. From relaxing beaches and nightlife to family-friendly resorts and honeymoon escapes, Goa has it all.",
     "image": "/goa-beach.jpg",
@@ -51,6 +56,7 @@
   },
   {
     "id": 6,
+    "slug": "nepal-tour-packages-for-families",
     "title": "Nepal Tour Packages for Families, Couples & Adventure Seekers",
     "excerpt": "Choose from the best Nepal tour packages designed for families, honeymoon couples, and adventure lovers. Enjoy temples, Himalayan views, trekking, and cultural experiences.",
     "image": "/nepal-tour-packages.jpg",

@@ -1,13 +1,14 @@
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowLeft, Calendar, User, ArrowRight, BookOpen } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { supabase } from '@/lib/supabaseClient'; // import supabase client
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { ArrowLeft, Calendar, User, ArrowRight, BookOpen } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { supabase } from "@/lib/supabaseClient";
 
 interface BlogPost {
   id: number;
+  slug: string;
   title: string;
   excerpt: string;
   image: string;
@@ -19,11 +20,11 @@ interface BlogPost {
 
 const Blog = () => {
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
-  const [email, setEmail] = useState(''); // for newsletter input
-  const [message, setMessage] = useState(''); // success/error message
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
-    fetch('/blogData.json') // public folder file
+    fetch("/blogData.json")
       .then((res) => res.json())
       .then((data) => setBlogPosts(data))
       .catch((err) => console.error("Error loading blog data:", err));
@@ -35,16 +36,13 @@ const Blog = () => {
       return;
     }
 
-    const { data, error } = await supabase
-      .from('newsletter')
-      .insert([{ email }]);
+    const { error } = await supabase.from("newsletter").insert([{ email }]);
 
     if (error) {
-      console.error(error);
       setMessage("Failed to subscribe. Maybe already subscribed?");
     } else {
       setMessage("Subscribed successfully!");
-      setEmail(''); // clear input
+      setEmail("");
     }
   };
 
@@ -53,30 +51,30 @@ const Blog = () => {
       {/* Hero Section */}
       <section className="relative h-[50vh] min-h-[400px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary/70 to-secondary/90" />
-        
-        <div 
+
+        <div
           className="absolute inset-0 opacity-20"
           style={{
             backgroundImage: 'url("/placeholder.svg")',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
+            backgroundSize: "cover",
+            backgroundPosition: "center",
           }}
         />
-        
+
         <div className="relative z-10 container mx-auto px-4 text-center text-white">
-          <Link 
+          <Link
             to="/"
             className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             <span className="text-sm font-medium">Back to Home</span>
           </Link>
-          
+
           <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20">
             <BookOpen className="w-4 h-4" />
             <span className="text-sm font-medium">Travel Stories & Guides</span>
           </div>
-          
+
           <h1 className="text-5xl md:text-6xl font-bold mb-6 animate-fade-in">
             Wanderlust Chronicles
           </h1>
@@ -90,13 +88,13 @@ const Blog = () => {
       <section className="py-20 container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {blogPosts.map((post, index) => (
-            <Card 
-              key={post.id} 
+            <Card
+              key={post.id}
               className="group hover:shadow-xl transition-all duration-300 overflow-hidden animate-fade-in"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="relative h-48 overflow-hidden">
-                <img 
+                <img
                   src={post.image}
                   alt={post.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
@@ -107,7 +105,7 @@ const Blog = () => {
                   </Badge>
                 </div>
               </div>
-              
+
               <CardHeader>
                 <div className="flex items-center gap-4 text-sm text-muted-foreground mb-3">
                   <span className="flex items-center gap-1">
@@ -123,21 +121,20 @@ const Blog = () => {
                   {post.title}
                 </h3>
               </CardHeader>
-              
+
               <CardContent>
-                <p className="text-muted-foreground">
-                  {post.excerpt}
-                </p>
+                <p className="text-muted-foreground">{post.excerpt}</p>
               </CardContent>
-              
+
               <CardFooter className="flex items-center justify-between">
-                <span className="text-sm text-muted-foreground">
-                  {post.readTime}
-                </span>
-                <Button variant="ghost" className="group-hover:text-primary">
-                  Read More
-                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
+                <span className="text-sm text-muted-foreground">{post.readTime}</span>
+
+                <Link to={`/blog/${post.slug}`}>
+                  <Button variant="ghost" className="group-hover:text-primary">
+                    Read More
+                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </Link>
               </CardFooter>
             </Card>
           ))}
@@ -152,18 +149,14 @@ const Blog = () => {
             Subscribe to our newsletter and get the latest travel stories, tips, and exclusive deals delivered to your inbox.
           </p>
           <div className="flex gap-4 max-w-md mx-auto">
-            <input 
+            <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
               className="flex-1 px-4 py-3 rounded-lg border bg-background focus:outline-none focus:ring-2 focus:ring-primary"
             />
-            <Button 
-              size="lg" 
-              className="whitespace-nowrap"
-              onClick={handleSubscribe}
-            >
+            <Button size="lg" className="whitespace-nowrap" onClick={handleSubscribe}>
               Subscribe
             </Button>
           </div>
