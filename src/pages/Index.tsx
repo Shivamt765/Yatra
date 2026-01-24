@@ -19,6 +19,7 @@ const Index = () => {
   const [isQueryModalOpen, setIsQueryModalOpen] = useState(false);
   const [selectedPackage, setSelectedPackage] = useState<any>(null);
 
+  // Show loader only on first visit (SSR safe)
   useEffect(() => {
     if (typeof window === "undefined") return;
 
@@ -29,26 +30,29 @@ const Index = () => {
     }
   }, []);
 
-  const handleQueryClick = (pkg: any) => {
-    setSelectedPackage(pkg);
+  const handleLoadingComplete = () => {
+    setIsLoading(false);
+  };
+
+  const handleQueryClick = (packageData: any) => {
+    setSelectedPackage(packageData);
     setIsQueryModalOpen(true);
   };
 
   if (isLoading) {
-    return <LoadingScreen onComplete={() => setIsLoading(false)} />;
+    return <LoadingScreen onComplete={handleLoadingComplete} />;
   }
 
   return (
-    <div className="min-h-screen bg-background overflow-x-hidden">
+    <div className="min-h-screen bg-background overflow-y-auto overflow-x-hidden">
+      {/* Popup LeadForm */}
       <LeadForm isPopup={true} />
 
       <Navigation />
       <HeroSection />
       <PromotionalBanner />
       <MomentsSection />
-
       <PackagesCarousel onQueryClick={handleQueryClick} />
-
       <WhyChoose />
       <ReelsSection />
       <HomeBlogCarousel />

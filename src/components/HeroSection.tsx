@@ -3,12 +3,43 @@ import { ChevronDown, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/Hero-Pashupatinath-Holidays.png";
 
+const typingText = [
+  "Explore Nepal’s spiritual journeys.",
+  "Discover Goa’s beaches & nightlife.",
+  "Experience Uttarakhand’s mountains.",
+  "Travel Rajasthan’s royal heritage.",
+  "Create unforgettable memories with Pashupatinath Holidays.",
+];
+
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [currentText, setCurrentText] = useState("");
+  const [textIndex, setTextIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(0);
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
+
+  useEffect(() => {
+    const typingSpeed = 60;
+    const pauseTime = 1500;
+
+    if (charIndex < typingText[textIndex].length) {
+      const timeout = setTimeout(() => {
+        setCurrentText((prev) => prev + typingText[textIndex][charIndex]);
+        setCharIndex(charIndex + 1);
+      }, typingSpeed);
+      return () => clearTimeout(timeout);
+    } else {
+      const pause = setTimeout(() => {
+        setCurrentText("");
+        setCharIndex(0);
+        setTextIndex((prev) => (prev + 1) % typingText.length);
+      }, pauseTime);
+      return () => clearTimeout(pause);
+    }
+  }, [charIndex, textIndex]);
 
   const scrollToPackages = () =>
     document.getElementById("packages")?.scrollIntoView({ behavior: "smooth" });
@@ -29,23 +60,22 @@ const HeroSection = () => {
       <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
         <div
           className={`transition-all duration-1000 ${
-            isVisible
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-10"
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
-          {/* SEO Heading */}
-          <h1 className="font-montserrat text-4xl md:text-6xl font-extrabold mb-4 leading-tight text-white drop-shadow-lg">
-  Pashupatinath Holidays Where Every Journey Feels Extraordinary
-</h1>
+          {/* NEW UNIQUE HEADING */}
+          <h1 className="font-playfair text-4xl md:text-6xl font-extrabold mb-4 leading-tight text-white drop-shadow-lg italic">
+            Pashupatinath Holidays  
+            <span className="block text-orange-400 mt-2">
+              Where Every Journey Becomes A Story
+            </span>
+          </h1>
 
-
-          {/* SEO Subheading */}
+          {/* Typing Animated Paragraph */}
           <p className="font-montserrat text-lg md:text-xl mb-10 text-white/85 max-w-3xl mx-auto">
-  Explore iconic destinations across Nepal, Ayodhya, Goa, Uttrakhand, Rajasthan and spiritual India with
-  beautifully crafted travel experiences.
-</p>
-
+            {currentText}
+            <span className="text-white">|</span>
+          </p>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
