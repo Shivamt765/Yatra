@@ -1,68 +1,181 @@
 [
   {
     "id": 1,
-    "slug": "hidden-gems-of-nepal",
+    "slug": "hidden-gems-of-nepal-beyond-kathmandu-pokhara",
     "title": "Hidden Gems of Nepal: Offbeat Places Beyond Kathmandu & Pokhara",
-    "excerpt": "Explore lesser-known destinations in Nepal beyond Kathmandu and Pokhara. Discover peaceful villages, scenic mountain valleys, and authentic local experiences perfect for travelers seeking offbeat Nepal tour packages.",
-    "image": "/nepal-hidden-gems.jpg",
-    "category": "Nepal Destinations",
-    "author": "Travel Desk",
+    "metaTitle": "Hidden Gems of Nepal | Offbeat Nepal Tour Packages",
+    "metaDescription": "Discover hidden and offbeat places in Nepal beyond Kathmandu and Pokhara with Pashupatinath Holidays. Peaceful villages, mountains and culture.",
+    "category": "Nepal",
+    "author": "Pashupatinath Holidays",
     "date": "March 15, 2024",
-    "readTime": "6 min read"
+    "readTime": "6 min read",
+    "coverImage": "/nepal-hidden-gems.jpg",
+    "content": [
+      {
+        "type": "paragraph",
+        "value": "Nepal is often associated with Kathmandu and Pokhara, but the real magic lies beyond these cities. With Pashupatinath Holidays, travelers can explore untouched villages, serene valleys, and authentic Himalayan culture."
+      },
+      {
+        "type": "heading",
+        "value": "Top Offbeat Places in Nepal"
+      },
+      {
+        "type": "paragraph",
+        "value": "Destinations like Bandipur, Ghandruk, Tansen and Rara Lake offer scenic beauty, peaceful surroundings and rich local traditions."
+      },
+      {
+        "type": "image",
+        "src": "/nepal-hidden-gems.jpg",
+        "alt": "Offbeat places in Nepal"
+      },
+      {
+        "type": "paragraph",
+        "value": "Pashupatinath Holidays curates personalized Nepal tour packages covering these hidden gems along with comfortable stays and guided experiences."
+      }
+    ]
   },
+
   {
     "id": 2,
-    "slug": "kailash-mansarovar-yatra-guide",
-    "title": "Kailash Mansarovar Yatra Guide: Route, Cost, Best Time & Tips",
-    "excerpt": "Planning your Kailash Mansarovar Yatra? This complete guide covers routes via Nepal, travel cost, best season, permits, and spiritual insights for a smooth and sacred journey.",
-    "image": "/kailash-mansarovar.jpg",
-    "category": "Spiritual Travel",
-    "author": "Pilgrimage Expert",
-    "date": "March 12, 2024",
-    "readTime": "8 min read"
+    "slug": "muktinath-yatra-nepal-complete-travel-guide",
+    "title": "Muktinath Yatra Nepal: Complete Travel Guide from India",
+    "metaTitle": "Muktinath Yatra Guide | Nepal Pilgrimage Tour",
+    "metaDescription": "Plan your Muktinath Yatra in Nepal with route details, best time, cost and tips. Trusted pilgrimage tours by Pashupatinath Holidays.",
+    "category": "Nepal Pilgrimage",
+    "author": "Pashupatinath Holidays",
+    "date": "March 10, 2024",
+    "readTime": "7 min read",
+    "coverImage": "/muktinath-temple.jpg",
+    "content": [
+      {
+        "type": "paragraph",
+        "value": "Muktinath Temple is one of the most sacred pilgrimage sites for Hindus and Buddhists, located in the Mustang region of Nepal."
+      },
+      {
+        "type": "heading",
+        "value": "How to Reach Muktinath from India"
+      },
+      {
+        "type": "paragraph",
+        "value": "Most pilgrims travel via Gorakhpur or Kathmandu. Pashupatinath Holidays offers complete Muktinath Yatra packages including transport, hotel and darshan assistance."
+      },
+      {
+        "type": "image",
+        "src": "/muktinath-temple.jpg",
+        "alt": "Muktinath Temple Nepal"
+      },
+      {
+        "type": "paragraph",
+        "value": "The best time to visit Muktinath is from March to June and September to November for clear weather and smooth travel."
+      }
+    ]
   },
+
   {
     "id": 3,
-    "slug": "uttarakhand-tour-packages",
+    "slug": "uttarakhand-tour-packages-hill-stations-temples",
     "title": "Uttarakhand Tour Packages: Hill Stations, Temples & Nature Escapes",
-    "excerpt": "Discover the best Uttarakhand tour packages covering Nainital, Mussoorie, Rishikesh, Kedarnath, and scenic Himalayan retreats ideal for family trips, pilgrimages, and nature lovers.",
-    "image": "/uttarakhand-tour.jpg",
-    "category": "Hill Stations",
-    "author": "Travel Desk",
-    "date": "March 8, 2024",
-    "readTime": "7 min read"
+    "metaTitle": "Uttarakhand Tour Packages | Hill Stations & Temples",
+    "metaDescription": "Explore Uttarakhand tour packages covering Nainital, Mussoorie, Rishikesh and Kedarnath with Pashupatinath Holidays.",
+    "category": "Uttarakhand",
+    "author": "Pashupatinath Holidays",
+    "date": "March 5, 2024",
+    "readTime": "7 min read",
+    "coverImage": "/uttarakhand-tour.jpg",
+    "content": [
+      {
+        "type": "paragraph",
+        "value": "Uttarakhand is a perfect blend of spirituality, hill stations and natural beauty. From the holy Ganga in Rishikesh to scenic Nainital, the state offers something for everyone."
+      },
+      {
+        "type": "heading",
+        "value": "Best Places to Visit in Uttarakhand"
+      },
+      {
+        "type": "paragraph",
+        "value": "Popular destinations include Mussoorie, Nainital, Kedarnath, Badrinath and Jim Corbett National Park."
+      },
+      {
+        "type": "image",
+        "src": "/uttarakhand-tour.jpg",
+        "alt": "Uttarakhand hill stations"
+      },
+      {
+        "type": "paragraph",
+        "value": "With Pashupatinath Holidays, travelers get well-planned Uttarakhand tour packages with hotels, transport and sightseeing."
+      }
+    ]
   },
+
   {
     "id": 4,
-    "slug": "rajasthan-travel-guide",
-    "title": "Rajasthan Travel Guide: Forts, Deserts & Royal Heritage Tours",
-    "excerpt": "Experience the royal charm of Rajasthan with curated travel packages covering Jaipur, Jodhpur, Jaisalmer, Udaipur, desert safaris, palaces, and cultural heritage tours.",
-    "image": "/rajasthan-forts.jpg",
-    "category": "Cultural Tours",
-    "author": "Heritage Specialist",
-    "date": "March 3, 2024",
-    "readTime": "7 min read"
+    "slug": "thailand-budget-trip-from-india",
+    "title": "Thailand Budget Trip from India: Beaches, Islands & Nightlife",
+    "metaTitle": "Thailand Budget Trip from India | Tour Guide",
+    "metaDescription": "Plan a budget-friendly Thailand trip from India covering Bangkok, Phuket and Pattaya with Pashupatinath Holidays.",
+    "category": "International",
+    "author": "Pashupatinath Holidays",
+    "date": "February 28, 2024",
+    "readTime": "6 min read",
+    "coverImage": "/thailand-beach.jpg",
+    "content": [
+      {
+        "type": "paragraph",
+        "value": "Thailand is one of the most popular international destinations for Indian travelers due to affordable prices and stunning beaches."
+      },
+      {
+        "type": "heading",
+        "value": "Best Places to Visit in Thailand"
+      },
+      {
+        "type": "paragraph",
+        "value": "Bangkok, Phuket, Pattaya and Krabi offer a mix of nightlife, beaches and cultural attractions."
+      },
+      {
+        "type": "image",
+        "src": "/thailand-beach.jpg",
+        "alt": "Thailand beach holiday"
+      },
+      {
+        "type": "paragraph",
+        "value": "Pashupatinath Holidays offers Thailand tour packages from India with visa guidance, hotels and sightseeing."
+      }
+    ]
   },
+
   {
     "id": 5,
-    "slug": "goa-tour-packages",
-    "title": "Goa Tour Packages: Beaches, Nightlife & Relaxed Holidays",
-    "excerpt": "Plan the perfect Goa vacation with our beachside tour packages. From relaxing beaches and nightlife to family-friendly resorts and honeymoon escapes, Goa has it all.",
-    "image": "/goa-beach.jpg",
-    "category": "Beach Holidays",
-    "author": "Travel Desk",
-    "date": "February 26, 2024",
-    "readTime": "6 min read"
-  },
-  {
-    "id": 6,
-    "slug": "nepal-tour-packages-for-families",
-    "title": "Nepal Tour Packages for Families, Couples & Adventure Seekers",
-    "excerpt": "Choose from the best Nepal tour packages designed for families, honeymoon couples, and adventure lovers. Enjoy temples, Himalayan views, trekking, and cultural experiences.",
-    "image": "/nepal-tour-packages.jpg",
-    "category": "Travel Packages",
-    "author": "Nepal Travel Expert",
+    "slug": "himachal-pradesh-tour-packages-mountains-adventure",
+    "title": "Himachal Pradesh Tour Packages: Mountains, Adventure & Peace",
+    "metaTitle": "Himachal Pradesh Tour Packages | Mountain Holidays",
+    "metaDescription": "Discover Himachal Pradesh tour packages covering Shimla, Manali, Kasol and Dharamshala with Pashupatinath Holidays.",
+    "category": "Himachal",
+    "author": "Pashupatinath Holidays",
     "date": "February 20, 2024",
-    "readTime": "6 min read"
+    "readTime": "6 min read",
+    "coverImage": "/himachal-tour.jpg",
+    "content": [
+      {
+        "type": "paragraph",
+        "value": "Himachal Pradesh is known for snow-capped mountains, adventure sports and peaceful hill towns."
+      },
+      {
+        "type": "heading",
+        "value": "Top Himachal Destinations"
+      },
+      {
+        "type": "paragraph",
+        "value": "Manali, Shimla, Kasol and Dharamshala are ideal for family trips, honeymoon and adventure lovers."
+      },
+      {
+        "type": "image",
+        "src": "/himachal-tour.jpg",
+        "alt": "Himachal Pradesh mountains"
+      },
+      {
+        "type": "paragraph",
+        "value": "Book customized Himachal tour packages with Pashupatinath Holidays for a smooth and memorable journey."
+      }
+    ]
   }
 ]

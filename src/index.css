@@ -310,3 +310,37 @@
 .similar-card:hover {
   transform: translateY(-6px);
 }
+.banner {
+  width: 140px;
+  height: 420px;
+  position: sticky;
+  top: 100px;
+  border-radius: 10px;
+  overflow: hidden;
+  animation: drop 1.2s ease-in-out;
+}
+
+@keyframes drop {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes banner-drop {
+  0% {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-banner-drop {
+  animation: banner-drop 0.8s ease-out forwards;
+}
